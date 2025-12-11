@@ -14,6 +14,8 @@ This repository contains the initial conceptual analysis in multiple formats (HT
 For the core PMS framework, see:  
 👉 **https://github.com/tz-dev/Praxeological-Meta-Structure-Theory**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17897199.svg)](https://doi.org/10.5281/zenodo.17897199)  
+
 ---
 
 ## 📂 Repository Structure
