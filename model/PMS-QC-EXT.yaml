@@ -1,0 +1,232 @@
+# =============================================================================
+#  PMS-QC EXTENSION ADDENDUM
+#  File: pms-qc-ext.yaml
+#  Version: PMS-QC_EXT_1.0 (draft)
+#  Last Updated: 2025-12-11
+#
+#  Purpose:
+#    This addendum extends the PMS-QC base specification with domain-specific
+#    constructs derived from:
+#      - the "PMS Theory as a Structural Layer for Quantum Computing" paper,
+#      - operator-level derivations for Grover, QPE, attractor dynamics,
+#      - advanced reframing and asymmetry rules,
+#      - stabilised iteration scales and invariance constraints.
+#
+#    PMS-QC_EXT is OPTIONAL.
+#    It MUST NOT redefine Δ–Ψ operators.
+#    It MAY refine mappings, introduce specialised macros, patterns, or
+#    constraints relevant only for PMS-QC-Paper-based workflows.
+#
+#  Intended Use:
+#    - Attach alongside PMS.yaml and PMS-QC.yaml for enhanced QC reasoning.
+#    - Enable AI agents to reason with paper-specific constructs.
+#    - Provide a richer macro language for meta-compilation or orchestration.
+#
+#  Relationship to PMS-QC:
+#    - Supplements PMS-QC with additional semantic operators *at macro level*.
+#    - Never overrides base definitions.
+# =============================================================================
+
+schema_version: "PMS-QC_EXT_1.0"
+extends:
+  base_model: "PMS-QC_1.0"
+  compatibility: "Full"
+
+extension_meta:
+  description: >
+    PMS-QC_EXT adds paper-specific macro operators, Δ–Ψ chain templates,
+    attractor patterns, oracle ladders, reframing transforms and structural
+    constraints derived from the PMS-QC paper. It enriches AI reasoning
+    without narrowing the universality of the PMS-QC base layer.
+  authors:
+    - name: "T. Zöller"
+      role: "originator"
+    - name: "ChatGPT (GPT-5.1 Thinking)"
+      role: "extension_formalization"
+
+# -----------------------------------------------------------------------------
+# SECTION 1 — EXTENDED MAPPINGS (NON-NORMATIVE)
+# -----------------------------------------------------------------------------
+
+extended_qc_mappings:
+  overview: >
+    Additional interpretations of Δ–Ψ in quantum workflows that deepen
+    specific constructs described in the PMS-QC research paper. These
+    mappings do not override the base layer.
+  items:
+    - operator: "Δ"
+      refined_roles:
+        - "Phase-distinguished alternatives in eigenvalue encodings."
+        - "Domain-partitioned initialisation in multi-register workflows."
+    - operator: "Α"
+      refined_roles:
+        - "Fixed-point attractor cycles for controlled amplitude adjustment."
+        - "Centre-aligned attractor regions used in spectral estimation."
+    - operator: "Θ"
+      refined_roles:
+        - "Exponentially scaled iteration: U^(2^j) as Θ with non-linear weight."
+        - "Iterative attractor contraction schedule."
+    - operator: "Φ"
+      refined_roles:
+        - "Two-stage reframing: spectral → Fourier → computational basis."
+    - operator: "Ψ"
+      refined_roles:
+        - "Invariance-bound commitment ensuring fixed iteration depth or ceiling."
+        - "Attractor-cycle validity constraints (preventing runaway amplitude)."
+
+# -----------------------------------------------------------------------------
+# SECTION 2 — PAPER-SPECIFIC MACRO OPERATORS
+# -----------------------------------------------------------------------------
+
+macro_extensions:
+  overview: >
+    These macros capture more specialised QC constructs from the PMS-QC paper.
+    They are optional and suitable for AI–QC orchestration, meta-compilers or
+    documentation layers.
+
+  macros:
+    - id: "QPE_ORACLE_LADDER"
+      params: ["unitary_id", "t"]
+      description: >
+        Apply the phase-kickback ladder structure U^(2^j) for j in [0, t-1].
+      pms_expansion: ["Θ", "Ω", "□"]
+      chain_pattern: "Θ^t( Ω ∘ □ )"
+      notes: >
+        Captures exponential scaling of controlled unitaries; Θ encodes
+        temporal progression, Ω captures controlled asymmetry.
+
+    - id: "QFT_ALIGN"
+      params: ["direction"]
+      description: "Basis transformation aligning amplitudes for phase readout."
+      allowed:
+        - "forward"
+        - "inverse"
+      pms_expansion: ["Φ", "Α"]
+      chain_pattern: "Α ∘ Φ"
+      notes: >
+        A captures Fourier-based attractor alignment; Φ handles reframing.
+
+    - id: "GROVER_CENTERING"
+      params: []
+      description: >
+        A higher-order amplitude centering operator used for fixed-point Grover.
+      pms_expansion: ["Α", "Σ", "Ψ"]
+      chain_pattern: "Ψ ∘ Σ ∘ Α"
+      notes: >
+        Adds a Ψ-layer to enforce convergence ceilings (no overshoot).
+
+    - id: "ATTRACTOR_FIXED_POINT"
+      params: ["schedule"]
+      description: >
+        Structured attractor cycles to ensure controlled convergence.
+      pms_expansion: ["Α", "Θ", "Σ", "Ψ"]
+      notes: >
+        Supports multiple attractor schedules (linear, exponential, custom).
+
+    - id: "MEASUREMENT_PROJECTION_MODEL"
+      params: []
+      description: >
+        Explicit modelling of branching structures in measurement domains.
+      pms_expansion: ["Δ", "Λ", "□"]
+      notes: >
+        Λ encodes unrealised branches; Δ actual outcomes; □ stabilises domain.
+
+# -----------------------------------------------------------------------------
+# SECTION 3 — PAPER-SPECIFIC Δ–Ψ CHAIN PATTERNS
+# -----------------------------------------------------------------------------
+
+chain_patterns:
+  overview: >
+    These patterns derive directly from PMS-QC paper examples and provide
+    ready-to-use operator templates for transformation and analysis.
+
+  patterns:
+    qpe_exact:
+      description: "Full QPE operator chain, as presented in the paper."
+      chain: ["Δ", "∇", "Α", "Θ^t(Ω ∘ □)", "Α", "Φ", "Σ", "Δ", "Λ"]
+      notes: >
+        Matches QPE preparation, controlled ladder, Fourier alignment,
+        reframing and final measurement.
+
+    grover_fixed_point:
+      description: "Grover iteration with fixed-point attractor regulation."
+      chain: ["Δ", "∇", "Δ", "Ω", "Α", "Σ", "Ψ", "Θ^k", "Δ", "Λ"]
+      notes: >
+        Adds Ψ-level convergence caps and Σ-level integration after each cycle.
+
+    attractor_alignment:
+      description: "Spectral-domain attractor consolidation pattern."
+      chain: ["Δ", "Α", "Θ", "Α", "Σ"]
+      notes: >
+        Typical for spectral estimation and Fourier-aligned attractor operation.
+
+# -----------------------------------------------------------------------------
+# SECTION 4 — EXTENDED POLICY CONSTRAINTS
+# -----------------------------------------------------------------------------
+
+extended_policies:
+  overview: >
+    Advanced structural safety and governance rules enriched from the PMS-QC
+    paper. They compose with, but never replace, PMS-QC base policies.
+
+  policies:
+    - id: "qpe_depth_guard"
+      description: >
+        Enforce an upper bound on the exponent ladder depth (Θ-level expansion).
+      params:
+        - name: "t_max"
+          type: "integer"
+      rule: >
+        Θ^t(Ω ∘ □) requires t <= t_max unless a Ψ-stabilisation section follows.
+
+    - id: "grover_no_overshoot"
+      description: >
+        Prevent amplitude overshoot by requiring Ψ-bound regulation after Σ.
+      rule: >
+        If Σ is applied after Α in Grover-style cycles, Ψ must follow within
+        the same iteration scope unless an external convergence guarantee exists.
+
+    - id: "basis_reframe_guard"
+      description: >
+        Limit Φ transitions after Σ to preserve semantic integration.
+      rule: >
+        After Σ, Φ may reframe only if accompanied by explicit Ψ invariants.
+
+    - id: "attractor_cycle_integrity"
+      description: >
+        Ensure that attractor schedules encode valid convergence behaviour.
+      rule: >
+        Α steps repeated under Θ must incorporate Σ checkpoints or Ψ invariants
+        to avoid divergence.
+
+# -----------------------------------------------------------------------------
+# SECTION 5 — AI INTERFACE EXTENSION
+# -----------------------------------------------------------------------------
+
+ai_extension:
+  overview: >
+    Additional capabilities for AI agents when PMS-QC_EXT is loaded.
+
+  capabilities_added:
+    - "Identify abstract ladder structures (Θ^t) and evaluate invariance rules."
+    - "Propose attractor schedules aligned with Ψ policies."
+    - "Analyse reframing cascades (Φ → Φ → Φ) for semantic consistency."
+    - "Transform raw circuits into annotated Δ–Ψ chains with extended macros."
+
+  guardrails:
+    - "AI MUST treat PMS-QC_EXT as advisory; Δ–Ψ fundamentals remain unchanged."
+    - "AI MUST NOT interpret Ψ-invariants as physical stability guarantees."
+    - "AI MUST NOT anthropomorphise quantum patterns."
+
+# -----------------------------------------------------------------------------
+# SECTION 6 — META NOTES
+# -----------------------------------------------------------------------------
+
+meta_notes:
+  extensibility:
+    - "Further QC-domain modules may be added: VQE_EXT, QML_EXT, TROTTER_EXT."
+    - "All extensions MUST remain optional and Δ–Ψ compatible."
+  neutrality:
+    - "Extensions refine interpretation but do not constrain foundational PMS."
+  versioning:
+    - "Extensions evolve independently; base PMS-QC remains stable."

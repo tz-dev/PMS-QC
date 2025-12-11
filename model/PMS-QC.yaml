@@ -1,0 +1,505 @@
+# =============================================================================
+#  PMS-QC SPECIFICATION HEADER
+#  Praxeological Meta-Structure – Quantum Computing Layer
+#
+#  File:           pms-qc.yaml
+#  Version:        PMS-QC_1.0 (draft)
+#  Last Updated:   2025-12-11
+#
+#  Summary:
+#    This document defines the PMS-QC layer (Praxeological Meta-Structure –
+#    Quantum Computing) as a structural extension of the PMS base model (Δ–Ψ).
+#    PMS-QC interprets quantum circuits, quantum algorithms and hybrid AI–QC
+#    workflows as compositions of the same eleven operators used in PMS.
+#
+#    PMS-QC is NOT a new physical theory. Instead, it provides:
+#      - a substrate-independent structural grammar for quantum workflows,
+#      - a mapping from Δ–Ψ to QC concepts (frames, superposition, oracle
+#        asymmetry, iteration, attractors, stabilisation),
+#      - a macro-language (QFRAME, QPREP, QORACLE_CALL, QITERATE, QMEASURE,
+#        QSTABILIZE) that can compile into existing QC frameworks
+#        (QASM, Qiskit, Cirq, Braket),
+#      - policy and governance mechanisms defined at the operator layer
+#        instead of at the raw-gate level.
+#
+#  Authorship:
+#    - Concept & original model:
+#         T. Zöller
+#    - Formal specification & structural assistance:
+#         ChatGPT (GPT-5.1 Thinking)
+#
+#  Relationship to PMS:
+#    - This file EXTENDS the PMS base schema (Praxeological Meta-Structure,
+#      schema_version: PMS_1.1).
+#    - The Δ–Ψ operators are NOT redefined here. PMS-QC maps them to
+#      quantum-computational structures (qc_mapping) and exposes them through
+#      a macro-language (qc_macro_language).
+#
+#  Intended Use (non-normative, structural guidance):
+#    - Structural documentation of QC workflows
+#    - Research on PMS-based AI–QC orchestrators and reasoning systems
+#    - Meta-compiler annotation and audit layers for QC pipelines
+#    - Exploration of praxeological constraints in quantum architectures
+#
+#  Not Intended For:
+#    - replacing quantum mechanics or any established QC formalism,
+#    - physical noise modelling or hardware certification,
+#    - performance guarantees,
+#    - clinical or psychological interpretations of QC or PMS-QC structures.
+#
+#  Usage Notes:
+#    - This file is a SCHEMA / META-LAYER, not executable code.
+#      Implementations may:
+#        * parse this specification,
+#        * compile PMS-QC macros into any standard QC framework,
+#        * inspect Δ–Ψ chains at runtime or as part of audit trails.
+#    - All interpretations are STRUCTURAL, not anthropomorphic:
+#      quantum systems do not "intend," "act" or "choose" in any human sense.
+#
+#  License / Redistribution:
+#    - Unless otherwise agreed, this specification may be used in research,
+#      documentation and prototyping. Derivative works must:
+#        * retain attribution to PMS / PMS-QC and T. Zöller,
+#        * avoid misuse for clinical diagnosis, personality typing,
+#          moral evaluation or human ranking.
+#
+# =============================================================================
+
+
+schema_version: "PMS-QC_1.0"
+schema_meta:
+  model_name: "Praxeological Meta-Structure – Quantum Computing Layer"
+  model_short: "PMS-QC"
+  status: "draft"
+  last_updated: "2025-12-11"
+  authors:
+    - name: "T. Zöller"
+      role: "originator"
+    - name: "ChatGPT (GPT-5.1 Thinking)"
+      role: "formalization_assistant"
+  inherits_from:
+    model_name: "Praxeological Meta-Structure"
+    model_short: "PMS"
+    schema_version: "PMS_1.1"
+  description: >
+    PMS-QC is a structural overlay for quantum computing that interprets
+    quantum circuits, algorithms and hybrid AI–QC workflows as compositions
+    of the eleven PMS operators (Δ–Ψ). It provides a substrate-independent
+    mapping from Δ–Ψ to quantum frames, superposition, oracle asymmetry,
+    amplitude attractors, iterative structure, measurement and stabilisation.
+    PMS-QC does not replace quantum mechanics, circuit formalisms or
+    verification frameworks. It offers a praxeological grammar for expressing,
+    constraining and auditing quantum workflows at the structural level.
+  intended_use:
+    summary: >
+      Structural description, mapping and governance of quantum circuits,
+      quantum algorithms and hybrid AI–QC workflows using the PMS operator
+      grammar (Δ–Ψ).
+    allowed_profiles:
+      - quantum_algorithm_documentation
+      - structural_qc_analysis
+      - ai_qc_governance_layer
+      - qc_workflow_auditing
+      - meta_compiler_annotation
+      - research_and_theoretical_exploration
+    not_intended_for:
+      - physical_noise_modelling
+      - low_level_gate_optimization_only
+      - hardware_level_safety_certification
+      - replacement_of_qc_formalisms
+      - performance_guarantee_provision
+  normative_position:
+    physics_clause: >
+      PMS-QC is not a physical theory. It does not modify or compete with
+      quantum mechanics, the quantum circuit model, Hamiltonian simulation,
+      tensor networks, ZX-calculus or categorical quantum mechanics.
+      It only describes the structural organisation of operations.
+    substrate_independence: >
+      PMS-QC treats quantum circuits as one special case of structured action
+      under the Δ–Ψ operator grammar. The same operators may be used to
+      describe praxeological, computational and organisational structures.
+    anthropomorphism_clause: >
+      Terms like asymmetry, attractor or self-binding are used in a formal,
+      structural sense. PMS-QC does not attribute consciousness, intention or
+      moral responsibility to quantum systems.
+  terminology:
+    qc_frame: >
+      A structured domain of quantum operations: Hilbert space, register
+      decomposition, active subspace or error-correction code space, modelled
+      as a □-operator instance.
+    qc_workflow: >
+      A sequence or DAG of quantum (and possibly classical) operations that can
+      be expressed as a PMS operator chain with Δ–Ψ annotations.
+    macro_operator: >
+      A named quantum-level construct (e.g. QFRAME, QPREP) that expands to a
+      Δ–Ψ operator sequence and can be compiled down to standard QC frameworks.
+
+pms_reference:
+  note: >
+    PMS-QC assumes the PMS core specification is available. It does not
+    redefine the Δ–Ψ operators or their dependencies. All mappings below
+    reference the PMS meta-axioms by id.
+  operators_ref:
+    source: "PMS.yaml"
+    meta_axioms: ["Δ", "∇", "□", "Λ", "Α", "Ω", "Θ", "Φ", "Χ", "Σ", "Ψ"]
+
+qc_mapping:
+  overview: >
+    This section maps each PMS operator (Δ–Ψ) to its structural role in
+    quantum computing. The mapping is one-to-many: each operator may have
+    multiple quantum instantiations depending on context.
+  operator_roles:
+    - id: "Δ"
+      name: "Difference"
+      qc_role: >
+        Distributed difference structures in Hilbert space: superposition,
+        basis alternatives and marked subspaces. Δ highlights structural
+        alternatives within the computational frame.
+      qc_examples:
+        - "Uniform superposition over computational basis states."
+        - "Oracle-marked states in Grover's search."
+        - "Eigenphase-encoded alternatives in the QPE control register."
+      typical_realizations:
+        - "Hadamard layers creating superposition."
+        - "Phase flips or selective phase shifts marking solution states."
+    - id: "∇"
+      name: "Impulse"
+      qc_role: >
+        Minimal directed activation or progression in a circuit: application
+        of a non-trivial gate or gate block that pushes the system away from
+        its previous configuration.
+      qc_examples:
+        - "First non-identity gate layer after state initialisation."
+        - "Single-qubit rotations that initiate amplitude flow."
+      typical_realizations:
+        - "Single-qubit rotations (Rx, Ry, Rz)."
+        - "Initial entangling step in QPREP(entangle)."
+    - id: "□"
+      name: "Frame"
+      qc_role: >
+        Structural boundary within which quantum operations occur: the chosen
+        Hilbert space, register decomposition, active subspace, or
+        error-correction code space.
+      qc_examples:
+        - "Problem frame specifying the search domain in Grover."
+        - "Eigenproblem frame in Quantum Phase Estimation (QPE)."
+        - "Error-space frame of a stabiliser code."
+      typical_realizations:
+        - "Register layout and qubit allocation."
+        - "Subspace definitions for oracles or codes."
+    - id: "Λ"
+      name: "Non-Event"
+      qc_role: >
+        Unrealised computational branches or outcomes, especially at
+        measurement: the 'paths not taken' encoded as suppressed or discarded
+        possibilities.
+      qc_examples:
+        - "Unrealised measurement outcomes in Grover."
+        - "Phase configurations not selected in QPE readout."
+      typical_realizations:
+        - "Measurement collapse eliminating alternatives."
+        - "Post-selection discarding undesired outcomes."
+    - id: "Α"
+      name: "Attractor"
+      qc_role: >
+        Directed convergence tendencies in the amplitude landscape: amplitude
+        amplification, phase alignment or stabilising transformations that
+        bias evolution toward certain states or subspaces.
+      qc_examples:
+        - "Grover diffusion operator amplifying marked states."
+        - "Inverse QFT in QPE realigning amplitudes around the phase estimate."
+        - "Error-mitigation routines that pull states back into a code space."
+      typical_realizations:
+        - "Amplitude amplification subcircuits."
+        - "Fourier-domain alignment (QFT / QFT^-1)."
+    - id: "Ω"
+      name: "Asymmetry"
+      qc_role: >
+        Directional, role-based structural differences: controlled operations,
+        oracle calls and measurement asymmetries that make certain subsystems
+        act on others in a privileged way.
+      qc_examples:
+        - "Controlled-U^{2^j} ladders in QPE."
+        - "Oracle phase flip on the target state in Grover."
+        - "Measurement mapping quantum states to classical outcomes."
+      typical_realizations:
+        - "Controlled gates (CNOT, controlled-U)."
+        - "Problem oracles with special knowledge about solution sets."
+    - id: "Θ"
+      name: "Temporality / Iteration"
+      qc_role: >
+        Ordered repetition of quantum blocks: explicit iteration counts,
+        loop-unrolled sequences, phase-kickback ladders or layered application
+        of controlled operations.
+      qc_examples:
+        - "k-fold repetition of the Grover oracle–diffusion block."
+        - "Power-of-two sequence U^{2^j} in QPE."
+      typical_realizations:
+        - "For-loops / unrolled repetitions in circuit descriptions."
+        - "Time-ordered application of control sequences."
+    - id: "Φ"
+      name: "Recontextualization"
+      qc_role: >
+        Structural reframing between computational domains: basis changes,
+        Fourier transforms and representation shifts that reinterpret the
+        meaning of amplitudes.
+      qc_examples:
+        - "Inverse QFT in QPE moving from phase domain to bit representation."
+        - "Switching between logical and physical qubit frames."
+      typical_realizations:
+        - "QFT / QFT^-1 layers."
+        - "Change-of-basis transformations for measurement or analysis."
+    - id: "Χ"
+      name: "Distance"
+      qc_role: >
+        Isolation and separation between subsystems, layers or domains: domain
+        boundaries between experimental frames, dev/prod environments, or
+        separated code spaces.
+      qc_examples:
+        - "Isolation of experimental circuits from production QC workloads."
+        - "Code-space separation in certain error-correction architectures."
+      typical_realizations:
+        - "Use of disjoint register sets."
+        - "Segregated pipelines for test vs. production execution."
+    - id: "Σ"
+      name: "Integration"
+      qc_role: >
+        Structural commitment of transformations: points where previous
+        operations are treated as fixed, integrated and no longer subject to
+        reinterpretation (except under Ψ-governed constraints).
+      qc_examples:
+        - "End of a Grover iteration after diffusion."
+        - "Post-QFT state in QPE before measurement."
+      typical_realizations:
+        - "Circuit-level boundaries where results are frozen for next stages."
+        - "Checkpoints in QC workflows or compilers."
+    - id: "Ψ"
+      name: "Self-Binding"
+      qc_role: >
+        Stabilising invariants and constraints on future operations: error
+        correction, stabiliser checks, coherence or iteration bounds, and
+        governance policies that restrict admissible compositions.
+      qc_examples:
+        - "Stabiliser code enforcement and syndrome-based correction."
+        - "Iteration-depth guards on Grover or QPE variants."
+        - "Policy constraints in AI–QC governance layers."
+      typical_realizations:
+        - "Error-correction cycles (stabiliser measurement and correction)."
+        - "Execution policies in a PMS-aware QC orchestrator."
+
+qc_macro_language:
+  overview: >
+    PMS-QC introduces macro-operators that describe typical quantum circuit
+    motifs as Δ–Ψ compositions. Concrete QC frameworks (QASM, Qiskit, Cirq,
+    Braket, etc.) can compile these macros down to low-level gates.
+  macro_operators:
+    - id: "QFRAME"
+      params: ["kind"]
+      description: "Create or activate a quantum frame (□)."
+      allowed_kinds:
+        - "init"         # global / hardware frame
+        - "problem"      # problem-specific or oracle frame
+        - "eigenproblem" # frame for phase estimation tasks
+        - "error_space"  # stabiliser / code space frame
+      pms_expansion: ["□"]
+      notes: >
+        QFRAME(kind) always establishes or selects a □-instance. Nested frames
+        correspond to nested □-applications.
+    - id: "QPREP"
+      params: ["mode"]
+      description: "Prepare quantum registers: superposition, entanglement or initialisation."
+      allowed_modes:
+        - "superposition"
+        - "register_init"
+        - "entangle"
+      pms_expansion: ["Δ", "∇", "Α"]
+      canonical_chain: "Α ∘ ∇ ∘ Δ"
+      notes: >
+        QPREP(superposition) typically realises Δ via distributed amplitudes,
+        ∇ via activation gates, and Α via preparation routines that establish
+        stable patterns (e.g. uniform superposition).
+    - id: "QORACLE_CALL"
+      params: ["oracle_id"]
+      description: "Apply an oracle or controlled unitary encoding asymmetry."
+      pms_expansion: ["□", "Δ", "Ω"]
+      canonical_chain: "Ω ∘ Δ ∘ □"
+      notes: >
+        QORACLE_CALL may represent both Grover-style marking or QPE-style
+        controlled U^{2^j}. The □-frame must match the oracle domain.
+    - id: "QDIFFUSION"
+      params: []
+      description: "Apply amplitude amplification or diffusion (attractor dynamics)."
+      pms_expansion: ["Α", "Σ"]
+      canonical_chain: "Σ ∘ Α"
+      notes: >
+        Used for Grover-type diffusion, fixed-point amplitude amplification or
+        other attractor moves. Σ marks commitment of the attractor step.
+    - id: "QITERATE"
+      params: ["k", "block_id"]
+      description: "Iterate a compositional block k times."
+      pms_expansion: ["Θ"]
+      canonical_pattern: "Θ^k(block)"
+      notes: >
+        QITERATE does not inspect internal structure of block; it enforces a
+        Θ-structured repetition. Policy constraints may bound k via Ψ.
+    - id: "QMEASURE"
+      params: ["basis", "register"]
+      description: "Measure a register in a given basis."
+      pms_expansion: ["Δ", "Λ"]
+      canonical_chain: "Λ ∘ Δ"
+      notes: >
+        Δ captures resolved outcome distinctions; Λ encodes unrealised branches
+        as non-events. Requires a measurement-stable frame (□_meas).
+    - id: "QSTABILIZE"
+      params: ["code_id"]
+      description: "Apply error-correction or stabiliser code routines."
+      pms_expansion: ["Ψ"]
+      canonical_chain: "Ψ"
+      notes: >
+        QSTABILIZE introduces or maintains invariants. Typical usage:
+        periodic stabiliser checks, coherence guards, or code-space enforcement.
+
+  ebnf:
+    grammar: |
+      Program        ::= FrameDecl PrepDecl Block
+
+      FrameDecl      ::= "QFRAME" "(" FrameKind ")"
+      FrameKind      ::= "init" | "problem" | "eigenproblem" | "error_space"
+
+      PrepDecl       ::= "QPREP" "(" PrepKind ")"
+      PrepKind       ::= "superposition" | "register_init" | "entangle"
+
+      Block          ::= Statement | Statement Block
+      Statement      ::= OracleCall 
+                       | Diffusion
+                       | Iteration
+                       | Measurement
+                       | Stabilize
+
+      OracleCall     ::= "QORACLE_CALL" "(" Identifier ")"
+      Diffusion      ::= "QDIFFUSION"
+      Iteration      ::= "QITERATE" "(" Integer "," Block ")"
+      Measurement    ::= "QMEASURE" "(" Basis "," Register ")"
+      Stabilize      ::= "QSTABILIZE" "(" CodeIdentifier ")"
+
+      Basis          ::= "computational" | "fourier" | Identifier
+      Register       ::= Identifier
+      CodeIdentifier ::= Identifier
+
+qc_structural_policies:
+  overview: >
+    PMS-QC enables structural guardrails that act on Δ–Ψ chains rather than
+    on low-level gates. Policies can be used for auditing or for runtime
+    governance of AI–QC agents.
+  frame_constraints:
+    - id: "no_unframed_omega"
+      description: "Disallow Ω (asymmetry) operations without an active □-frame."
+      rule: >
+        Any QORACLE_CALL or controlled operation must be dominated by an
+        explicit QFRAME(..) in scope. Formally: Ω must be preceded by □.
+    - id: "measurement_requires_meas_frame"
+      description: "Require measurement-stable frame before QMEASURE."
+      rule: >
+        If no measurement-adequate □_meas is active, a Φ-step must introduce
+        or select such a frame before QMEASURE. Reframing after Σ is forbidden
+        unless mediated by Ψ.
+  asymmetry_constraints:
+    - id: "unstable_asymmetry_guard"
+      description: "Guard Ω-operations that are not followed by Α or Ψ."
+      rule: >
+        Ω that significantly redistributes risk or resource load should either
+        be followed by Α (attractor towards a stabilising region) or Ψ
+        (explicit invariant). Bare Ω-chains are flagged as structurally
+        unstable unless explicitly whitelisted.
+  integration_constraints:
+    - id: "no_reframing_past_sigma"
+      description: "Σ marks integration boundaries that cannot be reinterpreted freely."
+      rule: >
+        After Σ(E), recontextualisation (Φ) may not alter the semantics of E
+        except under policies explicitly bound to Ψ. Σ is treated as a
+        structural commit.
+  self_binding_policies:
+    - id: "max_iteration_depth"
+      description: "Limit Θ-depth via Ψ constraints."
+      params:
+        - name: "k_max"
+          type: "integer"
+      rule: >
+        For any QITERATE(k, block), require k <= k_max unless wrapped in a
+        QSTABILIZE(..) section that enforces additional invariants. This
+        prevents unbounded or poorly calibrated iterative amplification.
+    - id: "stabiliser_frequency"
+      description: "Require minimum stabilisation density for long Θ-chains."
+      params:
+        - name: "theta_length_threshold"
+          type: "integer"
+      rule: >
+        For Θ-chains exceeding theta_length_threshold, require at least one
+        QSTABILIZE(..) occurrence within the chain. This models periodic
+        error-correction or governance checkpoints.
+
+qc_examples:
+  grover_minimal:
+    description: "PMS-QC skeleton of Grover's search algorithm."
+    macro_program:
+      - "QFRAME(problem)"
+      - "QPREP(superposition)"
+      - "QITERATE(k, { QORACLE_CALL(F); QDIFFUSION; })"
+      - "QMEASURE(basis=computational, register=search)"
+    pms_expansion:
+      chain: "Λ ∘ Δ ∘ Θ^k( Σ ∘ Α ∘ Ω ∘ Δ ∘ □ )"
+      interpretation: >
+        □: problem frame; Δ: distributed alternatives; Ω: oracle asymmetry;
+        Α: amplitude attractor; Σ: integrated iteration effect; Θ^k: repeated
+        oracle–diffusion; Δ/Λ: outcome distinction and unrealised branches.
+  qpe_minimal:
+    description: "PMS-QC skeleton of Quantum Phase Estimation."
+    macro_program:
+      - "QFRAME(eigenproblem)"
+      - "QPREP(superposition)"   # control register
+      - "QITERATE(t, { QORACLE_CALL(U^{2^j}); })"
+      - "QDIFFUSION   # used here as shorthand for QFT / QFT^-1 alignment"
+      - "QMEASURE(basis=computational, register=control)"
+    pms_expansion:
+      chain: "Λ ∘ Δ ∘ Σ ∘ Φ ∘ Α ∘ Θ^t( Ω ∘ □ ) ∘ Α ∘ ∇ ∘ Δ"
+      interpretation: >
+        □: eigenproblem frame; Δ/∇/Α: preparation of control superposition;
+        Θ^t(Ω ∘ □): controlled U^{2^j}-ladder; Α: Fourier-domain attractor;
+        Φ: reframing from phase to bit domain; Σ: commit for measurement;
+        Δ/Λ: phase-encoded alternatives resolved into a discrete estimate.
+
+ai_interface_qc:
+  overview: >
+    AI or agentic controllers (e.g. LLM-based systems) can reason about QC
+    workflows in PMS-QC terms. They select, compose and evaluate macro-operators
+    under Δ–Ψ-based policies rather than editing low-level circuits directly.
+  agent_view:
+    structural_query_capabilities:
+      - "List frames (□) currently active in a QC workflow."
+      - "Identify all Ω-operations and their guarding Α/Ψ contexts."
+      - "Inspect Θ-depth and associated Ψ-constraints."
+      - "Summarise Σ-boundaries and Φ-based reframings."
+    allowed_actions:
+      - "Propose new macro-level programs (QFRAME/QPREP/...) under policy constraints."
+      - "Refactor workflows by inserting QSTABILIZE(..) or adjusting Θ-depth."
+      - "Annotate existing circuits with PMS-QC metadata for auditing."
+    guardrails:
+      - "The agent must not bypass Ψ-encoded constraints."
+      - "New workflows must pass frame, asymmetry and integration policies."
+      - "Anthropomorphic interpretations of quantum processes are disallowed."
+  logging_and_audit:
+    required_logs:
+      - "Δ–Ψ operator sequence per executed workflow."
+      - "Triggered policy checks and their outcomes."
+      - "Points where Σ or Ψ changed future admissible operations."
+    audit_use:
+      - "Post-hoc analysis of structural stability and asymmetry."
+      - "Comparison of alternative Δ–Ψ designs for the same QC task."
+
+meta_notes:
+  compatibility:
+    - "PMS-QC can annotate or wrap programs in QASM, Qiskit, Cirq, Braket and similar frameworks."
+    - "Δ–Ψ annotations may be stored as sidecar metadata or embedded comments."
+  extensibility:
+    - "Future versions MAY add specialised macro-operators for error mitigation, variational circuits or hybrid classical–quantum loops."
+    - "Additional QC-specific policies MAY be defined as long as they remain Δ–Ψ-based and do not claim physical guarantees."
