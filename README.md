@@ -31,6 +31,7 @@ PMS-QC/
 │   └── PMS-QC-EXT.yaml                           # Optional addendum / extensions
 │
 ├── PMS Theory as a Structural Layer for Quantum Computing.html
+├── PMS Theory as a Structural Layer for Quantum Computing.md
 ├── PMS Theory as a Structural Layer for Quantum Computing.pdf
 │
 ├── LICENSE-CC-BY-4.0                             # Creative Commons license for the paper
