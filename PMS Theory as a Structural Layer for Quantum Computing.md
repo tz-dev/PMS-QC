@@ -46,6 +46,7 @@ layers for multi-agent and AI--QC systems.
 - `pms-qc.yaml` (PMS-QC layer)
 - `pms-qc-ext.yaml` (optional addendum)
 
+---
 
 ## 1. Introduction
 
@@ -113,7 +114,7 @@ for quantum algorithms, agentic systems and praxeological theory,
 opening a path toward PMS-informed quantum compilers, multi-agent
 governance layers and AI--QC co-design.
 
-
+---
 
 ## 2. Background & Related Work
 
@@ -171,7 +172,7 @@ is a unifying layer in which QC procedures, agentic decisions and
 praxeological dynamics can be expressed and inspected using a common
 operator vocabulary.
 
-
+---
 
 ## 3. PMS Operator System (Δ--Ψ): Formal Recap
 
@@ -346,7 +347,7 @@ In the following sections, this calculus will be applied to the
 structure of quantum computation and the compositional analysis of
 quantum algorithms.
 
-
+---
 
 ## 4. Quantum Computing as a Praxeological System
 
@@ -501,7 +502,7 @@ constraints:
 Ψ thus reflects the way quantum systems establish and maintain
 invariants that shape allowable compositions.
 
-
+---
 
 #### Operator → QC Role → Macro Anchor (Summary Table)
 
@@ -547,7 +548,7 @@ level. This abstraction enables a uniform description of QC processes
 alongside praxeological and agentic systems, preparing the ground for a
 praxeological composition language for quantum circuits.
 
-
+---
 
 ## 5. A Praxeological Composition Language for Quantum Circuits
 
@@ -800,7 +801,7 @@ compositions. This establishes PMS as a workable object-language for
 describing quantum algorithm structure, preparing the ground for
 operator-level reconstructions of canonical quantum algorithms.
 
-
+---
 
 ## 6. Grover's Algorithm as a Praxeological Structure
 
@@ -1001,7 +1002,7 @@ expressed clearly and compactly using the Δ--Ψ operator family, setting
 the stage for analysing a second, structurally distinct quantum
 algorithm.
 
-
+---
 
 ## 7. Second Example: Quantum Phase Estimation as a Praxeological Structure
 
@@ -1245,7 +1246,7 @@ QPE thus serves as an independent validation of PMS as a universal
 operator grammar capable of describing qualitatively different quantum
 algorithmic architectures.
 
-
+---
 
 ## 8. PMS as Control-Layer for Agentic Quantum Computing Systems
 
@@ -1420,7 +1421,7 @@ systems:
 This positions PMS as a principled governance architecture for emerging
 agentic quantum systems.
 
-
+---
 
 ## 9. Discussion
 
@@ -1561,7 +1562,7 @@ Overall, PMS is a *meta-language* rather than a computational model: it
 provides a unifying conceptual framework for structural composition, but
 it does not alter or augment the physics of quantum computation.
 
-
+---
 
 ## 10. Conclusion
 
@@ -1609,4 +1610,5 @@ Taken together, these results position PMS as a universal operator
 calculus capable of articulating the structural organisation of quantum
 computation, agent systems and praxeological processes within a single
 coherent framework.
+
 
