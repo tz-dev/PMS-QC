@@ -1,4 +1,3 @@
-:::::::::::::: {#content .section}
 # Praxeological Meta-Structure Theory as a Structural Layer for Quantum Computing
 
 ## Abstract
@@ -1610,5 +1609,6 @@ Taken together, these results position PMS as a universal operator
 calculus capable of articulating the structural organisation of quantum
 computation, agent systems and praxeological processes within a single
 coherent framework.
+
 
 
