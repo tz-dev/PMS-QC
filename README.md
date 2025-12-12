@@ -112,6 +112,10 @@ This project highlights alignment between PMS and quantum computation:
 
 Browser-ready version styled via `css/main.css`.
 
+### **Markdown (`.md`)**  
+
+Clean, version-controlled, GitHub-friendly source.
+
 ### **PDF (`.pdf`)**
 
 Print-ready format for citation, distribution, or academic review.
