@@ -19,7 +19,7 @@ font-family: var(--font-body);
 color: var(--color-text);
 background: white;
 line-height: 1.5;
-font-size: 1.2em;
+font-size: 1.0em;
 }
 blockquote {
 margin: 0 0 16px;
@@ -55,7 +55,6 @@ color: var(--color-muted);
 h2 {
 margin-top: 20px;
 margin-bottom: 4px;
-font-size: 1.15rem;
 border-bottom: 1px solid var(--color-border);
 padding-bottom: 4px;
 }
@@ -158,10 +157,10 @@ color: var(--color-muted);
 page-break-before:always
 }
 h1  {font-weight: normal; font-size: 3em}
-h2, h2 strong {margin-bottom: 15px !important; margin-top: 15px !important; font-weight: normal; font-size: 1.75em !important}
-h3, h3 strong {margin-bottom:  0px !important; margin-top: 15px !important; font-weight: normal; font-size: 1.5em !important}
-h4, h4 strong {margin-bottom:  0px !important; margin-top: 15px !important; font-weight: normal; font-size: 1.3em !important}
-h5, h5 strong {margin-bottom:  0px !important; margin-top: 15px !important; font-weight: normal; font-size: 1.2em !important}
+h2, h2 strong {margin-bottom: 15px !important; margin-top: 15px !important; font-weight: normal; font-size: 1.5em !important}
+h3, h3 strong {margin-bottom:  0px !important; margin-top: 15px !important; font-weight: normal; font-size: 1.35em !important}
+h4, h4 strong {margin-bottom:  0px !important; margin-top: 15px !important; font-weight: normal; font-size: 1.2em !important}
+h5, h5 strong {margin-bottom:  0px !important; margin-top: 15px !important; font-weight: normal; font-size: 1.1em !important}
 h6, h6 strong {margin-bottom:  0px !important; margin-top: 15px !important; font-weight: normal; font-size: 1.1em !important}
 @media print {
 body {

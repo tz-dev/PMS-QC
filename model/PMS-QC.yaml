@@ -16,9 +16,9 @@
 #      - a substrate-independent structural grammar for quantum workflows,
 #      - a mapping from Δ–Ψ to QC concepts (frames, superposition, oracle
 #        asymmetry, iteration, attractors, stabilisation),
-#      - a macro-language (QFRAME, QPREP, QORACLE_CALL, QITERATE, QMEASURE,
-#        QSTABILIZE) that can compile into existing QC frameworks
-#        (QASM, Qiskit, Cirq, Braket),
+#      - a macro-language (QFRAME, QPREP, QORACLE_CALL, QITERATE, QDIFFUSION,
+#        QFT_ALIGN, QMEASURE, QSTABILIZE) that can compile into existing QC 
+#        frameworks (QASM, Qiskit, Cirq, Braket),
 #      - policy and governance mechanisms defined at the operator layer
 #        instead of at the raw-gate level.
 #
@@ -56,6 +56,11 @@
 #    - All interpretations are STRUCTURAL, not anthropomorphic:
 #      quantum systems do not "intend," "act" or "choose" in any human sense.
 #
+#  Load Order:
+#    1. PMS.yaml        (base operator grammar)
+#    2. pms-qc.yaml     (quantum computing structural layer)
+#    3. pms-qc-ext.yaml (optional paper-specific extensions)
+#
 #  License / Redistribution:
 #    - Unless otherwise agreed, this specification may be used in research,
 #      documentation and prototyping. Derivative works must:
@@ -63,8 +68,13 @@
 #        * avoid misuse for clinical diagnosis, personality typing,
 #          moral evaluation or human ranking.
 #
+#  Repositories:
+#    - PMS (base framework):
+#        https://github.com/tz-dev/Praxeological-Meta-Structure-Theory
+#    - PMS-QC (this layer):
+#        https://github.com/tz-dev/PMS-QC
+#
 # =============================================================================
-
 
 schema_version: "PMS-QC_1.0"
 schema_meta:
@@ -284,8 +294,8 @@ qc_mapping:
         - "Iteration-depth guards on Grover or QPE variants."
         - "Policy constraints in AI–QC governance layers."
       typical_realizations:
-        - "Error-correction cycles (stabiliser measurement and correction)."
-        - "Execution policies in a PMS-aware QC orchestrator."
+        - "Invariant enforcement (e.g. stabiliser measurement and correction; code-space preservation)."
+        - "Governance constraints (e.g. bounded iteration, admissible composition policies in AI–QC orchestration)."
 
 qc_macro_language:
   overview: >
@@ -334,14 +344,27 @@ qc_macro_language:
       notes: >
         Used for Grover-type diffusion, fixed-point amplitude amplification or
         other attractor moves. Σ marks commitment of the attractor step.
+    - id: "QFT_ALIGN"
+      params: ["direction"]
+      description: "Fourier-domain basis alignment (QFT / inverse QFT) as reframing + attractor alignment."
+      allowed:
+        - "forward"
+        - "inverse"
+      pms_expansion: ["Φ", "Α"]
+      canonical_chain: "Α ∘ Φ"
+      notes: >
+        QFT_ALIGN models representation shift (Φ) plus amplitude alignment (Α).
+        It is distinct from QDIFFUSION (Grover-style diffusion / amplification).
     - id: "QITERATE"
-      params: ["k", "block_id"]
+      params: ["k", "block"]
       description: "Iterate a compositional block k times."
       pms_expansion: ["Θ"]
       canonical_pattern: "Θ^k(block)"
       notes: >
-        QITERATE does not inspect internal structure of block; it enforces a
-        Θ-structured repetition. Policy constraints may bound k via Ψ.
+        The block parameter MAY be an inline block (e.g. { ... }) or a named
+        reference to a defined block/macro expansion. QITERATE does not inspect
+        internal structure; it enforces Θ-structured repetition. Policy
+        constraints may bound k via Ψ.
     - id: "QMEASURE"
       params: ["basis", "register"]
       description: "Measure a register in a given basis."
@@ -385,6 +408,15 @@ qc_macro_language:
       Basis          ::= "computational" | "fourier" | Identifier
       Register       ::= Identifier
       CodeIdentifier ::= Identifier
+
+  iteration_encoding:
+    overview: >
+      Optional parse-friendly metadata for Θ-style repetition. This does not
+      replace the symbolic Θ^k notation; it complements it for toolchains.
+    iteration:
+      operator: "Θ"
+      count_symbol: "k"
+      applies_to: ["Σ", "Α", "Ω", "Δ", "□"]
 
 qc_structural_policies:
   overview: >
@@ -458,7 +490,7 @@ qc_examples:
       - "QFRAME(eigenproblem)"
       - "QPREP(superposition)"   # control register
       - "QITERATE(t, { QORACLE_CALL(U^{2^j}); })"
-      - "QDIFFUSION   # used here as shorthand for QFT / QFT^-1 alignment"
+      - "QFT_ALIGN(inverse)"
       - "QMEASURE(basis=computational, register=control)"
     pms_expansion:
       chain: "Λ ∘ Δ ∘ Σ ∘ Φ ∘ Α ∘ Θ^t( Ω ∘ □ ) ∘ Α ∘ ∇ ∘ Δ"

@@ -12,19 +12,35 @@
 #      - advanced reframing and asymmetry rules,
 #      - stabilised iteration scales and invariance constraints.
 #
-#    PMS-QC_EXT is OPTIONAL.
-#    It MUST NOT redefine Δ–Ψ operators.
-#    It MAY refine mappings, introduce specialised macros, patterns, or
-#    constraints relevant only for PMS-QC-Paper-based workflows.
+#  PMS-QC_EXT is OPTIONAL.
+#    - It MUST NOT redefine Δ–Ψ operators.
+#    - It MAY refine mappings, introduce specialised macros, patterns, or
+#      constraints relevant only for PMS-QC-Paper-based workflows.
+#
+#  Note:
+#    - PMS-QC_EXT may refine or extend macro-operators; it should not override
+#    - PMS-QC base macros unless explicitly marked as a refinement.
 #
 #  Intended Use:
 #    - Attach alongside PMS.yaml and PMS-QC.yaml for enhanced QC reasoning.
 #    - Enable AI agents to reason with paper-specific constructs.
 #    - Provide a richer macro language for meta-compilation or orchestration.
 #
+#  Load Order:
+#    1. PMS.yaml        (base operator grammar)
+#    2. PMS-QC.yaml     (QC structural layer)
+#    3. PMS-QC-EXT.yaml (this addendum; optional)
+#
 #  Relationship to PMS-QC:
 #    - Supplements PMS-QC with additional semantic operators *at macro level*.
 #    - Never overrides base definitions.
+#
+#  Repositories:
+#    - PMS (base framework):
+#        https://github.com/tz-dev/Praxeological-Meta-Structure-Theory
+#    - PMS-QC (this layer):
+#        https://github.com/tz-dev/PMS-QC
+#
 # =============================================================================
 
 schema_version: "PMS-QC_EXT_1.0"
@@ -95,17 +111,6 @@ macro_extensions:
         Captures exponential scaling of controlled unitaries; Θ encodes
         temporal progression, Ω captures controlled asymmetry.
 
-    - id: "QFT_ALIGN"
-      params: ["direction"]
-      description: "Basis transformation aligning amplitudes for phase readout."
-      allowed:
-        - "forward"
-        - "inverse"
-      pms_expansion: ["Φ", "Α"]
-      chain_pattern: "Α ∘ Φ"
-      notes: >
-        A captures Fourier-based attractor alignment; Φ handles reframing.
-
     - id: "GROVER_CENTERING"
       params: []
       description: >
@@ -173,6 +178,7 @@ extended_policies:
     - id: "qpe_depth_guard"
       description: >
         Enforce an upper bound on the exponent ladder depth (Θ-level expansion).
+        t_max is governance, not correctness guarantee.
       params:
         - name: "t_max"
           type: "integer"
