@@ -3,18 +3,13 @@
 **PMS-QC** is an exploratory research project applying the **Praxeological Meta-Structure (PMS)** theory as a *structural and contextual layer* for quantum computing.  
 It investigates how PMS’s operator algebra (Δ–Ψ), frame semantics (□), asymmetry (Ω), isolation (Χ), and integration (Σ) can be mapped onto quantum computational paradigms such as:
 
-- quantum circuits  
-- basis/context switching  
-- superposition & entanglement boundaries  
-- quantum measurement  
-- hybrid classical–quantum workflows  
+- quantum circuits
+- basis/context switching
+- superposition & entanglement boundaries
+- quantum measurement
+- hybrid classical–quantum workflows
 
 This repository contains the conceptual paper (HTML + PDF), minimal CSS styling, and a **YAML-based model/spec layer** (`/model`) that formalizes PMS-QC constructs.
-
-For the core PMS framework, see:  
-👉 **https://github.com/tz-dev/Praxeological-Meta-Structure-Theory**
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17897199.svg)](https://doi.org/10.5281/zenodo.17897199)
 
 ---
 
@@ -61,7 +56,7 @@ The PMS theory provides:
 * a hierarchical frame/context model
 * a formal system for distinction, transformation, asymmetry, temporality, isolation, integration, and self-binding
 
-The PMS-QC paper demonstrates how these primitives naturally map to quantum algorithm structure.
+The PMS-QC paper demonstrates how these primitives map to quantum algorithm structure.
 
 ---
 
@@ -108,36 +103,47 @@ This project highlights alignment between PMS and quantum computation:
 
 ## 📄 Included Documents
 
-### **HTML (`.html`)**
+### HTML (`.html`)
 
 Browser-ready version styled via `css/main.css`.
 
-### **Markdown (`.md`)**  
+### Markdown (`.md`)
 
 Clean, version-controlled, GitHub-friendly source.
 
-### **PDF (`.pdf`)**
+### PDF (`.pdf`)
 
 Print-ready format for citation, distribution, or academic review.
 
-Both contain the paper:
+All formats contain the paper:
 
 > **“PMS Theory as a Structural Layer for Quantum Computing”**
 
 ---
 
-## 🧭 Roadmap (Future Work)
+## 🔗 Links & Resources
 
-Planned extensions for PMS-QC include:
+PMS-QC exists within a broader **praxeological ecosystem** spanning formal operator theory, applied anthropology, executable specifications, and interactive tooling.
 
-* PMS operator mappings to quantum IRs (OpenQASM, QIR, MLIR-Quantum)
-* Experimental PMS-QC → quantum circuit compilation hooks
-* Hybrid execution model (classical + quantum orchestration / co-simulation)
-* PMS-based error-handling + context recovery patterns
-* Example notebooks using Qiskit or Cirq
-* PMS-informed governance / policy layers for agentic QC workflows
+The resources below provide different **points of access** into that ecosystem: from canonical PMS grammar definitions and formal papers, to applied models, books, and architecture explorations. Together, they form a coherent reference space rather than independent artifacts.
 
-Contributions, feedback, and research discussions are encouraged.
+| Category | Resource | Description |
+| --- | --- | --- |
+| Model website | https://pms-theory.com | PMS theory reference |
+| Book websites | https://maturity-in-practice.com | Praxeological Anthropology — English edition |
+|  | https://reife-im-vollzug.de | Praxeologische Anthropologie — Deutsche Ausgabe |
+|  | https://pms-stack.com | PMS-STACK reference architecture |
+| Amazon | https://www.amazon.com/dp/B0G6G7V38P | Book — English edition (Maturity in Practice) |
+|  | https://www.amazon.de/dp/B0G4SPBDQD | Buch — Deutsche Ausgabe (Reife im Vollzug) |
+|  | https://www.amazon.com/dp/B0G6G7V38P | Book — PMS-STACK reference architecture |
+| GitHub | https://github.com/tz-dev/Praxeological-Meta-Structure-Theory | Canonical PMS grammar, theory & YAML definitions |
+|  | https://github.com/tz-dev/Maturity-in-Practice | Book sources, applied praxeological anthropology |
+|  | https://github.com/tz-dev/PMS-QC | PMS-QC — this repository |
+| Custom GPTs | https://chatgpt.com/g/g-69358a2a4980819183da6a97893389cf-pms-model-assistant | Interactive PMS.yaml exploration & validation |
+|  | https://chat.openai.com/g/g-693460d3def48191ad08647301645a2e-maturity-in-action-a-praxeological-anthropology | Applied praxeological anthropology assistant |
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17897199.svg)](https://doi.org/10.5281/zenodo.17897199)
+ibutions, feedback, and research discussions are encouraged.
 
 ---
 
