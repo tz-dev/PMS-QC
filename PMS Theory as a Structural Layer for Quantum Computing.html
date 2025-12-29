@@ -654,18 +654,73 @@
 			<h4>Operator → QC Role → Macro Anchor (Summary Table)</h4>
 			<p>  PMS Operator                  QC Structural Role (very short)                                    Macro Anchor (PMS-QC)</p>
 			<hr>
-			<p>  <strong>□ (Frame)</strong>                 Define Hilbert/register/code-space boundary                        <code>QFRAME(kind)</code>
-				<strong>Δ (Difference)</strong>            Superposition / marked alternatives / basis distinctions           <code>QPREP(superposition)</code> (introduces Δ), <code>QMEASURE(...)</code> (resolves Δ)
-				<strong>∇ (Impulse)</strong>               First non-trivial activation / initiation of evolution             <code>QPREP(mode)</code>
-				<strong>Λ (Non-Event)</strong>             Unrealised branches after collapse / discarded outcomes            <code>QMEASURE(...)</code>
-				<strong>Α (Attractor)</strong>             Amplitude concentration / alignment tendencies                     <code>QDIFFUSION</code>, <code>QFT_ALIGN(direction)</code>
-				<strong>Ω (Asymmetry)</strong>             Controlled operations / oracle privilege / measurement asymmetry   <code>QORACLE_CALL(F)</code>
-				<strong>Θ (Temporality)</strong>           Iteration / laddering / repeated blocks                            <code>QITERATE(k, BLOCK)</code>
-				<strong>Φ (Recontextualization)</strong>   Basis change / representation shift                                <code>QFT_ALIGN(direction)</code>
-				<strong>Χ (Distance)</strong>              Separation / isolation of subspaces or pipeline domains            <em>(structural constraint / frame discipline; no required macro)</em>
-				<strong>Σ (Integration)</strong>           Commit boundary before measurement / downstream compilation        <code>QDIFFUSION</code> (includes Σ), <code>Σ</code> as explicit commit after <code>QFT_ALIGN(...)</code>
-				<strong>Ψ (Self-Binding)</strong>          Invariants / stabiliser enforcement / governance constraints       <code>QSTABILIZE(code)</code>
-			</p>
+			<table class="table" style="width: 100% !important">
+			  <thead>
+			    <tr>
+			      <th style="background: black; color: white;">PMS Operator</th>
+			      <th style="background: black; color: white;">QC Structural Role (very short)</th>
+			      <th style="background: black; color: white;">Macro Anchor (PMS-QC)</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td><strong>□ (Frame)</strong></td>
+			      <td>Define Hilbert / register / code-space boundary</td>
+			      <td><code>QFRAME(kind)</code></td>
+			    </tr>
+			    <tr>
+			      <td><strong>Δ (Difference)</strong></td>
+			      <td>Superposition / marked alternatives / basis distinctions</td>
+			      <td><code>QPREP(superposition)</code> (introduces Δ), <code>QMEASURE(...)</code> (resolves Δ)</td>
+			    </tr>
+			    <tr>
+			      <td><strong>∇ (Impulse)</strong></td>
+			      <td>First non-trivial activation / initiation of evolution</td>
+			      <td><code>QPREP(mode)</code></td>
+			    </tr>
+			    <tr>
+			      <td><strong>Λ (Non-Event)</strong></td>
+			      <td>Unrealised branches after collapse / discarded outcomes</td>
+			      <td><code>QMEASURE(...)</code></td>
+			    </tr>
+			    <tr>
+			      <td><strong>Α (Attractor)</strong></td>
+			      <td>Amplitude concentration / alignment tendencies</td>
+			      <td><code>QDIFFUSION</code>, <code>QFT_ALIGN(direction)</code></td>
+			    </tr>
+			    <tr>
+			      <td><strong>Ω (Asymmetry)</strong></td>
+			      <td>Controlled operations / oracle privilege / measurement asymmetry</td>
+			      <td><code>QORACLE_CALL(F)</code></td>
+			    </tr>
+			    <tr>
+			      <td><strong>Θ (Temporality)</strong></td>
+			      <td>Iteration / laddering / repeated blocks</td>
+			      <td><code>QITERATE(k, BLOCK)</code></td>
+			    </tr>
+			    <tr>
+			      <td><strong>Φ (Recontextualization)</strong></td>
+			      <td>Basis change / representation shift</td>
+			      <td><code>QFT_ALIGN(direction)</code></td>
+			    </tr>
+			    <tr>
+			      <td><strong>Χ (Distance)</strong></td>
+			      <td>Separation / isolation of subspaces or pipeline domains</td>
+			      <td><em>(structural constraint / frame discipline; no required macro)</em></td>
+			    </tr>
+			    <tr>
+			      <td><strong>Σ (Integration)</strong></td>
+			      <td>Commit boundary before measurement / downstream compilation</td>
+			      <td><code>QDIFFUSION</code> (includes Σ), explicit <code>Σ</code> after <code>QFT_ALIGN(...)</code></td>
+			    </tr>
+			    <tr>
+			      <td><strong>Ψ (Self-Binding)</strong></td>
+			      <td>Invariants / stabiliser enforcement / governance constraints</td>
+			      <td><code>QSTABILIZE(code)</code></td>
+			    </tr>
+			  </tbody>
+			</table>
+
 			<p><em>Note:</em> The mapping is <strong>structural</strong>, not physical: macros serve as
 				documentation, compilation anchors, and audit handles for Δ--Ψ chains
 				rather than replacements for circuit formalisms. They indicate admissible
