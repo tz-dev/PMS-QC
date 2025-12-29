@@ -60,6 +60,13 @@ extension_meta:
     - name: "ChatGPT (GPT-5.1 Thinking)"
       role: "extension_formalization"
 
+semantic_anchor:
+  qc_workflow_model: >
+    A QC workflow is treated as a typed directed acyclic graph (DAG), where
+    nodes represent macro operators, gates, measurements or policy checks,
+    edges represent causal, temporal or data dependencies, and scopes are
+    defined by active □-frames.
+
 # -----------------------------------------------------------------------------
 # SECTION 1 — EXTENDED MAPPINGS (NON-NORMATIVE)
 # -----------------------------------------------------------------------------
@@ -102,6 +109,8 @@ macro_extensions:
 
   macros:
     - id: "QPE_ORACLE_LADDER"
+      refines_base_macro: "QORACLE_CALL"
+      paper_dependency: "PMS-QC Paper §3.2"
       params: ["unitary_id", "t"]
       description: >
         Apply the phase-kickback ladder structure U^(2^j) for j in [0, t-1].
@@ -112,6 +121,8 @@ macro_extensions:
         temporal progression, Ω captures controlled asymmetry.
 
     - id: "GROVER_CENTERING"
+      refines_base_macro: "QDIFFUSION"
+      paper_dependency: "PMS-QC Paper §4.1"
       params: []
       description: >
         A higher-order amplitude centering operator used for fixed-point Grover.
@@ -121,6 +132,8 @@ macro_extensions:
         Adds a Ψ-layer to enforce convergence ceilings (no overshoot).
 
     - id: "ATTRACTOR_FIXED_POINT"
+      refines_base_macro: null
+      paper_dependency: "PMS-QC Paper §4.2"
       params: ["schedule"]
       description: >
         Structured attractor cycles to ensure controlled convergence.
@@ -129,6 +142,8 @@ macro_extensions:
         Supports multiple attractor schedules (linear, exponential, custom).
 
     - id: "MEASUREMENT_PROJECTION_MODEL"
+      refines_base_macro: "QMEASURE"
+      paper_dependency: "PMS-QC Paper §5"
       params: []
       description: >
         Explicit modelling of branching structures in measurement domains.
@@ -176,6 +191,8 @@ extended_policies:
 
   policies:
     - id: "qpe_depth_guard"
+      policy_kind: "governance"
+      non_guarantee: true
       description: >
         Enforce an upper bound on the exponent ladder depth (Θ-level expansion).
         t_max is governance, not correctness guarantee.
@@ -186,6 +203,8 @@ extended_policies:
         Θ^t(Ω ∘ □) requires t <= t_max unless a Ψ-stabilisation section follows.
 
     - id: "grover_no_overshoot"
+      policy_kind: "stability"
+      non_guarantee: true
       description: >
         Prevent amplitude overshoot by requiring Ψ-bound regulation after Σ.
       rule: >
@@ -193,12 +212,16 @@ extended_policies:
         the same iteration scope unless an external convergence guarantee exists.
 
     - id: "basis_reframe_guard"
+      policy_kind: "audit"
+      non_guarantee: true
       description: >
         Limit Φ transitions after Σ to preserve semantic integration.
       rule: >
         After Σ, Φ may reframe only if accompanied by explicit Ψ invariants.
 
     - id: "attractor_cycle_integrity"
+      policy_kind: "stability"
+      non_guarantee: true
       description: >
         Ensure that attractor schedules encode valid convergence behaviour.
       rule: >
