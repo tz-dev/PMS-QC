@@ -1760,4 +1760,3 @@ calculus capable of articulating the structural organisation of quantum
 computation, agent systems and praxeological processes within a single
 coherent framework.
 ::::::::::::::
-
