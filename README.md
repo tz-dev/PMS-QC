@@ -154,8 +154,7 @@ The resources below provide different **points of access** into that ecosystem: 
 | Custom GPTs | https://chatgpt.com/g/g-69358a2a4980819183da6a97893389cf-pms-model-assistant | Interactive PMS.yaml exploration & validation |
 |  | https://chat.openai.com/g/g-693460d3def48191ad08647301645a2e-maturity-in-action-a-praxeological-anthropology | Applied praxeological anthropology assistant |
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17897199.svg)](https://doi.org/10.5281/zenodo.17897199)
-ibutions, feedback, and research discussions are encouraged.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17897199.svg)](https://doi.org/10.5281/zenodo.17897199)  
 
 ---
 
