@@ -3,11 +3,19 @@
 **PMS-QC** is an exploratory research project applying the **Praxeological Meta-Structure (PMS)** theory as a *structural and contextual layer* for quantum computing.  
 It investigates how PMS’s operator algebra (Δ–Ψ), frame semantics (□), asymmetry (Ω), isolation (Χ), and integration (Σ) can be mapped onto quantum computational paradigms such as:
 
-- quantum circuits
-- basis/context switching
-- superposition & entanglement boundaries
-- quantum measurement
-- hybrid classical–quantum workflows
+- quantum circuits  
+- basis/context switching  
+- superposition & entanglement boundaries  
+- quantum measurement  
+- hybrid classical–quantum workflows  
+
+The project explicitly distinguishes between three layers:  
+
+- **PMS** — the stable, substrate-independent operator grammar (Δ–Ψ)  
+- **PMS-QC** — a generic quantum-computational structural layer  
+- **PMS-QC-EXT** — an optional, paper-specific extension layer for experimental or research refinements  
+
+Only the PMS-QC layer is normative for this repository; all extensions are explicitly non-binding.
 
 This repository contains the conceptual paper (HTML + PDF), minimal CSS styling, and a **YAML-based model/spec layer** (`/model`) that formalizes PMS-QC constructs.
 
@@ -65,7 +73,8 @@ The PMS-QC paper demonstrates how these primitives map to quantum algorithm stru
 The `/model` folder contains a machine-readable **specification layer** for PMS-QC:
 
 * **`PMS-QC.yaml`** — base macros + structural rules (e.g., framing guardrails, Ω-stability expectations, Σ-boundaries)
-* **`PMS-QC-EXT.yaml`** — optional extensions and addenda (experimental or additional constructs)
+* **`PMS-QC-EXT.yaml`** — optional, non-normative extensions and addenda (paper-specific, experimental, or research-context refinements; never required and never modifying PMS or PMS-QC)
+
 
 This layer is intended as a foundation for future tooling (validation, auditing, or compilation hooks), without replacing existing QC formalisms.
 
@@ -98,6 +107,9 @@ This project highlights alignment between PMS and quantum computation:
 | Λ (Non-event)    | Unrealised branches after collapse / excluded outcomes                         |
 | Α (Attractor)    | Alignment / convergence patterns (e.g., amplitude amplification motifs)        |
 | Ψ (Self-binding) | Invariants, stabilisation, error-correction / governance constraints           |
+
+
+All interpretations presented here are structural and descriptive; they do not replace quantum-mechanical formalisms, gate semantics, or physical correctness criteria.  
 
 ---
 
