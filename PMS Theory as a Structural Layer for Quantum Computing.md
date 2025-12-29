@@ -548,19 +548,19 @@ for the mappings shown below.
 
 #### Operator → QC Role → Macro Anchor (Summary Table)
 
-  PMS Operator                  QC Structural Role (very short)                                    Macro Anchor (PMS-QC)
-  ----------------------------- ------------------------------------------------------------------ -----
-  **□ (Frame)**                 Define Hilbert/register/code-space boundary                        `QFRAME(kind)`
-  **Δ (Difference)**            Superposition / marked alternatives / basis distinctions           `QPREP(superposition)` (introduces Δ), `QMEASURE(...)` (resolves Δ)
-  **∇ (Impulse)**               First non-trivial activation / initiation of evolution             `QPREP(mode)`
-  **Λ (Non-Event)**             Unrealised branches after collapse / discarded outcomes            `QMEASURE(...)`
-  **Α (Attractor)**             Amplitude concentration / alignment tendencies                     `QDIFFUSION`, `QFT_ALIGN(direction)`
-  **Ω (Asymmetry)**             Controlled operations / oracle privilege / measurement asymmetry   `QORACLE_CALL(F)`
-  **Θ (Temporality)**           Iteration / laddering / repeated blocks                            `QITERATE(k, BLOCK)`
-  **Φ (Recontextualization)**   Basis change / representation shift                                `QFT_ALIGN(direction)`
-  **Χ (Distance)**              Separation / isolation of subspaces or pipeline domains            *(structural constraint / frame discipline; no required macro)*
-  **Σ (Integration)**           Commit boundary before measurement / downstream compilation        `QDIFFUSION` (includes Σ), `Σ` as explicit commit after `QFT_ALIGN(...)`
-  **Ψ (Self-Binding)**          Invariants / stabiliser enforcement / governance constraints       `QSTABILIZE(code)`
+| PMS Operator | QC Structural Role (very short) | Macro Anchor (PMS-QC) |
+|-------------|---------------------------------|-----------------------|
+| **□ (Frame)** | Define Hilbert / register / code-space boundary | `QFRAME(kind)` |
+| **Δ (Difference)** | Superposition / marked alternatives / basis distinctions | `QPREP(superposition)` (introduces Δ), `QMEASURE(...)` (resolves Δ) |
+| **∇ (Impulse)** | First non-trivial activation / initiation of evolution | `QPREP(mode)` |
+| **Λ (Non-Event)** | Unrealised branches after collapse / discarded outcomes | `QMEASURE(...)` |
+| **Α (Attractor)** | Amplitude concentration / alignment tendencies | `QDIFFUSION`, `QFT_ALIGN(direction)` |
+| **Ω (Asymmetry)** | Controlled operations / oracle privilege / measurement asymmetry | `QORACLE_CALL(F)` |
+| **Θ (Temporality)** | Iteration / laddering / repeated blocks | `QITERATE(k, BLOCK)` |
+| **Φ (Recontextualization)** | Basis change / representation shift | `QFT_ALIGN(direction)` |
+| **Χ (Distance)** | Separation / isolation of subspaces or pipeline domains | *(structural constraint / frame discipline; no required macro)* |
+| **Σ (Integration)** | Commit boundary before measurement / downstream compilation | `QDIFFUSION` (includes Σ), explicit `Σ` after `QFT_ALIGN(...)` |
+| **Ψ (Self-Binding)** | Invariants / stabiliser enforcement / governance constraints | `QSTABILIZE(code)` |
 
 *Note:* The mapping is **structural**, not physical: macros serve as
 documentation, compilation anchors, and audit handles for Δ--Ψ chains
@@ -1760,3 +1760,4 @@ calculus capable of articulating the structural organisation of quantum
 computation, agent systems and praxeological processes within a single
 coherent framework.
 ::::::::::::::
+
