@@ -1,3 +1,4 @@
+:::::::::::::: {#content .section}
 # Praxeological Meta-Structure Theory as a Structural Layer for Quantum Computing
 
 ## Abstract
@@ -79,6 +80,14 @@ developed to model structural aspects of human and organisational
 practice, PMS is not tied to a particular physical or social substrate.
 Instead, it provides a universal operator grammar capable of describing
 compositional processes wherever structured action unfolds.
+
+This paper distinguishes between the stable PMS operator grammar (Δ--Ψ),
+a generic quantum-computational structural layer (PMS-QC), and an
+optional paper-specific extension layer (PMS-QC_EXT). PMS itself remains
+unchanged throughout: all quantum-computational content is expressed as
+interpretative mappings, macro-level constructs, and governance rules
+defined in PMS-QC (and, where needed, isolated in PMS-QC_EXT) rather
+than as modifications of the Δ--Ψ operators.
 
 The aim of this paper is to demonstrate that PMS can function as a
 universal structural layer for quantum circuits and agentic
@@ -182,56 +191,69 @@ structural calculus. This section provides a formal recap of their
 signatures, layer structure and compositional dependencies, preparing
 the ground for the later application to quantum circuits.
 
-------------------------------------------------------------------------
+Crucially, PMS is presented here strictly as an **axiomatic operator
+grammar**. Its application to quantum computing in later sections is
+**interpretative rather than normative**, **structural rather than
+physical**, and **non-exclusive** with respect to existing quantum
+formalisms. PMS operators do not replace quantum gates, circuits or
+physical operations; instead, they provide a higher-level language for
+describing and analysing the structural organisation of such operations.
+Accordingly, multiple quantum-computational instantiations of a given
+PMS operator are not only admissible but expected, depending on context
+and framing.
+
+---
 
 ### 3.1 Operator Signatures
 
 Each PMS operator is a typed transformation acting on abstract
-structural states. Let \\(S\\) denote the set of admissible structural
-configurations, and let \\(O\\) denote the set of operators. Every
-operator \\(o \\in O\\) is a function
+structural states. Let \(S\) denote the set of admissible structural
+configurations, and let \(O\) denote the set of operators. Every
+operator \(o \in O\) is a function
 
-\\\[ o : S \\to S, \\\]
+\[
+o : S \to S,
+\]
 
 possibly with additional parameters. Table 1 summarises the eleven
 operators, their intuitive role, and their formal signatures.
 
 #### Table 1: PMS Operators (Δ--Ψ)
 
-  Operator             Symbol   Signature        Intuition
-  -------------------- -------- ---------------- ------------------------------------------------------------------------
-  Difference           Δ        \\(S \\to S\\)   Introduces or highlights a distinction within a structure.
-  Impulse              ∇        \\(S \\to S\\)   Initiates movement or activation; minimal directional push.
-  Frame                □        \\(S \\to S\\)   Establishes a structural boundary or scope.
-  Non-Event            Λ        \\(S \\to S\\)   Marks unrealised potential or excluded possibility.
-  Attractor            Α        \\(S \\to S\\)   Introduces a convergence tendency toward a structural pattern.
-  Asymmetry            Ω        \\(S \\to S\\)   Establishes directional or role-based difference.
-  Temporal Iteration   Θ        \\(S \\to S\\)   Produces ordered repetition or sequence.
-  Reframing            Φ        \\(S \\to S\\)   Transforms an existing frame; changes interpretive context.
-  Distancing           Χ        \\(S \\to S\\)   Introduces separation, insulation or domain boundaries.
-  Integration          Σ        \\(S \\to S\\)   Commits a configuration; stabilises previous operations.
-  Self-binding         Ψ        \\(S \\to S\\)   Establishes constraints or invariants that restrict future operations.
+| Operator           | Symbol | Signature     | Intuition                                                                 |
+|--------------------|--------|---------------|------|
+| Difference         | Δ      | \(S \to S\)   | Introduces or highlights a distinction within a structure.                |
+| Impulse            | ∇      | \(S \to S\)   | Initiates movement or activation; minimal directional push.                |
+| Frame              | □      | \(S \to S\)   | Establishes a structural boundary or scope.                                |
+| Non-Event          | Λ      | \(S \to S\)   | Marks unrealised potential or excluded possibility.                        |
+| Attractor          | Α      | \(S \to S\)   | Introduces a convergence tendency toward a structural pattern.             |
+| Asymmetry          | Ω      | \(S \to S\)   | Establishes directional or role-based difference.                          |
+| Temporal Iteration | Θ      | \(S \to S\)   | Produces ordered repetition or sequence.                                   |
+| Reframing          | Φ      | \(S \to S\)   | Transforms an existing frame; changes interpretive context.                |
+| Distancing         | Χ      | \(S \to S\)   | Introduces separation, insulation or domain boundaries.                    |
+| Integration        | Σ      | \(S \to S\)   | Commits a configuration; stabilises previous operations.                   |
+| Self-binding       | Ψ      | \(S \to S\)   | Establishes constraints or invariants that restrict future operations.     |
 
 The operators are formally irreducible: none can be expressed as a
 composition of the others without loss of semantic content.
 
-------------------------------------------------------------------------
+---
 
 ### 3.2 Layer Structure of the Operator System
 
 PMS organises its operators into four conceptual layers. These layers
 capture increasingly complex structural actions.
 
-#### Layer 1 --- Differentiation & Impulse (Δ, ∇)
+#### Layer 1 — Differentiation & Impulse (Δ, ∇)
 
 - **Δ** introduces distinctions or selectable alternatives.
 - **∇** imparts directed activation or minimal progression.
 
 These operators define the ground of any structured action.
 
-------------------------------------------------------------------------
+---
 
-#### Layer 2 --- Framing, Non-Event, Attractor (□, Λ, Α)
+#### Layer 2 — Framing, Non-Event, Attractor (□, Λ, Α)
 
 - **□** provides boundaries or scopes that limit the domain of
   subsequent operations.
@@ -242,9 +264,9 @@ These operators define the ground of any structured action.
 This layer governs the formation of structured environments and
 directional tendencies.
 
-------------------------------------------------------------------------
+---
 
-#### Layer 3 --- Asymmetry, Temporal Iteration, Reframing (Ω, Θ, Φ)
+#### Layer 3 — Asymmetry, Temporal Iteration, Reframing (Ω, Θ, Φ)
 
 - **Ω** establishes directional or role-based asymmetries.
 - **Θ** generates sequences or iterations over previously structured
@@ -255,9 +277,9 @@ directional tendencies.
 These operators describe controlled transformation within or across
 frames.
 
-------------------------------------------------------------------------
+---
 
-#### Layer 4 --- Distancing, Integration, Self-binding (Χ, Σ, Ψ)
+#### Layer 4 — Distancing, Integration, Self-binding (Χ, Σ, Ψ)
 
 - **Χ** isolates domains or separates interacting subsystems.
 - **Σ** stabilises or commits a configuration, integrating multiple
@@ -267,58 +289,72 @@ frames.
 
 This layer governs structural consolidation and long-term stability.
 
-------------------------------------------------------------------------
+---
 
 ### 3.3 Dependency Graph
 
 The PMS operator system is subject to compositional constraints. Let
-\\(o_i \\to o_j\\) denote that operator \\(o_j\\) may legally follow
-\\(o_i\\).
+\(o_i \to o_j\) denote that operator \(o_j\) may legally follow
+\(o_i\).
 
 Some essential dependencies include:
 
 - **Ω requires a structured basis**, typically produced by Δ or □:
 
-  \\\[ (\\Delta \\lor □) \\rightarrow Ω. \\\]
+  \[
+  (\Delta \lor □) \rightarrow Ω.
+  \]
 
 - **Θ operates only on pre-existing structures**, hence:
 
-  \\\[ (\\Delta, □, Ω, Α) \\rightarrow Θ. \\\]
+  \[
+  (\Delta, □, Ω, Α) \rightarrow Θ.
+  \]
 
 - **Σ requires a meaningful chain of prior operators**:
 
-  \\\[ \\text{any non-empty sequence} \\rightarrow Σ. \\\]
+  \[
+  \text{any non-empty sequence} \rightarrow Σ.
+  \]
 
 - **Ψ can only follow Σ or Χ**, because self-binding acts on already
   stabilised or delimited configurations:
 
-  \\\[ (Σ \\lor Χ) \\rightarrow Ψ. \\\]
+  \[
+  (Σ \lor Χ) \rightarrow Ψ.
+  \]
 
 - **Φ requires an established frame**:
 
-  \\\[ □ \\rightarrow Φ. \\\]
+  \[
+  □ \rightarrow Φ.
+  \]
 
 - **Α requires a selectable or differentiable space**, hence:
 
-  \\\[ \\Delta \\rightarrow Α. \\\]
+  \[
+  \Delta \rightarrow Α.
+  \]
 
 These form a partial order, not a total one: certain combinations are
 admissible in multiple orders, while others are explicitly constrained.
 
-------------------------------------------------------------------------
+---
 
 ### 3.4 Formal Composition
 
-Let \\(S_0\\) be an initial structural state. A PMS expression is a
+Let \(S_0\) be an initial structural state. A PMS expression is a
 finite operator chain
 
-\\\[ E = o_n \\circ o\_{n-1} \\circ \\cdots \\circ o_1(S_0) \\\]
+\[
+E = o_n \circ o_{n-1} \circ \cdots \circ o_1(S_0)
+\]
 
 subject to the dependency constraints above.
 
 We define:
 
-- **Valid PMS expression**: every adjacent pair \\((o_i, o\_{i+1})\\)
+- **Valid PMS expression**: every adjacent pair \((o_i, o_{i+1})\)
   satisfies the dependency graph.
 - **Frame-preserving composition**: an expression where all operators
   act within a consistent □-frame.
@@ -328,23 +364,25 @@ We define:
 
 For notation, we use:
 
-- \\(o_i \\rhd o_j\\) for sequential composition,
-- \\(\[E\]\_{□}\\) for expression \\(E\\) constrained to a frame,
-- \\(\\Sigma(E)\\) for integration of expression \\(E\\).
+- \(o_i \rhd o_j\) for sequential composition,
+- \([E]_{□}\) for expression \(E\) constrained to a frame,
+- \(\Sigma(E)\) for integration of expression \(E\).
 
-------------------------------------------------------------------------
+---
 
 ### 3.5 Summary
 
 The Δ--Ψ operator system forms a minimal, substrate-independent calculus
 for describing structured action. By treating PMS strictly as an
-axiomatic operator grammar---free of semantic content from practice or
-physics---we obtain a formal foundation onto which quantum circuits and
-agentic computational systems can later be mapped.
+axiomatic operator grammar—free of semantic commitments to specific
+practices, algorithms or physical processes—we obtain a formal
+foundation onto which quantum circuits and agentic computational systems
+can later be mapped.
 
 In the following sections, this calculus will be applied to the
 structure of quantum computation and the compositional analysis of
-quantum algorithms.
+quantum algorithms, without implying any modification of quantum
+mechanics or replacement of established circuit-level formalisms.
 
 ---
 
@@ -357,7 +395,7 @@ operator system can serve as a substrate-independent structural grammar.
 Before presenting the detailed mapping, we briefly review the core
 elements of the quantum circuit model.
 
-------------------------------------------------------------------------
+---
 
 ### 4.1 Quantum Computing: Structural Fundamentals
 
@@ -387,7 +425,7 @@ Quantum algorithms are constructed by composing these primitives into
 gated circuits, which define a structured action pathway through the
 quantum state space.
 
-------------------------------------------------------------------------
+---
 
 ### 4.2 Mapping PMS to Quantum Circuit Structure
 
@@ -395,7 +433,10 @@ Quantum circuits can be interpreted through the Δ--Ψ operator grammar by
 identifying correspondences between quantum operations and praxeological
 structural actions. This mapping does not replace or reinterpret the
 physics of quantum computing; it provides a higher-level structural
-description of how circuits organise and constrain action.
+description of how circuits organise and constrain action.  
+
+All macro operators introduced here belong to the generic PMS-QC layer 
+and are intentionally algorithm-agnostic.  
 
 #### Frames (□)
 
@@ -501,12 +542,14 @@ constraints:
 Ψ thus reflects the way quantum systems establish and maintain
 invariants that shape allowable compositions.
 
----
+The following summary table refers exclusively to **generic PMS-QC base macros**.
+No paper-specific extensions or research-layer refinements are assumed or required
+for the mappings shown below.  
 
 #### Operator → QC Role → Macro Anchor (Summary Table)
 
   PMS Operator                  QC Structural Role (very short)                                    Macro Anchor (PMS-QC)
-  ----------------------------- ------------------------------------------------------------------ --------------------------------------------------------------------------
+  ----------------------------- ------------------------------------------------------------------ -----
   **□ (Frame)**                 Define Hilbert/register/code-space boundary                        `QFRAME(kind)`
   **Δ (Difference)**            Superposition / marked alternatives / basis distinctions           `QPREP(superposition)` (introduces Δ), `QMEASURE(...)` (resolves Δ)
   **∇ (Impulse)**               First non-trivial activation / initiation of evolution             `QPREP(mode)`
@@ -521,9 +564,10 @@ invariants that shape allowable compositions.
 
 *Note:* The mapping is **structural**, not physical: macros serve as
 documentation, compilation anchors, and audit handles for Δ--Ψ chains
-rather than replacements for circuit formalisms.
+rather than replacements for circuit formalisms. They indicate admissible
+structural organisation, not required implementations.
 
-------------------------------------------------------------------------
+---
 
 ### 4.3 Interpretation: Quantum Computing as a Praxeological Instance
 
@@ -551,6 +595,16 @@ praxeological composition language for quantum circuits.
 
 ## 5. A Praxeological Composition Language for Quantum Circuits
 
+In this section, we distinguish between the **standard Grover iteration**,
+which is fully expressible within the generic PMS-QC base layer, and
+**fixed-point or overshoot-regulated variants**, which rely on additional
+Ψ-based constraints introduced in the optional PMS-QC_EXT research layer.  
+
+In fixed-point variants (PMS-QC_EXT), Grover iterations can be additionally
+constrained by Ψ-based invariance rules that bound amplification dynamics
+and prevent overshoot. These constraints are paper-specific and not part
+of the generic PMS-QC base layer.  
+
 This section introduces a praxeological composition language designed to
 express quantum circuits using the Δ--Ψ operator grammar. The goal is
 not to replace existing quantum instruction sets (e.g., QASM), but to
@@ -558,11 +612,17 @@ provide a higher-level structural language that captures the
 praxeological roles---framing, differentiation, asymmetry, iteration,
 integration and self-binding---that underlie quantum algorithm
 composition. The language consists of macro-operators, each
-corresponding to a canonical pattern of Δ--Ψ operations.
+corresponding to a canonical pattern of Δ--Ψ operations.  
 
-------------------------------------------------------------------------
+---
 
 ### 5.1 Macro-Operators
+
+All macro-operators defined in this section are part of the **generic PMS-QC base
+layer**. They are intentionally algorithm-agnostic and do not encode any
+paper-specific convergence rules, optimisation strategies or invariance
+constraints. Such refinements, where required, are introduced exclusively in
+the optional PMS-QC_EXT layer.
 
 Each macro-operator expands to a Δ--Ψ sequence. Let \\(S\\) denote a
 structural state associated with a quantum computation, and let PMS
@@ -582,7 +642,7 @@ take place.
 
 \\\[ \\texttt{QFRAME(kind)} \\;\\Longrightarrow\\; □(S). \\\]
 
-------------------------------------------------------------------------
+---
 
 #### (2) `QPREP(mode)` → Δ, ∇, Α
 
@@ -597,7 +657,7 @@ Initialises or prepares quantum states.
 \\\[ \\texttt{QPREP(mode)} \\;\\Longrightarrow\\;
 Α(\\nabla(\\Delta(S))). \\\]
 
-------------------------------------------------------------------------
+---
 
 #### (3) `QORACLE_CALL(F)` → Ω, Δ, □
 
@@ -612,12 +672,17 @@ Applies an oracle \\(F\\), marking distinguished states.
 \\\[ \\texttt{QORACLE\\\_CALL}(F) \\;\\Longrightarrow\\;
 Ω(\\Delta(□(S))). \\\]
 
-------------------------------------------------------------------------
+---
 
 #### (4) `QDIFFUSION` → Α + Σ
 
 Implements amplitude amplification or related **Grover-type attractor
-dynamics**.
+dynamics** at the level of the generic PMS-QC base layer.  
+
+This macro captures the *existence* of an attractor-driven amplification step
+(Α) and its integration (Σ), but does **not** by itself enforce convergence
+bounds, fixed-point behaviour or overshoot prevention. Such constraints, when
+required, are introduced via additional Ψ-based rules in the PMS-QC_EXT layer.  
 
 - **Α**: attractor directing amplitudes toward marked states
 - **Σ**: integration committing the attractor transformation
@@ -626,7 +691,7 @@ dynamics**.
 
 \\\[ \\texttt{QDIFFUSION} \\;\\Longrightarrow\\; Σ(Α(S)). \\\]
 
-------------------------------------------------------------------------
+---
 
 #### (5) `QFT_ALIGN(direction)` → Φ + Α
 
@@ -659,7 +724,7 @@ committed for downstream processing or measurement:
   estimate.
 - **Σ** (optional) commits the aligned structure prior to measurement.
 
-------------------------------------------------------------------------
+---
 
 #### (6) `QITERATE(k, BLOCK)` → Θ
 
@@ -672,7 +737,12 @@ Executes a compositional block repeatedly.
 
 \\\[ \\texttt{QITERATE}(k, B) \\;\\Longrightarrow\\; Θ\^k(B(S)). \\\]
 
-------------------------------------------------------------------------
+The Θ-operator encodes repetition only. It does not imply convergence,
+termination, or correctness guarantees. Any bounds on iteration depth or
+convergence behaviour must be supplied externally via Ψ-based constraints,
+either as generic PMS-QC policies or as paper-specific extensions.
+
+---
 
 #### (7) `QMEASURE(basis, register)` → Δ + Λ
 
@@ -685,21 +755,23 @@ Measures a register in a given basis.
 
 \\\[ \\texttt{QMEASURE} \\;\\Longrightarrow\\; Λ(\\Delta(S)). \\\]
 
-------------------------------------------------------------------------
+---
 
 #### (8) `QSTABILIZE(code)` → Ψ
 
 Applies a stabilisation or error-correction routine.
 
-- **Ψ** introduces structural invariants
-- Corresponds to fault-tolerance operations, stabiliser checks, or
-  governance constraints on iteration depth
+- **Ψ** introduces structural invariants.
+- In the PMS-QC base layer, this corresponds to generic stabilisation,
+  fault-tolerance or governance constraints.
+- Paper-specific invariants (e.g. fixed-point convergence rules for Grover)
+  are defined only in PMS-QC_EXT and are not implied here.
 
 **Expansion:**
 
 \\\[ \\texttt{QSTABILIZE(code)} \\;\\Longrightarrow\\; Ψ(S). \\\]
 
-------------------------------------------------------------------------
+---
 
 ### 5.2 EBNF Sketch
 
@@ -738,9 +810,14 @@ low-level gate details. Any concrete QC program (e.g., in QASM or
 Qiskit) can be lifted to this form by replacing gate sequences with
 their Δ--Ψ macro equivalents.
 
-------------------------------------------------------------------------
+---
 
 ### 5.3 Structural Constraints
+
+The following constraints are **structural and praxeological**, not physical.
+They do not describe hardware limitations, noise models or correctness proofs.
+Instead, they specify admissible compositions and stabilisation requirements
+at the level of Δ--Ψ operator structure.
 
 Because the Δ--Ψ grammar encodes praxeological structure, the
 macro-language inherits several constraints that extend beyond
@@ -787,7 +864,7 @@ under } Ψ. \\\]
 These constraints reflect praxeological principles but are expressed
 here purely structurally, independent of interpretive content.
 
-------------------------------------------------------------------------
+---
 
 ### 5.4 Summary
 
@@ -808,9 +885,15 @@ Grover's search algorithm is a canonical example of a quantum procedure
 whose structure is dominated by repeated asymmetry, attractor dynamics
 and stabilised iteration. In this section, we reconstruct Grover's
 algorithm using the praxeological composition language introduced above,
-showing how its components correspond to Δ--Ψ operator sequences.
+showing how its components correspond to Δ--Ψ operator sequences.  
 
-------------------------------------------------------------------------
+The reconstruction presented here distinguishes between the **standard
+Grover iteration**, which is fully expressible within the generic
+PMS-QC base layer, and **optional stabilised or fixed-point variants**,
+which rely on additional Ψ-based constraints introduced in the
+PMS-QC_EXT research layer.
+
+---
 
 ### 6.1 Classical Structure of Grover's Algorithm
 
@@ -838,7 +921,7 @@ Given an oracle \\(O_F\\) marking a unique solution \\(x\^{\*} \\in
 
 This structure fits neatly into the Δ--Ψ grammar.
 
-------------------------------------------------------------------------
+---
 
 ### 6.2 Praxeological Reconstruction Using Macro-Operators
 
@@ -852,7 +935,7 @@ Induces a □-frame capturing the search space and oracle domain:
 
 \\\[ □(S_0). \\\]
 
-------------------------------------------------------------------------
+---
 
 #### Step 2 --- Preparation of the Δ-Field
 
@@ -867,7 +950,7 @@ Introduces Δ-distributed alternatives across all basis states:
 The resulting state is a uniform Δ-field: all alternatives are
 distinguishable but not yet asymmetrically marked.
 
-------------------------------------------------------------------------
+---
 
 #### Step 3 --- Iterative Structure
 
@@ -880,6 +963,11 @@ QITERATE(k, { QORACLE_CALL(F); QDIFFUSION; })
 Corresponding Δ--Ψ decomposition:
 
 \\\[ \\Theta\^k\\big( Σ(Α(Ω(\\Delta(□(S))))) \\big). \\\]
+
+This operator chain captures the **standard Grover iteration** as a
+generic PMS-QC structure. No self-binding (Ψ) constraint is required at
+this level; iteration depth \(k\) is treated as an external parameter
+rather than as a structurally enforced invariant.  
 
 Breaking this down:
 
@@ -895,7 +983,7 @@ The sequence
 
 is precisely the Δ--Ψ analogue of "mark → amplify → commit".
 
-------------------------------------------------------------------------
+---
 
 #### Step 4 --- Measurement
 
@@ -910,13 +998,13 @@ Implements:
 Measurement distinguishes realised from unrealised alternatives (Δ),
 while Λ encodes the non-occurring branches.
 
-------------------------------------------------------------------------
+---
 
 ### 6.3 Structural Interpretation
 
 Grover's algorithm yields several insights when expressed in PMS terms.
 
-------------------------------------------------------------------------
+---
 
 #### (A) Distributed Δ-field and Ω-marking
 
@@ -928,7 +1016,7 @@ pattern:
 - Δ: multiple viable alternatives
 - Ω: asymmetry imposed by an informational constraint (oracle knowledge)
 
-------------------------------------------------------------------------
+---
 
 #### (B) Attractor Dynamics (Α) and Integration (Σ)
 
@@ -940,7 +1028,7 @@ Amplitude amplification becomes:
 Each Grover iteration strengthens the attractor and integrates it into
 the structure.
 
-------------------------------------------------------------------------
+---
 
 #### (C) Temporal Regularity (Θ)
 
@@ -948,7 +1036,7 @@ The repeated block corresponds exactly to Θ, the operator of temporal
 iteration. The iteration is fixed-length, not adaptive, which aligns
 with Θ's role as a structurally regular, pre-specified sequence.
 
-------------------------------------------------------------------------
+---
 
 #### (D) IA-Type Patterns (Structural Asymmetry)
 
@@ -962,12 +1050,15 @@ Grover's oracle structure exhibits a praxeologically relevant asymmetry:
 This is purely structural: the agent--environment asymmetry is
 instantiated by Ω marking.
 
-------------------------------------------------------------------------
+---
 
 #### (E) Stabilisation via Ψ (Optional)
 
-Grover's algorithm in its standard form lacks an explicit Ψ-operator,
-but PMS allows a structured interpretation:
+Grover's algorithm in its **standard form** does not include an explicit
+Ψ-operator. Any Ψ-based stabilisation—such as overshoot prevention,
+fixed-point convergence, or iteration guards—constitutes a
+**paper-specific refinement** and is therefore assigned to the optional
+PMS-QC_EXT layer.
 
 - A Ψ layer could enforce a stop condition when amplitude amplification
   enters a stability basin.
@@ -982,7 +1073,7 @@ Formally, a stabilised version would include:
 interpreting Ψ as enforcing bounds on iteration depth, residual phase
 error or circuit coherence.
 
-------------------------------------------------------------------------
+---
 
 ### 6.4 Summary
 
@@ -999,11 +1090,23 @@ Grover's algorithm maps naturally onto the PMS operator grammar:
 This reconstruction demonstrates that quantum algorithm structure can be
 expressed clearly and compactly using the Δ--Ψ operator family, setting
 the stage for analysing a second, structurally distinct quantum
-algorithm.
+algorithm.  
 
----
+All Ψ-based stabilisation mechanisms discussed in this section are
+optional refinements and must not be interpreted as requirements of the
+generic PMS-QC representation of Grover's algorithm.
+
+--- 
 
 ## 7. Second Example: Quantum Phase Estimation as a Praxeological Structure
+
+Before introducing algorithm-specific structures, we clarify the role
+of **policies and constraints** in the PMS-based analysis. All policies
+discussed in this section operate at the level of **structural
+governance and stabilisation**. They constrain admissible compositions
+of Δ–Ψ operator chains but do **not** guarantee algorithmic correctness,
+numerical precision, physical stability, or performance characteristics
+of a concrete quantum implementation.  
 
 To demonstrate that the PMS operator grammar generalises beyond
 search-based amplitude amplification, we analyse *Quantum Phase
@@ -1014,7 +1117,7 @@ structures, fine-grained temporal iteration and a non-iterative
 attractor mechanism via the inverse Quantum Fourier Transform (QFT).
 These features introduce rich Ω, Θ, Α and Ψ patterns.
 
-------------------------------------------------------------------------
+---
 
 ### 7.1 Standard Structure of Quantum Phase Estimation
 
@@ -1045,7 +1148,14 @@ QPE estimates the phase \\(\\phi\\) by the following steps:
 This structure is more nuanced than the Grover iteration and therefore
 well-suited for demonstrating the expressive generality of PMS.
 
-------------------------------------------------------------------------
+From a layering perspective, we distinguish between **generic structural
+constraints** that belong to the PMS-QC base layer and **paper-specific
+refinements** introduced in PMS-QC_EXT. Generic policies capture
+universally applicable frame, asymmetry and integration constraints,
+whereas PMS-QC_EXT policies address algorithm-specific sensitivity,
+precision and stabilisation issues particular to QPE.
+
+---
 
 ### 7.2 Praxeological Reconstruction Using Macro-Operators
 
@@ -1061,7 +1171,7 @@ This defines the structural frame representing the composite Hilbert
 space of control and target registers, scoped to the eigenproblem of
 \\(U\\).
 
-------------------------------------------------------------------------
+---
 
 #### Step 2 --- Preparation of the Δ-Field
 
@@ -1077,7 +1187,7 @@ over computational basis states:
 The eigenstate in the target register acts as an embedded subframe, not
 requiring Δ-preparation.
 
-------------------------------------------------------------------------
+---
 
 #### Step 3 --- Controlled Unitary Ladder (Ω/Θ)
 
@@ -1095,6 +1205,13 @@ but now the "oracle" is a controlled unitary, not a selective marker. In
 
 \\\[ \\Theta\^t\\big( Ω(□(S)) \\big). \\\]
 
+The exponential controlled-unitary ladder \(U^{2^j}\) is treated here as
+a **paper-specific macro refinement**. While its Δ–Ψ structure
+(\(\Theta^t(\Omega \circ \Box)\)) provides a compact structural
+description, the ladder itself is **not** elevated to a generic PMS-QC
+rule and is later formalised explicitly in the optional PMS-QC_EXT
+layer.  
+
 Here:
 
 - **Ω** represents the controlled asymmetry: the target evolves
@@ -1104,7 +1221,7 @@ Here:
 
 This block is a paradigmatic instance of high-order Ω--Θ coupling.
 
-------------------------------------------------------------------------
+---
 
 #### Step 4 --- Inverse QFT as Φ/Α with Σ-Commit
 
@@ -1140,7 +1257,7 @@ It also keeps **QDIFFUSION** reserved for Grover-style iterative
 amplitude amplification and avoids conflating diffusion with
 Fourier-based reframing.
 
-------------------------------------------------------------------------
+---
 
 #### Step 5 --- Measurement
 
@@ -1155,13 +1272,17 @@ Expands to:
 This collapses the phase-encoded distribution to the nearest binary
 approximation of \\(\\phi\\).
 
-------------------------------------------------------------------------
+---
 
 ### 7.3 Structural Interpretation
 
-QPE illustrates several Δ--Ψ patterns not present in Grover's algorithm.
+All Ψ placements discussed here should be understood as **structural
+stabilisation options**, not as requirements of Quantum Phase
+Estimation. These constraints belong either to the generic PMS-QC
+governance layer (e.g. frame coherence) or to paper-specific PMS-QC_EXT
+refinements addressing precision and noise sensitivity in QPE.
 
-------------------------------------------------------------------------
+---
 
 #### (A) Multi-Level Asymmetry (Ω)
 
@@ -1174,7 +1295,7 @@ asymmetries*:
 
 This contrasts with Grover's fixed Ω-marking.
 
-------------------------------------------------------------------------
+---
 
 #### (B) Fine-Grained Temporal Structure (Θ)
 
@@ -1184,7 +1305,7 @@ The Θ-sequencing in QPE is more intricate:
 - The ladder-like structure is a canonical instance of *structured
   temporal asymmetry*.
 
-------------------------------------------------------------------------
+---
 
 #### (C) Reframing (Φ) as Interpretive Transition
 
@@ -1197,7 +1318,7 @@ The Θ-sequencing in QPE is more intricate:
 
 Grover's algorithm contains no such reframing.
 
-------------------------------------------------------------------------
+---
 
 #### (D) Attractor Formation Without Iteration (Α)
 
@@ -1211,7 +1332,7 @@ This highlights Α's generality:
 - Sometimes Α is iterative (Grover).
 - Sometimes Α is non-iterative but high-dimensional (Fourier alignment).
 
-------------------------------------------------------------------------
+---
 
 #### (E) Stabilisation and Ψ-Placement
 
@@ -1225,7 +1346,7 @@ analysis suggests multiple Ψ placements:
 
 Thus, QPE naturally fits PMS's stabilisation logic.
 
-------------------------------------------------------------------------
+---
 
 ### 7.4 Summary
 
@@ -1243,7 +1364,13 @@ beyond search-based algorithms:
 
 QPE thus serves as an independent validation of PMS as a universal
 operator grammar capable of describing qualitatively different quantum
-algorithmic architectures.
+algorithmic architectures.  
+
+All policies and constraints introduced in this section are structural
+in nature. They regulate admissible operator compositions and stability
+conditions but make no claims about physical correctness, convergence
+guarantees, or computational efficiency of concrete QPE
+implementations.
 
 ---
 
@@ -1263,9 +1390,19 @@ operator grammar that can serve as a control and governance layer for
 these hybrid systems. By expressing both quantum workflows and agentic
 decisions as Δ--Ψ operator chains, PMS enables cross-domain
 auditability, structural constraint enforcement and policy-guided action
-selection.
+selection.  
 
-------------------------------------------------------------------------
+A strict separation between the PMS base grammar, the generic PMS-QC
+structural layer, and optional paper-specific extensions is essential
+for maintaining semantic stability and reusability. Layering prevents
+meaning drift by ensuring that the Δ–Ψ operators remain invariant, while
+domain-specific interpretations and constraints are isolated at higher
+levels. This allows the PMS-QC base to function as a reusable,
+algorithm-agnostic control layer, while research-driven refinements can
+be introduced, evaluated and discarded without affecting the underlying
+operator semantics.
+
+---
 
 ### 8.1 PMS as an Audit Layer
 
@@ -1287,7 +1424,7 @@ mechanism through:
 This enables principled governance without modifying the underlying
 quantum hardware or low-level software stack.
 
-------------------------------------------------------------------------
+---
 
 ### 8.2 PMS as Execution Policy Layer
 
@@ -1327,7 +1464,7 @@ compilation and agentic control. They extend natural QC constraints with
 praxeological structure, enabling fine-grained and machine-checkable
 control over algorithmic composition and agent actions.
 
-------------------------------------------------------------------------
+---
 
 ### 8.3 Multi-Frame Agents and Domain Coordination
 
@@ -1355,7 +1492,7 @@ PMS provides operators for coordinating these frames:
 This enables structured, transparent multi-frame operation without
 conflating physical, computational and governance constraints.
 
-------------------------------------------------------------------------
+---
 
 ### 8.4 Prompt and Inference Control
 
@@ -1377,7 +1514,7 @@ If the controlling agent is an LLM or LLM-based composite:
 This interprets agent prompting and inference as praxeological action
 within explicitly governed Δ--Ψ structures.
 
-------------------------------------------------------------------------
+---
 
 ### 8.5 PMS as a Meta-Compiler Layer
 
@@ -1400,7 +1537,7 @@ In effect:
 This division of labour is essential for the safety and transparency of
 future quantum--agent systems.
 
-------------------------------------------------------------------------
+---
 
 ### 8.6 Summary
 
@@ -1430,7 +1567,7 @@ expressive power, universality and scope. This section discusses how PMS
 relates to existing formalisms, what its substrate-independent nature
 enables, and where its limits lie.
 
-------------------------------------------------------------------------
+---
 
 ### 9.1 Expressive Power of the Δ--Ψ Operator Grammar
 
@@ -1457,7 +1594,7 @@ categorical quantum mechanics. Instead, it provides an **external
 structural language** for describing the organisation of operations, not
 their underlying physics.
 
-------------------------------------------------------------------------
+---
 
 ### 9.2 Universality of PMS Across Substrates
 
@@ -1480,7 +1617,7 @@ processes using a single structural syntax. This universality is not
 based on reducing everything to the same mechanics but on identifying
 **isomorphic structural roles** across systems of action.
 
-------------------------------------------------------------------------
+---
 
 ### 9.3 Substrate Independence as a Structural Principle
 
@@ -1503,7 +1640,7 @@ This supports the idea that PMS captures a structural substrate
 independence: a single operator system that can describe compositional
 logic regardless of domain-specific semantics.
 
-------------------------------------------------------------------------
+---
 
 ### 9.4 Computational Implications
 
@@ -1530,7 +1667,7 @@ These implications point to PMS as a potential tool for high-level
 reasoning about algorithmic structure, independent of low-level gate
 semantics.
 
-------------------------------------------------------------------------
+---
 
 ### 9.5 Limitations
 
@@ -1556,6 +1693,15 @@ Despite its expressive power, PMS has clear boundaries:
 5.  **Validation scope:** PMS describes structure, not mechanism;
     empirical performance must still be evaluated within domain-specific
     frameworks.
+
+6.  **Extension-layer limitations:** Optional extensions such as
+    *PMS-QC_EXT* are intentionally non-universal and non-binding. They do
+    not modify the Δ–Ψ operator grammar, nor are they required for
+    applying PMS or PMS-QC. Instead, such extensions capture
+    paper-specific refinements, governance heuristics or macro-level
+    constraints that may be useful in particular research contexts but
+    are neither exhaustive nor generally valid beyond their stated
+    scope.
 
 Overall, PMS is a *meta-language* rather than a computational model: it
 provides a unifying conceptual framework for structural composition, but
@@ -1595,7 +1741,11 @@ environments and cross-domain interactions, positioning PMS as a
 potential control and governance architecture for emerging hybrid QC/AI
 systems.
 
-Several directions for future work follow naturally. First,
+Several directions for future work follow naturally.  
+All paper-specific refinements discussed here are deliberately isolated
+in an optional extension layer (PMS-QC_EXT), ensuring that the core PMS
+operator grammar and the generic PMS-QC layer remain stable, reusable
+and independent of individual research contexts. First,
 **compiler-level integration** could enable PMS-annotated quantum
 programs to be validated and translated into backend circuits, bridging
 operator-level constraints with physical execution. Second, **agentic
@@ -1609,6 +1759,4 @@ Taken together, these results position PMS as a universal operator
 calculus capable of articulating the structural organisation of quantum
 computation, agent systems and praxeological processes within a single
 coherent framework.
-
-
-
+::::::::::::::
