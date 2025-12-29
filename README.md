@@ -141,10 +141,10 @@ The resources below provide different **points of access** into that ecosystem: 
 
 | Category | Resource | Description |
 | --- | --- | --- |
-| Model website | https://pms-theory.com | PMS theory reference |
-| Book websites | https://maturity-in-practice.com | Praxeological Anthropology — English edition |
-|  | https://reife-im-vollzug.de | Praxeologische Anthropologie — Deutsche Ausgabe |
-|  | https://pms-stack.com | PMS-STACK reference architecture |
+| Model website | https://pms-theory.netlify.app | PMS theory reference |
+| Book websites | https://maturity-in-practice.netlify.app | Praxeological Anthropology — English edition |
+|  | https://reife-im-vollzug.netlify.app | Praxeologische Anthropologie — Deutsche Ausgabe |
+|  | https://pms-stack.netlify.app | PMS-STACK reference architecture |
 | Amazon | https://www.amazon.com/dp/B0G6G7V38P | Book — English edition (Maturity in Practice) |
 |  | https://www.amazon.de/dp/B0G4SPBDQD | Buch — Deutsche Ausgabe (Reife im Vollzug) |
 |  | https://www.amazon.com/dp/B0G6G7V38P | Book — PMS-STACK reference architecture |
