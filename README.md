@@ -19,6 +19,8 @@ Only the PMS-QC layer is normative for this repository; all extensions are expli
 
 This repository contains the conceptual paper (HTML + PDF), minimal CSS styling, and a **YAML-based model/spec layer** (`/model`) that formalizes PMS-QC constructs.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17897199.svg)](https://doi.org/10.5281/zenodo.17897199)  
+
 ---
 
 ## 📂 Repository Structure
@@ -153,8 +155,6 @@ The resources below provide different **points of access** into that ecosystem: 
 |  | https://github.com/tz-dev/PMS-LOGIC | PMS-LOGIC — Structural Responsibility, Logical Limits, and Post-Moral Effects |
 | Custom GPTs | https://chatgpt.com/g/g-69358a2a4980819183da6a97893389cf-pms-model-assistant | Interactive PMS.yaml exploration & validation |
 |  | https://chat.openai.com/g/g-693460d3def48191ad08647301645a2e-maturity-in-action-a-praxeological-anthropology | Applied praxeological anthropology assistant |
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17897199.svg)](https://doi.org/10.5281/zenodo.17897199)  
 
 ---
 
