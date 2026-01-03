@@ -140,16 +140,17 @@ All formats contain the paper:
 PMS-QC exists within a broader **praxeological ecosystem** spanning formal operator theory, applied anthropology, executable specifications, and interactive tooling.
 
 The resources below provide different **points of access** into that ecosystem: from canonical PMS grammar definitions and formal papers, to applied models, books, and architecture explorations. Together, they form a coherent reference space rather than independent artifacts.
+
 | Category | Resource | Description |
 | --- | --- | --- |
 | Model website | https://pms-theory.netlify.app | PMS theory reference |
 | Book websites | https://maturity-in-practice.netlify.app | Praxeological Anthropology — English edition |
 |  | https://reife-im-vollzug.netlify.app | Praxeologische Anthropologie — Deutsche Ausgabe |
 |  | https://pms-stack.netlify.app | PMS-STACK reference architecture |
-| Amazon | https://www.amazon.com/dp/B0G6G7V38P | Book — English edition (Maturity in Practice) |
-|  | https://www.amazon.de/dp/B0G4SPBDQD | Buch — Deutsche Ausgabe (Reife im Vollzug) |
-|  | https://www.amazon.com/dp/B0G6G7V38P | Book — PMS-STACK reference architecture |
-| GitHub | https://github.com/tz-dev/Praxeological-Meta-Structure-Theory | Canonical PMS grammar, theory & YAML definitions |
+| Amazon | https://www.amazon.com/dp/B0G4XBKNNR | *Maturity in Practice: A Praxeological Anthropology* — English edition |
+|  | https://www.amazon.de/dp/B0G4SPBDQD | *Reife im Vollzug: Eine praxeologische Anthropologie* — Deutsche Ausgabe |
+|  | https://www.amazon.com/dp/B0G6G7V38P | *PMS-STACK — A Praxeological Operating System Architecture* |
+| GitHub (papers)| https://github.com/tz-dev/Praxeological-Meta-Structure-Theory | Canonical PMS grammar, theory & YAML definitions |
 |  | https://github.com/tz-dev/Maturity-in-Practice | Book sources, applied praxeological anthropology |
 |  | https://github.com/tz-dev/PMS-QC | PMS-QC — Praxeological Meta-Structure for Quantum Computing |
 |  | https://github.com/tz-dev/PMS-LOGIC | PMS-LOGIC — Structural Responsibility, Logical Limits, and Post-Moral Effects |
