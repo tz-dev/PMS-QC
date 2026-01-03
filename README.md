@@ -153,6 +153,7 @@ The resources below provide different **points of access** into that ecosystem: 
 |  | https://github.com/tz-dev/Maturity-in-Practice | Book sources, applied praxeological anthropology |
 |  | https://github.com/tz-dev/PMS-QC | PMS-QC — Praxeological Meta-Structure for Quantum Computing |
 |  | https://github.com/tz-dev/PMS-LOGIC | PMS-LOGIC — Structural Responsibility, Logical Limits, and Post-Moral Effects |
+|  | https://github.com/tz-dev/PMS-ANTICIPATION | PMS–ANTICIPATION — Structural Conditions, Risks, and Viability of Anticipatory Praxis |
 | Custom GPTs | https://chatgpt.com/g/g-69358a2a4980819183da6a97893389cf-pms-model-assistant | Interactive PMS.yaml exploration & validation |
 |  | https://chat.openai.com/g/g-693460d3def48191ad08647301645a2e-maturity-in-action-a-praxeological-anthropology | Applied praxeological anthropology assistant |
 
