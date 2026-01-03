@@ -1,21 +1,26 @@
 # PMS-QC — Praxeological Meta-Structure for Quantum Computing
 
-**PMS-QC** is an exploratory research project applying the **Praxeological Meta-Structure (PMS)** theory as a *structural and contextual layer* for quantum computing.  
-It investigates how PMS’s operator algebra (Δ–Ψ), frame semantics (□), asymmetry (Ω), isolation (Χ), and integration (Σ) can be mapped onto quantum computational paradigms such as:
+**PMS-QC** is an exploratory research project applying the **[Praxeological Meta-Structure (PMS)](https://github.com/tz-dev/Praxeological-Meta-Structure-Theory)** as a *formal structural and contextual layer* for quantum computing.  
 
-- quantum circuits  
-- basis/context switching  
-- superposition & entanglement boundaries  
-- quantum measurement  
-- hybrid classical–quantum workflows  
+While PMS provides the **canonical operator grammar** (Δ–Ψ) for modelling praxis, asymmetry, contextual framing, isolation, and integration, PMS-QC investigates how these operators can be coherently mapped onto quantum-computational paradigms without reducing them to metaphor or implementation detail.  
 
-The project explicitly distinguishes between three layers:  
+In particular, the project explores structural correspondences between PMS operators — operator algebra (Δ–Ψ), frame semantics (□), asymmetry (Ω), isolation (Χ), and integration (Σ) — and quantum-computational structures such as:  
 
-- **PMS** — the stable, substrate-independent operator grammar (Δ–Ψ)  
-- **PMS-QC** — a generic quantum-computational structural layer  
-- **PMS-QC-EXT** — an optional, paper-specific extension layer for experimental or research refinements  
+* quantum circuits
+* basis and context switching
+* superposition and entanglement boundaries
+* quantum measurement
+* hybrid classical–quantum workflows
 
-Only the PMS-QC layer is normative for this repository; all extensions are explicitly non-binding.
+The framework explicitly distinguishes between three layers:
+
+* **PMS** — the stable, substrate-independent operator grammar (Δ–Ψ, □, Ω, Χ, Σ)
+* **PMS-QC** — a generic quantum-computational structural layer derived from PMS
+* **PMS-QC-EXT** — optional, paper- or experiment-specific extensions
+
+Only the **PMS-QC** layer is normative for this repository; all extensions are explicitly non-binding.
+
+PMS-QC thus treats quantum computation not as a purely physical or algorithmic process, but as a **praxeologically structured domain** in which operational coherence, contextual asymmetry, and boundary conditions are explicitly modelled.
 
 This repository contains the conceptual paper (HTML + PDF), minimal CSS styling, and a **YAML-based model/spec layer** (`/model`) that formalizes PMS-QC constructs.
 
