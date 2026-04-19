@@ -24,7 +24,7 @@ PMS-QC thus treats quantum computation not as a purely physical or algorithmic p
 
 This repository contains the conceptual paper (HTML + PDF), minimal CSS styling, YAML-based model/spec layers (`/model`), and dedicated example suites (`/examples`) for both the PMS-QC base layer and the optional PMS-QC_EXT layer.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17897199.svg)](https://doi.org/10.5281/zenodo.17897199)  
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19654589.svg)](https://doi.org/10.5281/zenodo.19654589)
 
 ---
 
