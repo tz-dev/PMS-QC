@@ -213,6 +213,11 @@ schema_meta:
       PMS-QC may coexist with rival or complementary formalisms that
       foreground different distinctions more effectively for particular
       analytical or implementation tasks.
+    mapping_validity_clause: >
+      PMS-QC does not currently provide a formal test for when a cross-domain
+      operator mapping preserves PMS operator semantics versus functioning as
+      a structurally useful analogy or symbolic transfer. This remains an
+      open methodological question for future work.
 
   terminology:
     qc_frame: >
@@ -250,6 +255,11 @@ schema_meta:
     structural_not_physical: >
       Indicates that the relevant statement concerns structural rendering,
       organisation or annotation, not the underlying physical mechanism.
+    cross_domain_mapping_validity: >
+      PMS-QC does not currently provide a formal criterion for when a
+      cross-domain operator mapping preserves PMS operator semantics rather
+      than functioning as a structurally useful analogy or symbolic transfer.
+      This remains an open methodological question.
 
 pms_reference:
   note: >
@@ -825,6 +835,13 @@ ai_interface_qc:
       - "Post-hoc analysis of structural stability and asymmetry."
       - "Comparison of alternative Δ–Ψ designs for the same QC task."
 
+methodological_limits:
+  cross_domain_mapping_validity: >
+    The present PMS-QC layer does not provide a formal criterion for when a
+    cross-domain operator mapping preserves PMS operator semantics rather
+    than functioning as a structurally useful analogy or symbolic transfer.
+    This remains an open methodological question.
+    
 meta_notes:
   compatibility:
     - "PMS-QC can annotate or wrap programs in QASM, Qiskit, Cirq, Braket and similar frameworks."
