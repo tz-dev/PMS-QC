@@ -354,12 +354,17 @@ Some essential dependencies include:
   \text{any non-empty sequence} \rightarrow Σ.
   \]
 
-- **Ψ can only follow Σ or Χ**, because self-binding acts on already
-  stabilised or delimited configurations:
+- **Ψ can follow Σ, Θ or Χ**, because self-binding acts on already
+  stabilised, iterated, or delimited configurations:
 
   \[
-  (Σ \lor Χ) \rightarrow Ψ.
+  (\Sigma \lor \Theta \lor \Chi) \rightarrow \Psi.
   \]
+
+  In QC contexts, \(\Theta\)-structured iteration is often mediated through
+  \(\Sigma\) before \(\Psi\) becomes structurally salient. This abridged QC
+  reading does not modify the canonical PMS dependency spine, which remains
+  authoritative in `PMS.yaml`.
 
 - **Φ requires an established frame**:
 
@@ -632,8 +637,9 @@ admissible structural organisation, not required implementations.
 
 ### 4.3 Interpretation: Quantum Computing as a Praxeological Instance
 
-Under this mapping, quantum computing can be read as a *special
-instance* of a praxeological system in a bounded structural sense:
+Under this mapping, quantum computing can be read as *one structural
+instantiation* of a praxeological system in a bounded and non-exclusive
+sense:
 
 - The Hilbert space and register decomposition correspond to **action
   frames** (□).
@@ -1911,6 +1917,13 @@ Despite its expressive power, PMS has clear boundaries:
     succeeds, some relevant distinctions may remain only partially
     visible or may be foregrounded more effectively by rival or
     complementary formalisms.
+
+8.  **Φ-validity criterion absent:** The present paper does not supply a
+    formal test for when a cross-domain operator mapping preserves PMS
+    operator semantics rather than functioning as a structurally useful
+    symbolic transfer or analogy. This remains an open methodological
+    question for future work and likely requires a dedicated treatment of
+    cross-domain Φ-validity conditions.
 
 Overall, PMS is a *meta-language* rather than a computational model: it
 provides a strong conceptual framework for structural composition, but
