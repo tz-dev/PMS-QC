@@ -1,39 +1,64 @@
 # =============================================================================
 #  PMS-QC EXTENSION ADDENDUM
 #  File: pms-qc-ext.yaml
-#  Version: PMS-QC_EXT_1.0 (draft)
-#  Last Updated: 2025-12-11
+#  Version: PMS-QC_EXT_1.1 (draft)
+#  Last Updated: 2026-04-19
 #
 #  Purpose:
-#    This addendum extends the PMS-QC base specification with domain-specific
-#    constructs derived from:
-#      - the "PMS Theory as a Structural Layer for Quantum Computing" paper,
-#      - operator-level derivations for Grover, QPE, attractor dynamics,
-#      - advanced reframing and asymmetry rules,
-#      - stabilised iteration scales and invariance constraints.
+#    This addendum defines PMS-QC_EXT as an OPTIONAL, paper-specific
+#    refinement layer for PMS-QC. It collects bounded structural refinements
+#    derived from the current "PMS Theory as a Structural Layer for Quantum
+#    Computing" paper, including:
+#      - paper-specific QPE ladder refinements,
+#      - fixed-point / overshoot-regulated Grover refinements,
+#      - specialized attractor schedule templates,
+#      - measurement-domain modelling refinements,
+#      - optional structural policy refinements for bounded AI–QC settings.
 #
 #  PMS-QC_EXT is OPTIONAL.
 #    - It MUST NOT redefine Δ–Ψ operators.
-#    - It MAY refine mappings, introduce specialised macros, patterns, or
-#      constraints relevant only for PMS-QC-Paper-based workflows.
+#    - It MUST NOT alter PMS canonical operator order or dependency spine.
+#    - It MUST NOT override PMS-QC base semantics.
+#    - It MAY introduce paper-specific macro refinements, chain templates,
+#      and optional structural constraints that remain subordinate to
+#      PMS.yaml and pms-qc.yaml.
 #
 #  Note:
-#    - PMS-QC_EXT may refine or extend macro-operators; it should not override
-#    - PMS-QC base macros unless explicitly marked as a refinement.
+#    - PMS-QC_EXT may refine or extend macro usage, but only as paper-specific
+#      overlay constructs.
+#    - PMS-QC base macros remain authoritative for the generic QC layer unless
+#      an EXT construct is explicitly marked as a refinement.
+#    - No construct in this file should be read as introducing new PMS
+#      meta-axioms or a new operator layer.
 #
 #  Intended Use:
-#    - Attach alongside PMS.yaml and PMS-QC.yaml for enhanced QC reasoning.
-#    - Enable AI agents to reason with paper-specific constructs.
-#    - Provide a richer macro language for meta-compilation or orchestration.
+#    - Attach alongside PMS.yaml and PMS-QC.yaml for paper-specific QC
+#      analysis, annotation and bounded refinement work.
+#    - Support optional reasoning about QPE ladders, fixed-point Grover
+#      variants, attractor schedules and bounded governance-oriented
+#      experimentation.
+#    - Provide paper-derived refinement templates for documentation,
+#      orchestration and compilation-adjacent analysis.
+#
+#  Not Intended For:
+#    - redefining PMS or PMS-QC base semantics,
+#    - establishing a generic QC standard,
+#    - validated safety architecture,
+#    - deployment-ready agent control,
+#    - physical correctness guarantees,
+#    - architecture-independent implementation claims,
+#    - anthropomorphic interpretation of quantum processes.
 #
 #  Load Order:
-#    1. PMS.yaml        (base operator grammar)
-#    2. PMS-QC.yaml     (QC structural layer)
-#    3. PMS-QC-EXT.yaml (this addendum; optional)
+#    1. PMS.yaml        (base operator grammar / repository reference)
+#    2. pms-qc.yaml     (generic QC structural overlay)
+#    3. pms-qc-ext.yaml (this addendum; optional paper-specific refinement)
 #
 #  Relationship to PMS-QC:
-#    - Supplements PMS-QC with additional semantic operators *at macro level*.
+#    - Supplements PMS-QC with paper-specific macro refinements,
+#      chain templates and optional structural constraints.
 #    - Never overrides base definitions.
+#    - Never promotes paper-specific constructs into the generic base layer.
 #
 #  Repositories:
 #    - PMS (base framework):
@@ -43,190 +68,372 @@
 #
 # =============================================================================
 
-schema_version: "PMS-QC_EXT_1.0"
+schema_version: "PMS-QC_EXT_1.1"
+
 extends:
-  base_model: "PMS-QC_1.0"
-  compatibility: "Full"
+  base_model: "PMS-QC_1.1"
+  base_dependency: "PMS_1.3"
+  compatibility: >
+    Declared for PMS-QC_1.1 as an optional paper-specific refinement layer.
+    This extension does not override PMS or PMS-QC base semantics.
+
+pms_application_reference:
+  note: >
+    Any use of PMS-QC_EXT that claims PMS-based application remains
+    subordinate to the PMS_1.3 entry condition and self-binding clause.
+    This extension does not suspend, replace or override PMS application
+    guardrails.
+  refers_to:
+    - "pms_entry_condition"
+    - "schema_meta.normative_position.self_binding_clause"
+    - "repository_governance"
 
 extension_meta:
+  model_name: "Praxeological Meta-Structure – Quantum Computing Extension Layer"
+  model_short: "PMS-QC_EXT"
+  status: "draft"
+  repository_role: "paper_specific_qc_refinement_layer"
+  layer_role: "optional_extension"
+  optional_extension: true
+  depends_on:
+    - "PMS_1.3"
+    - "PMS-QC_1.1"
+  epistemic_status: >
+    Optional paper-derived refinement layer for bounded structural analysis,
+    annotation and policy experimentation within the PMS-QC framework.
+  boundedness_note: >
+    PMS-QC_EXT is not a generic QC standard and not a canonical part of PMS.
+    It collects paper-specific refinements that remain subordinate to PMS and
+    the PMS-QC base overlay. Use of EXT does not imply comparative superiority,
+    exhaustive capture, deployment adequacy or validated safety.
   description: >
-    PMS-QC_EXT adds paper-specific macro operators, Δ–Ψ chain templates,
-    attractor patterns, oracle ladders, reframing transforms and structural
-    constraints derived from the PMS-QC paper. It enriches AI reasoning
-    without narrowing the universality of the PMS-QC base layer.
+    PMS-QC_EXT adds paper-specific macro refinements, Δ–Ψ chain templates,
+    attractor schedule patterns, ladder refinements, measurement-domain
+    modelling refinements and optional structural policy refinements derived
+    from the present PMS-QC paper. It extends the expressive range available
+    for paper-aligned analysis without altering the semantics of the generic
+    PMS-QC base overlay. Nothing in this file should be read as introducing
+    new PMS meta-axioms, a new operator layer, or a uniquely privileged
+    architecture for AI–QC governance.
   authors:
     - name: "T. Zöller"
       role: "originator"
-    - name: "ChatGPT (GPT-5.1 Thinking)"
+    - name: "ChatGPT (GPT-5.4 Thinking)"
       role: "extension_formalization"
 
+normative_position:
+  non_identity_clause: >
+    EXT mappings and refinements are structural renderings only. They do not
+    imply ontological identity between PMS operators and the specific
+    algorithmic or governance constructs discussed in the paper.
+  non_monopoly_clause: >
+    PMS-QC_EXT does not claim monopoly over high-level structural analysis,
+    nor does it imply that rival or complementary formalisms could not capture
+    certain distinctions more effectively.
+  anthropomorphism_clause: >
+    Terms such as awareness, attractor, governance or self-binding remain
+    structural and non-anthropomorphic. EXT constructs do not attribute
+    consciousness, intention, agency or moral status to quantum systems.
+  non_guarantee_clause: >
+    Structural refinement does not imply physical correctness, convergence,
+    stability, safety or deployment readiness.
+  governance_conditionality_clause: >
+    Governance-oriented content in this extension is optional and conditional.
+    It should be read as one bounded architectural path within the paper, not
+    as the natural telos of PMS-QC or as a validated control architecture.
+  base_vs_extension_clause: >
+    Generic PMS-QC macros and policies remain in the base overlay. Paper-
+    specific ladder structures, fixed-point Grover refinements, stronger
+    attractor schedules and additional policy heuristics remain EXT-only.
+
+computational_position:
+  representation_clause: >
+    This file is a formal representational addendum for optional paper-
+    specific refinements. It is not executable code, not a proof of
+    implementability, and not a guarantee of interoperability.
+  calibration_clause: >
+    Structural well-formedness in PMS-QC_EXT does not by itself establish
+    physical adequacy, numerical correctness, stability, safety, or optimal
+    compilation.
+  accountability_clause: >
+    Any operational use of EXT remains dependent on external architectures,
+    implementations, validation procedures and domain-specific accountability
+    mechanisms.
+  deployment_clause: >
+    EXT compliance or EXT policy satisfaction must not be treated as evidence
+    of deployment readiness, safe orchestration or validated agent control.
+
 semantic_anchor:
+  note: >
+    The workflow model below is one optional organizational abstraction for
+    toolchains and analysis. It is non-canonical and does not redefine PMS or
+    PMS-QC composition logic.
   qc_workflow_model: >
-    A QC workflow is treated as a typed directed acyclic graph (DAG), where
-    nodes represent macro operators, gates, measurements or policy checks,
-    edges represent causal, temporal or data dependencies, and scopes are
-    defined by active □-frames.
+    A QC workflow may be modeled as a typed directed acyclic graph (DAG), where
+    nodes represent macros, gates, measurements or policy checks, edges
+    represent causal, temporal or data dependencies, and scopes are determined
+    by active □-frames. This is a toolchain-oriented aid, not a replacement
+    for canonical PMS composition rules.
+
+extension_governance:
+  role_of_this_file: >
+    Optional paper-specific refinement layer within the PMS-QC repository
+    ecosystem.
+  extensions_may:
+    - "Define paper-specific refinements of generic PMS-QC macros."
+    - "Introduce paper-specific chain templates for analysis and annotation."
+    - "Add optional structural policy refinements and bounded governance heuristics."
+    - "Add organizational or toolchain-oriented helper metadata when explicitly marked as non-canonical."
+  extensions_should_not_without_explicit_revision:
+    - "Silently redefine PMS or PMS-QC base semantics."
+    - "Silently promote EXT refinements into the generic base layer."
+    - "Present paper-specific constructs as generic PMS-QC standards."
+    - "Treat governance-oriented refinements as validated deployment architecture."
+    - "Treat helper metadata as if it modified canonical PMS operator logic."
+
+base_vs_extension_boundary:
+  note: >
+    This block records the intended separation between the generic PMS-QC base
+    overlay and the paper-specific EXT layer.
+  refines_base_macros:
+    - "QORACLE_CALL"
+    - "QDIFFUSION"
+    - "QMEASURE"
+  reserved_ext_macros:
+    - "QPE_ORACLE_LADDER"
+    - "GROVER_CENTERING"
+    - "ATTRACTOR_FIXED_POINT"
+    - "MEASUREMENT_PROJECTION_MODEL"
+  paper_specific_chain_patterns:
+    - "qpe_exact"
+    - "grover_fixed_point"
+    - "attractor_alignment"
+  paper_specific_policy_refinements:
+    - "qpe_depth_guard"
+    - "grover_no_overshoot"
+    - "basis_reframe_guard"
+    - "attractor_cycle_integrity"
+
+application_boundary:
+  note: >
+    EXT use remains bounded by the same non-anthropomorphic and non-deployment
+    discipline that governs PMS and PMS-QC.
+  constraints:
+    - "No clinical, personal or moral interpretation of QC actors or workflows."
+    - "No anthropomorphisation of quantum patterns."
+    - "No inference from structural refinement to safety or capability."
+    - "No deployment claim from EXT compliance alone."
 
 # -----------------------------------------------------------------------------
-# SECTION 1 — EXTENDED MAPPINGS (NON-NORMATIVE)
+# SECTION 1 — EXTENDED MAPPINGS (NON-NORMATIVE, PAPER-SPECIFIC)
 # -----------------------------------------------------------------------------
 
 extended_qc_mappings:
   overview: >
-    Additional interpretations of Δ–Ψ in quantum workflows that deepen
-    specific constructs described in the PMS-QC research paper. These
-    mappings do not override the base layer.
+    These are paper-specific refined renderings of selected Δ–Ψ operators in
+    QC contexts. They do not override the generic PMS-QC base mappings and
+    should be read as optional, non-canonical refinements used for the
+    present paper's algorithmic and governance-oriented analysis.
   items:
     - operator: "Δ"
       refined_roles:
         - "Phase-distinguished alternatives in eigenvalue encodings."
         - "Domain-partitioned initialisation in multi-register workflows."
+
     - operator: "Α"
       refined_roles:
-        - "Fixed-point attractor cycles for controlled amplitude adjustment."
-        - "Centre-aligned attractor regions used in spectral estimation."
+        - "Paper-specific fixed-point-oriented attractor schedules for controlled amplitude adjustment."
+        - "Centre-aligned attractor regions used in spectral or phase-estimation-style settings."
+
     - operator: "Θ"
       refined_roles:
-        - "Exponentially scaled iteration: U^(2^j) as Θ with non-linear weight."
-        - "Iterative attractor contraction schedule."
+        - "Paper-specific rendering of the controlled-unitary ladder U^(2^j) as a structured Θ–Ω pattern in QPE-related contexts."
+        - "Optional iterative attractor-contraction schedules in fixed-point-style refinements."
+
     - operator: "Φ"
       refined_roles:
-        - "Two-stage reframing: spectral → Fourier → computational basis."
+        - "Paper-specific two-stage reframing from spectral / phase encoding toward computational readout."
+
     - operator: "Ψ"
       refined_roles:
-        - "Invariance-bound commitment ensuring fixed iteration depth or ceiling."
-        - "Attractor-cycle validity constraints (preventing runaway amplitude)."
+        - "Possible structural loci for invariance-bound commitments such as iteration ceilings or bounded coherence conditions."
+        - "Paper-specific attractor-cycle validity constraints that aim to prevent runaway structural amplification without guaranteeing physical convergence."
 
 # -----------------------------------------------------------------------------
-# SECTION 2 — PAPER-SPECIFIC MACRO OPERATORS
+# SECTION 2 — PAPER-SPECIFIC MACRO REFINEMENTS
 # -----------------------------------------------------------------------------
 
 macro_extensions:
   overview: >
-    These macros capture more specialised QC constructs from the PMS-QC paper.
-    They are optional and suitable for AI–QC orchestration, meta-compilers or
-    documentation layers.
+    These macros are paper-specific refinements of the generic PMS-QC base
+    layer. They are optional and intended for analysis, annotation,
+    documentation, orchestration and compilation-adjacent reasoning within
+    the scope of the present paper. They do not claim completeness, physical
+    sufficiency, optimal compilation or validated control behaviour.
 
   macros:
     - id: "QPE_ORACLE_LADDER"
       refines_base_macro: "QORACLE_CALL"
-      paper_dependency: "PMS-QC Paper §3.2"
+      paper_dependency: "PMS-QC paper, QPE reconstruction / ladder refinement"
       params: ["unitary_id", "t"]
       description: >
-        Apply the phase-kickback ladder structure U^(2^j) for j in [0, t-1].
+        Paper-specific reusable refinement of the controlled power-of-two
+        ladder U^(2^j) for j in [0, t-1] in QPE-related settings.
       pms_expansion: ["Θ", "Ω", "□"]
       chain_pattern: "Θ^t( Ω ∘ □ )"
       notes: >
-        Captures exponential scaling of controlled unitaries; Θ encodes
-        temporal progression, Ω captures controlled asymmetry.
+        This macro captures the paper-specific ladder refinement discussed in
+        the QPE chapter. It does not alter the semantics of QORACLE_CALL in
+        the generic base layer. The ladder itself remains EXT-only and does
+        not imply optimality, necessity, correctness or physical adequacy.
 
     - id: "GROVER_CENTERING"
       refines_base_macro: "QDIFFUSION"
-      paper_dependency: "PMS-QC Paper §4.1"
+      paper_dependency: "PMS-QC paper, Grover refinement / fixed-point discussion"
       params: []
       description: >
-        A higher-order amplitude centering operator used for fixed-point Grover.
+        Paper-specific refinement for fixed-point or overshoot-regulated
+        Grover-style centering.
       pms_expansion: ["Α", "Σ", "Ψ"]
       chain_pattern: "Ψ ∘ Σ ∘ Α"
       notes: >
-        Adds a Ψ-layer to enforce convergence ceilings (no overshoot).
+        This refinement adds a Ψ-layer after attractor integration in order to
+        model bounded, paper-specific regulation of Grover-style amplification.
+        It is not part of standard Grover, is not required by the base
+        representation, and does not guarantee convergence or overshoot
+        prevention.
 
     - id: "ATTRACTOR_FIXED_POINT"
       refines_base_macro: null
-      paper_dependency: "PMS-QC Paper §4.2"
+      paper_dependency: "PMS-QC paper, attractor schedule refinement discussion"
       params: ["schedule"]
       description: >
-        Structured attractor cycles to ensure controlled convergence.
+        Paper-specific attractor schedule template for bounded fixed-point-
+        oriented convergence modelling.
       pms_expansion: ["Α", "Θ", "Σ", "Ψ"]
       notes: >
-        Supports multiple attractor schedules (linear, exponential, custom).
+        Supports optional schedule descriptions such as linear, exponential or
+        custom sequences. This is a structural refinement template only and
+        does not guarantee actual convergence, correctness, stability or
+        physical adequacy.
 
     - id: "MEASUREMENT_PROJECTION_MODEL"
       refines_base_macro: "QMEASURE"
-      paper_dependency: "PMS-QC Paper §5"
+      paper_dependency: "PMS-QC paper, measurement branching discussion"
       params: []
       description: >
-        Explicit modelling of branching structures in measurement domains.
+        Paper-specific structural modelling refinement for branching in
+        measurement domains.
       pms_expansion: ["Δ", "Λ", "□"]
       notes: >
-        Λ encodes unrealised branches; Δ actual outcomes; □ stabilises domain.
+        Λ encodes unrealised branches, Δ actual outcome distinctions, and □
+        the relevant measurement domain. This is a structural modelling aid,
+        not a complete physical theory of measurement, and does not replace
+        the base semantics of QMEASURE.
 
 # -----------------------------------------------------------------------------
-# SECTION 3 — PAPER-SPECIFIC Δ–Ψ CHAIN PATTERNS
+# SECTION 3 — PAPER-SPECIFIC Δ–Ψ CHAIN TEMPLATES
 # -----------------------------------------------------------------------------
 
 chain_patterns:
   overview: >
-    These patterns derive directly from PMS-QC paper examples and provide
-    ready-to-use operator templates for transformation and analysis.
+    These patterns derive directly from the PMS-QC paper and provide
+    paper-specific chain templates for analysis, annotation and comparison.
+    They are non-canonical and do not override the semantics of the generic
+    PMS-QC base overlay.
 
   patterns:
     qpe_exact:
-      description: "Full QPE operator chain, as presented in the paper."
-      chain: ["Δ", "∇", "Α", "Θ^t(Ω ∘ □)", "Α", "Φ", "Σ", "Δ", "Λ"]
+      description: >
+        Paper-specific full QPE chain template with explicit ladder refinement.
+      chain: ["Δ", "∇", "Α", "Θ^t(Ω ∘ □)", "Φ", "Α", "Σ", "Δ", "Λ"]
       notes: >
-        Matches QPE preparation, controlled ladder, Fourier alignment,
-        reframing and final measurement.
+        Matches QPE preparation, controlled ladder refinement, Fourier-domain
+        reframing, alignment and final measurement. The QFT-alignment stage is
+        semantically ordered as Σ(Α(Φ(S))). The ladder component remains
+        paper-specific and EXT-only.
 
     grover_fixed_point:
-      description: "Grover iteration with fixed-point attractor regulation."
-      chain: ["Δ", "∇", "Δ", "Ω", "Α", "Σ", "Ψ", "Θ^k", "Δ", "Λ"]
+      description: >
+        Paper-specific Grover template with EXT-bound fixed-point-style
+        regulation.
+      chain: ["□", "Δ", "∇", "Α", "Θ^k(Ψ ∘ Σ ∘ Α ∘ Ω ∘ Δ ∘ □)", "Δ", "Λ"]
       notes: >
-        Adds Ψ-level convergence caps and Σ-level integration after each cycle.
+        Standard Grover remains a base-layer construction without Ψ. This
+        template adds EXT-bound Ψ regulation within the iterated block to
+        model fixed-point or overshoot-regulated variants.
 
     attractor_alignment:
-      description: "Spectral-domain attractor consolidation pattern."
-      chain: ["Δ", "Α", "Θ", "Α", "Σ"]
+      description: >
+        Paper-specific reframing-plus-alignment pattern for spectral or
+        Fourier-oriented estimation settings.
+      chain: ["Δ", "Φ", "Α", "Σ"]
       notes: >
-        Typical for spectral estimation and Fourier-aligned attractor operation.
+        Useful where reframing and alignment are structurally foregrounded.
+        This pattern is non-canonical and should not be conflated with the
+        generic base macro semantics of QFT_ALIGN.
 
 # -----------------------------------------------------------------------------
-# SECTION 4 — EXTENDED POLICY CONSTRAINTS
+# SECTION 4 — EXTENDED POLICY REFINEMENTS
 # -----------------------------------------------------------------------------
 
 extended_policies:
   overview: >
-    Advanced structural safety and governance rules enriched from the PMS-QC
-    paper. They compose with, but never replace, PMS-QC base policies.
+    These are paper-specific structural guardrails and optional governance-,
+    audit- and stability-oriented refinements derived from the PMS-QC paper.
+    They compose with, but never replace, PMS-QC base policies. They are
+    non-guarantee refinements, not validated safety defaults.
+  global_non_guarantee_clause: >
+    Structural refinement ≠ physical guarantee ≠ safety guarantee.
 
   policies:
     - id: "qpe_depth_guard"
       policy_kind: "governance"
+      paper_specific: true
       non_guarantee: true
       description: >
-        Enforce an upper bound on the exponent ladder depth (Θ-level expansion).
-        t_max is governance, not correctness guarantee.
+        Bounded structural guard on QPE-style ladder depth. t_max expresses a
+        paper-specific governance or audit bound, not a correctness or
+        optimality guarantee.
       params:
         - name: "t_max"
           type: "integer"
       rule: >
-        Θ^t(Ω ∘ □) requires t <= t_max unless a Ψ-stabilisation section follows.
+        Θ^t(Ω ∘ □) requires t <= t_max unless an explicit Ψ-stabilisation
+        section follows.
 
     - id: "grover_no_overshoot"
       policy_kind: "stability"
+      paper_specific: true
       non_guarantee: true
       description: >
-        Prevent amplitude overshoot by requiring Ψ-bound regulation after Σ.
+        Paper-specific overshoot-avoidance guard for Grover-style cycles with
+        EXT-bound regulation.
       rule: >
-        If Σ is applied after Α in Grover-style cycles, Ψ must follow within
-        the same iteration scope unless an external convergence guarantee exists.
+        If Σ is applied after Α in Grover-style cycles, Ψ should follow within
+        the same iteration scope unless alternative paper-specific invariance
+        conditions are explicitly declared.
 
     - id: "basis_reframe_guard"
       policy_kind: "audit"
+      paper_specific: true
       non_guarantee: true
       description: >
-        Limit Φ transitions after Σ to preserve semantic integration.
+        Paper-specific guard protecting Σ-boundaries against unrestricted
+        reframing.
       rule: >
         After Σ, Φ may reframe only if accompanied by explicit Ψ invariants.
 
     - id: "attractor_cycle_integrity"
       policy_kind: "stability"
+      paper_specific: true
       non_guarantee: true
       description: >
-        Ensure that attractor schedules encode valid convergence behaviour.
+        Paper-specific attractor schedule guard for bounded structural
+        admissibility.
       rule: >
-        Α steps repeated under Θ must incorporate Σ checkpoints or Ψ invariants
-        to avoid divergence.
+        Α steps repeated under Θ should incorporate Σ checkpoints or Ψ
+        invariants in order to avoid structurally unbounded divergence.
 
 # -----------------------------------------------------------------------------
 # SECTION 5 — AI INTERFACE EXTENSION
@@ -234,17 +441,21 @@ extended_policies:
 
 ai_extension:
   overview: >
-    Additional capabilities for AI agents when PMS-QC_EXT is loaded.
-
+    This section defines optional reasoning affordances when PMS-QC_EXT is
+    loaded. The capabilities below are advisory only and intended for bounded
+    experimental settings. They do not imply deployment adequacy, validated
+    safety, or full runtime autonomy.
   capabilities_added:
-    - "Identify abstract ladder structures (Θ^t) and evaluate invariance rules."
-    - "Propose attractor schedules aligned with Ψ policies."
-    - "Analyse reframing cascades (Φ → Φ → Φ) for semantic consistency."
-    - "Transform raw circuits into annotated Δ–Ψ chains with extended macros."
-
+    - "May identify abstract ladder structures (Θ^t) and evaluate associated invariance rules."
+    - "May suggest attractor schedules aligned with EXT-bound Ψ policies."
+    - "May analyse reframing cascades (Φ → Φ → Φ) for structural consistency."
+    - "May transform raw circuits into annotated Δ–Ψ chains using EXT macros and templates."
   guardrails:
-    - "AI MUST treat PMS-QC_EXT as advisory; Δ–Ψ fundamentals remain unchanged."
+    - "AI MUST treat PMS-QC_EXT as advisory and optional; Δ–Ψ fundamentals remain unchanged."
+    - "AI MUST preserve the distinction between PMS base, PMS-QC base, and EXT refinements."
     - "AI MUST NOT interpret Ψ-invariants as physical stability guarantees."
+    - "AI MUST NOT infer physical correctness, safety or deployment readiness from EXT compliance."
+    - "AI MUST NOT treat governance annotations as validated safety architecture."
     - "AI MUST NOT anthropomorphise quantum patterns."
 
 # -----------------------------------------------------------------------------
@@ -253,9 +464,15 @@ ai_extension:
 
 meta_notes:
   extensibility:
-    - "Further QC-domain modules may be added: VQE_EXT, QML_EXT, TROTTER_EXT."
-    - "All extensions MUST remain optional and Δ–Ψ compatible."
+    - "Further QC-domain modules may be added, e.g. VQE_EXT, QML_EXT, TROTTER_EXT."
+    - "All extensions MUST remain optional, Δ–Ψ-compatible and subordinate to PMS and PMS-QC."
+    - "Paper-specific refinements MUST NOT be silently promoted into the generic base overlay."
+    - "No extension may introduce new PMS meta-axioms."
   neutrality:
     - "Extensions refine interpretation but do not constrain foundational PMS."
+    - "Extensions do not redefine PMS-QC base semantics."
+    - "Extensions do not imply universality, comparative superiority or final closure."
   versioning:
-    - "Extensions evolve independently; base PMS-QC remains stable."
+    - "Extensions evolve independently, but must declare compatible PMS and PMS-QC base versions."
+    - "Semantic changes to a refinement should be versioned explicitly."
+    - "Existing refinement semantics must not be silently overridden."

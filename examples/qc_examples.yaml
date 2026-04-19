@@ -1,0 +1,104 @@
+qc_examples:
+  grover_minimal:
+    description: >
+      PMS-QC minimal structural rendering of Grover's search algorithm.
+      This is a base-layer skeleton only and does not imply convergence
+      guarantees.
+    macro_program:
+      - "QFRAME(problem)"
+      - "QPREP(superposition)"
+      - "QITERATE(k, { QORACLE_CALL(F); QDIFFUSION; })"
+      - "QMEASURE(basis=computational, register=search)"
+    pms_expansion:
+      chain: "Λ ∘ Δ ∘ Θ^k( Σ ∘ Α ∘ Ω ∘ Δ ∘ □ )"
+      interpretation: >
+        Structural rendering only. □: problem frame; Δ: distributed
+        alternatives; Ω: oracle asymmetry; Α: amplitude attractor; Σ:
+        integrated iteration effect; Θ^k: repeated oracle–diffusion; Δ/Λ:
+        outcome distinction and unrealised branches. No Ψ-layer is included
+        in this base skeleton.
+
+  qpe_minimal:
+    description: >
+      PMS-QC minimal structural rendering of Quantum Phase Estimation.
+      The explicit power-of-two ladder remains a paper-specific EXT-only
+      refinement; this base example uses QORACLE_CALL(U^{2^j}) only as a
+      minimal structural placeholder.
+    macro_program:
+      - "QFRAME(eigenproblem)"
+      - "QPREP(superposition)"
+      - "QITERATE(t, { QORACLE_CALL(U^{2^j}); })"
+      - "QFT_ALIGN(inverse)"
+      - "Σ"
+      - "QMEASURE(basis=computational, register=control)"
+    pms_expansion:
+      chain: "Λ ∘ Δ ∘ Σ ∘ Α ∘ Φ ∘ Θ^t( Ω ∘ □ ) ∘ Α ∘ ∇ ∘ Δ"
+      interpretation: >
+        Structural rendering only. □: eigenproblem frame; Δ/∇/Α: preparation
+        of control superposition; Θ^t(Ω ∘ □): ordered controlled-unitary
+        action in minimal base form; Φ/Α/Σ: reframing, alignment and explicit
+        structural commit for measurement, semantically read as Σ(Α(Φ(S)));
+        Δ/Λ: phase-encoded alternatives resolved into a discrete estimate.
+        This does not create a reusable base ladder macro.
+
+  measurement_reframe_minimal:
+    description: >
+      PMS-QC minimal structural rendering of a reframing-plus-measurement
+      workflow. This example exists to show that QFT_ALIGN(...) remains
+      distinct from QDIFFUSION and that Σ may appear explicitly after
+      QFT_ALIGN(...) in the base layer.
+    macro_program:
+      - "QFRAME(init)"
+      - "QPREP(superposition)"
+      - "QFT_ALIGN(inverse)"
+      - "Σ"
+      - "QMEASURE(basis=computational, register=control)"
+    pms_expansion:
+      chain: "Λ ∘ Δ ∘ Σ ∘ Α ∘ Φ ∘ Α ∘ ∇ ∘ Δ ∘ □"
+      interpretation: >
+        Structural rendering only. □: initial computational frame; Δ/∇/Α:
+        preparation of a distributed control state; Φ/Α: inverse Fourier-style
+        reframing and alignment; Σ: explicit structural commit before
+        measurement; Δ/Λ: resolved outcome distinctions and unrealised
+        branches. This example is base-compatible and does not imply any
+        paper-specific QPE ladder refinement.
+
+  stabilizer_cycle_minimal:
+    description: >
+      PMS-QC minimal structural rendering of a bounded stabiliser-oriented
+      workflow in an error-space frame. This example shows how QSTABILIZE(...)
+      functions as a generic base-layer Ψ-location without introducing any
+      EXT-only convergence or governance refinement.
+    macro_program:
+      - "QFRAME(error_space)"
+      - "QPREP(register_init)"
+      - "QSTABILIZE(code_id)"
+      - "QMEASURE(basis=computational, register=logical)"
+    pms_expansion:
+      chain: "Λ ∘ Δ ∘ Ψ ∘ Α ∘ ∇ ∘ Δ ∘ □"
+      interpretation: >
+        Structural rendering only. □: error-space or code-space frame; Δ/∇/Α:
+        register initialisation as a bounded preparation chain; Ψ: generic
+        stabilisation or invariant-maintaining step; Δ/Λ: measurement outcome
+        resolution and unrealised branches. This example does not claim
+        fault-tolerance guarantees, physical adequacy, or validated code
+        performance.
+
+  entangle_measure_minimal:
+    description: >
+      PMS-QC minimal structural rendering of an entanglement-oriented
+      preparation followed by measurement. This example exists to make the
+      base mode QPREP(entangle) explicit within the example suite.
+    macro_program:
+      - "QFRAME(init)"
+      - "QPREP(entangle)"
+      - "QMEASURE(basis=computational, register=pair)"
+    pms_expansion:
+      chain: "Λ ∘ Δ ∘ Α ∘ ∇ ∘ Δ ∘ □"
+      interpretation: >
+        Structural rendering only. □: initial computational frame; Δ/∇/Α:
+        correlated preparation yielding an entanglement-oriented structural
+        pattern; Δ/Λ: measurement distinguishes realised outcomes while
+        unrealised branches remain structurally marked as non-events. This
+        example is intentionally minimal and does not imply any specialized
+        measurement-domain refinement.

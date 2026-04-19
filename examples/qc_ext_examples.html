@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMS-QC_EXT – Example Suite</title>
+    <style type="text/css">
+      :root {
+        --font-body: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-heading: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+        --color-bg: #f5f7fb;
+        --color-surface: #ffffff;
+        --color-surface-soft: #f9fbfd;
+        --color-text: #18202a;
+        --color-muted: #5f6b7a;
+        --color-accent: #1f4b99;
+        --color-accent-soft: #e8f0ff;
+        --color-border: #d9e1ea;
+        --color-border-strong: #bfc9d8;
+        --color-quote: #2f5da8;
+        --color-code-bg: #f3f5f7;
+        --color-table-head: #eef3f8;
+        --color-row-alt: #fbfcfe;
+
+        --shadow-soft: 0 10px 30px rgba(18, 30, 50, 0.06);
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 16px;
+
+        --content-width: 980px;
+        --line-height: 1.7;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 32px 20px 64px;
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: var(--line-height);
+        color: var(--color-text);
+        background:
+          linear-gradient(180deg, #f7f9fc 0%, #f3f6fa 100%);
+      }
+
+      .page,
+      body > header,
+      body > section,
+      body > main {
+        width: min(100%, var(--content-width));
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .page {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 40px 42px 56px;
+      }
+
+      /* Header */
+      header {
+        width: min(100%, var(--content-width));
+        margin: 0 auto 28px;
+        padding: 24px 0 18px;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      header h1 {
+        margin: 0 0 10px;
+        font-family: var(--font-heading);
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 500;
+        line-height: 1.15;
+        text-align: center;
+        letter-spacing: -0.02em;
+        color: var(--color-text);
+      }
+
+      header h2 {
+        margin: 0 auto 12px;
+        max-width: 48rem;
+        font-size: 1.15rem !important;
+        line-height: 1.45;
+        font-weight: 400;
+        text-align: center;
+        color: var(--color-muted);
+        border: 0;
+        padding: 0;
+      }
+
+      header .subtitle {
+        max-width: 52rem;
+        margin: 0 auto 12px;
+        text-align: center;
+        color: var(--color-muted);
+        font-size: 1rem;
+      }
+
+      header .meta {
+        max-width: 52rem;
+        margin: 14px auto 0;
+        padding: 12px 14px;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background: var(--color-surface-soft);
+        font-size: 0.88rem;
+        line-height: 1.55;
+        color: var(--color-muted);
+      }
+
+      /* Sections */
+      section {
+        margin: 0 0 28px;
+      }
+
+      section#content {
+        width: min(100%, var(--content-width));
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-heading);
+        color: var(--color-text);
+        letter-spacing: -0.01em;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 500;
+      }
+
+      h2,
+      h2 strong {
+        padding-bottom: 8px;
+        font-size: 1.65rem !important;
+        font-weight: 500 !important;
+        line-height: 1.25;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      h3,
+      h3 strong {
+        margin: 22px 0 8px !important;
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        line-height: 1.35;
+      }
+
+      h4,
+      h4 strong {
+        margin: 18px 0 6px !important;
+        font-size: 1.05rem !important;
+        font-weight: 600 !important;
+        line-height: 1.35;
+      }
+
+      h5,
+      h5 strong,
+      h6,
+      h6 strong {
+        margin: 16px 0 4px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        line-height: 1.35;
+      }
+
+      /* Text */
+      p {
+        margin: 0 0 12px;
+      }
+
+      strong {
+        color: #111827;
+      }
+
+      em {
+        color: inherit;
+      }
+
+      .small {
+        font-size: 0.92rem;
+        color: var(--color-muted);
+      }
+
+      /* Links */
+      a {
+        color: var(--color-accent);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      a:hover,
+      a:focus {
+        border-bottom-color: currentColor;
+      }
+
+      /* Lists */
+      ul,
+      ol {
+        margin: 8px 0 14px 1.25rem;
+        padding: 0;
+      }
+
+      li {
+        margin: 0 0 6px;
+        padding-left: 2px;
+      }
+
+      ul ul,
+      ol ol,
+      ul ol,
+      ol ul {
+        margin-top: 6px;
+        margin-bottom: 8px;
+      }
+
+      li > p {
+        margin-bottom: 6px;
+      }
+
+      /* Horizontal rule */
+      hr {
+        display: block;
+        height: 0;
+        border: 0;
+        border-top: 1px solid var(--color-border);
+        margin: 24px 0;
+      }
+
+      /* Quotes */
+      blockquote {
+        margin: 16px 0;
+        padding: 12px 18px;
+        border-left: 4px solid var(--color-quote);
+        background: #f8fbff;
+        color: #324154;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      }
+
+      blockquote p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Code */
+      code,
+      .code-inline {
+        font-family: var(--font-mono);
+        font-size: 0.92em;
+        background: var(--color-code-bg);
+        border: 1px solid #e7ebf0;
+        border-radius: 4px;
+        padding: 0.12em 0.4em;
+        color: #233044;
+      }
+
+      pre {
+        margin: 14px 0 18px;
+        padding: 14px 16px;
+        overflow-x: auto;
+        background: #111827;
+        color: #f3f4f6;
+        border-radius: var(--radius-md);
+        border: 1px solid #0f172a;
+        text-align: left;
+        line-height: 1.55;
+      }
+
+      pre code {
+        background: transparent;
+        border: 0;
+        color: inherit;
+        padding: 0;
+        font-size: 0.92rem;
+      }
+
+      /* Boxes / callouts */
+      .box {
+        margin: 16px 0 18px;
+        padding: 14px 16px;
+        border: 1px solid var(--color-border);
+        border-left: 4px solid var(--color-accent);
+        border-radius: var(--radius-md);
+        background: linear-gradient(180deg, #fbfdff 0%, #f7faff 100%);
+        line-height: 1.55;
+      }
+
+      .box-title {
+        margin: 0 0 6px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--color-accent);
+      }
+
+      .box p:last-child,
+      .box ul:last-child,
+      .box ol:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Tables */
+      .table,
+      table {
+        width: 100%;
+        margin: 14px 0 18px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+
+      .table th,
+      .table td,
+      table th,
+      table td {
+        padding: 10px 12px;
+        vertical-align: top;
+        border: 1px solid var(--color-border);
+        text-align: left;
+      }
+
+      .table th,
+      table th {
+        background: var(--color-table-head);
+        color: #233044;
+        font-weight: 700;
+        font-variant: small-caps;
+        letter-spacing: 0.03em;
+      }
+
+      .table tr:nth-child(even) td,
+      table tr:nth-child(even) td {
+        background: var(--color-row-alt);
+      }
+
+      .table tr:nth-child(odd) td,
+      table tr:nth-child(odd) td {
+        background: #ffffff;
+      }
+
+      /* Tags */
+      .tag {
+        display: inline-block;
+        margin: 0 6px 6px 0;
+        padding: 3px 10px;
+        border: 1px solid var(--color-border-strong);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--color-muted);
+        font-size: 0.78rem;
+        line-height: 1.3;
+      }
+
+      /* Placeholder */
+      .placeholder {
+        color: var(--color-muted);
+        font-style: italic;
+      }
+
+      /* Two-column layouts */
+      .two-column {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin: 10px 0 16px;
+      }
+
+      .two-column > div {
+        min-width: 0;
+      }
+
+      /* Utility */
+      .pagebreak {
+        page-break-before: always;
+        break-before: page;
+      }
+
+      /* Better spacing for consecutive structural blocks */
+      h2 + p,
+      h3 + p,
+      h4 + p {
+        margin-top: 2px;
+      }
+
+      p + ul,
+      p + ol {
+        margin-top: 6px;
+      }
+
+      ul + p,
+      ol + p {
+        margin-top: 10px;
+      }
+
+      /* Optional content-specific helper classes */
+      .meta-grid {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 8px 14px;
+        margin: 12px 0 18px;
+      }
+
+      .meta-grid dt {
+        font-weight: 600;
+        color: var(--color-muted);
+      }
+
+      .meta-grid dd {
+        margin: 0;
+      }
+
+      .definition-list {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 8px 14px;
+      }
+
+      .definition-list dt {
+        font-weight: 600;
+        color: var(--color-accent);
+      }
+
+      .definition-list dd {
+        margin: 0;
+      }
+
+      .callout-warning {
+        border-left-color: #b45309;
+        background: #fffaf2;
+      }
+
+      .callout-success {
+        border-left-color: #0f766e;
+        background: #f4fffd;
+      }
+
+      .callout-danger {
+        border-left-color: #b91c1c;
+        background: #fff8f8;
+      }
+
+      /* Images */
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 14px auto 18px;
+        border-radius: var(--radius-sm);
+      }
+
+      /* Print */
+      @media print {
+        :root {
+          --color-bg: white;
+          --color-surface: white;
+          --color-surface-soft: white;
+          --color-row-alt: #fafafa;
+          --shadow-soft: none;
+        }
+
+        html,
+        body {
+          background: white !important;
+        }
+
+        body {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          font-size: 11pt;
+          line-height: 1.45;
+        }
+
+        .page,
+        body > header,
+        body > section,
+        body > main,
+        section#content {
+          width: 100%;
+          max-width: 100%;
+          margin: 0;
+        }
+
+        .page {
+          border: 0;
+          box-shadow: none;
+          border-radius: 0;
+          padding: 0;
+        }
+
+        header {
+          margin-bottom: 18px;
+          padding: 0 0 12px;
+        }
+
+        h2,
+        h2 strong {
+          page-break-after: avoid;
+        }
+
+        h3,
+        h3 strong,
+        h4,
+        h4 strong {
+          page-break-after: avoid;
+        }
+
+        p,
+        li,
+        blockquote,
+        .box,
+        table,
+        pre {
+          page-break-inside: avoid;
+        }
+
+        a,
+        a:visited {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        a[href]::after {
+          content: "";
+        }
+
+        .box {
+          background: white;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        body {
+          padding: 20px 14px 44px;
+        }
+
+        .page {
+          padding: 28px 22px 40px;
+        }
+
+        .two-column {
+          grid-template-columns: 1fr;
+        }
+
+        .meta-grid,
+        .definition-list {
+          grid-template-columns: 1fr;
+          gap: 4px 0;
+        }
+
+        header h1 {
+          font-size: 2.2rem;
+        }
+
+        h2,
+        h2 strong {
+          font-size: 1.45rem !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        body {
+          font-size: 15px;
+        }
+
+        .page {
+          padding: 22px 16px 32px;
+          border-radius: 12px;
+        }
+
+        header .meta {
+          padding: 10px 12px;
+        }
+
+        .table,
+        table {
+          font-size: 0.88rem;
+        }
+
+        .table th,
+        .table td,
+        table th,
+        table td {
+          padding: 8px 9px;
+        }
+
+        pre {
+          padding: 12px 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>PMS-QC_EXT – Example Suite</h1>
+        <div class="subtitle">
+          YAML-compatible extension example blocks for <code>pms-qc-ext.yaml</code>
+        </div>
+        <div class="meta">
+          Scope: Optional PMS-QC_EXT refinement layer only<br />
+          Status: Structural examples; non-canonical; non-guarantee renderings<br />
+          Boundary: EXT examples refine PMS-QC usage without overriding PMS or PMS-QC base semantics
+        </div>
+      </header>
+
+      <section id="ext-examples">
+        <h2>EXT Examples</h2>
+        <p>
+          The following example suite gives <strong>YAML-compatible EXT-layer example blocks</strong> for
+          <code>pms-qc-ext.yaml</code>. All examples are intentionally bounded and should be read as
+          <strong>paper-specific structural renderings only</strong>. They do not imply physical correctness,
+          convergence guarantees, implementation adequacy, safety, or deployment readiness.
+        </p>
+        <p>
+          These examples belong to the <strong>optional refinement layer</strong>. They must not be read as
+          generic PMS-QC base examples, and none of them promotes paper-specific ladder logic,
+          centering logic, attractor schedule templates, or measurement-domain refinements into the
+          base overlay.
+        </p>
+
+        <h3><code>qpe_ladder_refined</code></h3>
+        <p>
+          <strong>Description.</strong> EXT-only QPE example with explicit reusable ladder refinement. This
+          example makes the power-of-two controlled-unitary ladder visible as a paper-specific macro
+          and therefore must not be read as a generic PMS-QC base rendering.
+        </p>
+        <pre><code class="hljs text">QFRAME(eigenproblem)
+QPREP(superposition)
+QPE_ORACLE_LADDER(U, t)
+QFT_ALIGN(inverse)
+Σ
+QMEASURE(basis=computational, register=control)</code></pre>
+        <div class="box">
+          <div class="box-title">PMS expansion</div>
+          <p><code>Λ ∘ Δ ∘ Σ ∘ Α ∘ Φ ∘ Θ^t( Ω ∘ □ ) ∘ Α ∘ ∇ ∘ Δ</code></p>
+        </div>
+        <p>
+          <strong>Interpretation.</strong> Structural rendering only. □: eigenproblem frame; Δ/∇/Α:
+          preparation of the control superposition; Θ^t(Ω ∘ □): explicit EXT-level reusable ladder
+          refinement; Φ/Α/Σ: reframing, alignment and explicit structural commit for measurement,
+          semantically read as <code>Σ(Α(Φ(S)))</code>; Δ/Λ: phase-encoded alternatives resolved into a
+          discrete estimate. This example is EXT-only because the named ladder macro is paper-specific
+          and not part of PMS-QC base semantics.
+        </p>
+        <div class="box">
+          <div class="box-title">EXT context</div>
+          <p><strong>EXT macros:</strong> <code>QPE_ORACLE_LADDER</code></p>
+          <p><strong>Chain patterns:</strong> <code>qpe_exact</code></p>
+          <p><strong>Active EXT policies:</strong> <code>qpe_depth_guard</code>, <code>basis_reframe_guard</code></p>
+        </div>
+
+        <h3><code>grover_centered_refined</code></h3>
+        <p>
+          <strong>Description.</strong> EXT-only Grover example with paper-specific centering refinement. This
+          example adds Ψ-bound regulation after attractor integration and must not be conflated with the
+          standard base-layer Grover rendering.
+        </p>
+        <pre><code class="hljs text">QFRAME(problem)
+QPREP(superposition)
+QITERATE(k, { QORACLE_CALL(F); GROVER_CENTERING; })
+QMEASURE(basis=computational, register=search)</code></pre>
+        <div class="box">
+          <div class="box-title">PMS expansion</div>
+          <p><code>Λ ∘ Δ ∘ Θ^k( Ψ ∘ Σ ∘ Α ∘ Ω ∘ Δ ∘ □ ) ∘ Α ∘ ∇ ∘ Δ ∘ □</code></p>
+        </div>
+        <p>
+          <strong>Interpretation.</strong> Structural rendering only. □: problem frame; Δ/∇/Α: prepared
+          search field; Ω: oracle asymmetry; Α/Σ/Ψ: paper-specific regulated amplification cycle
+          introduced through <code>GROVER_CENTERING</code>; Θ^k: repeated bounded centering cycle; Δ/Λ:
+          outcome distinction and unrealised branches. This is not standard Grover and therefore
+          remains EXT-only.
+        </p>
+        <div class="box">
+          <div class="box-title">EXT context</div>
+          <p><strong>EXT macros:</strong> <code>GROVER_CENTERING</code></p>
+          <p><strong>Chain patterns:</strong> <code>grover_fixed_point</code></p>
+          <p><strong>Active EXT policies:</strong> <code>grover_no_overshoot</code></p>
+        </div>
+
+        <h3><code>attractor_fixed_point_linear</code></h3>
+        <p>
+          <strong>Description.</strong> EXT-only attractor-schedule example using a linear fixed-point-oriented
+          refinement template. This example is intended for paper-aligned structural analysis of bounded
+          attractor schedules and does not imply actual convergence or physical adequacy.
+        </p>
+        <pre><code class="hljs text">QFRAME(problem)
+QPREP(superposition)
+QORACLE_CALL(F)
+ATTRACTOR_FIXED_POINT(linear)
+QMEASURE(basis=computational, register=search)</code></pre>
+        <div class="box">
+          <div class="box-title">PMS expansion</div>
+          <p><strong>Operators:</strong> <code>Α</code>, <code>Θ</code>, <code>Σ</code>, <code>Ψ</code></p>
+        </div>
+        <p>
+          <strong>Interpretation.</strong> Structural rendering only. <code>ATTRACTOR_FIXED_POINT</code>
+          introduces a paper-specific attractor schedule template with attractor formation (Α),
+          iterative contraction or repetition structure (Θ), checkpointed integration (Σ), and bounded
+          invariance (Ψ). The EXT schema defines this construct as a refinement template rather than as
+          a generic base macro with fixed canonical chain semantics. It therefore remains EXT-only and
+          non-guarantee by design.
+        </p>
+        <div class="box">
+          <div class="box-title">EXT context</div>
+          <p><strong>EXT macros:</strong> <code>ATTRACTOR_FIXED_POINT</code></p>
+          <p><strong>Active EXT policies:</strong> <code>attractor_cycle_integrity</code></p>
+        </div>
+
+        <h3><code>measurement_projection_refined</code></h3>
+        <p>
+          <strong>Description.</strong> EXT-only measurement-domain example using the paper-specific projection
+          modelling refinement. This example makes the measurement domain itself structurally explicit and
+          must not be confused with the generic PMS-QC base semantics of <code>QMEASURE</code>.
+        </p>
+        <pre><code class="hljs text">QFRAME(eigenproblem)
+QPREP(superposition)
+QPE_ORACLE_LADDER(U, t)
+QFT_ALIGN(inverse)
+Σ
+MEASUREMENT_PROJECTION_MODEL()</code></pre>
+        <div class="box">
+          <div class="box-title">PMS expansion</div>
+          <p><strong>Operators:</strong> <code>Δ</code>, <code>Λ</code>, <code>□</code></p>
+        </div>
+        <p>
+          <strong>Interpretation.</strong> Structural rendering only. <code>MEASUREMENT_PROJECTION_MODEL</code>
+          refines the generic measurement rendering by making outcome distinction (Δ), unrealised
+          branches (Λ), and the relevant measurement domain (□) jointly explicit. The EXT schema defines
+          this construct as a measurement-domain modelling refinement rather than as a replacement for
+          <code>QMEASURE</code>. It therefore remains EXT-only and non-canonical.
+        </p>
+        <div class="box">
+          <div class="box-title">EXT context</div>
+          <p><strong>EXT macros:</strong> <code>QPE_ORACLE_LADDER</code>, <code>MEASUREMENT_PROJECTION_MODEL</code></p>
+          <p><strong>Active EXT policies:</strong> <code>qpe_depth_guard</code>, <code>basis_reframe_guard</code></p>
+        </div>
+
+        <h3><code>attractor_alignment_refined</code></h3>
+        <p>
+          <strong>Description.</strong> EXT-only paper-specific reframing-plus-alignment example for spectral or
+          Fourier-oriented estimation settings. This example foregrounds the
+          <code>attractor_alignment</code> chain pattern and should not be conflated with the generic base
+          semantics of <code>QFT_ALIGN</code>.
+        </p>
+        <pre><code class="hljs text">QFRAME(eigenproblem)
+QPREP(superposition)
+QFT_ALIGN(inverse)
+Σ</code></pre>
+        <div class="box">
+          <div class="box-title">PMS expansion</div>
+          <p><code>Σ ∘ Α ∘ Φ ∘ Δ</code></p>
+        </div>
+        <p>
+          <strong>Interpretation.</strong> Structural rendering only. Δ marks the relevant
+          phase-distinguished alternative structure; Φ reframes from spectral or phase encoding toward
+          readout space; Α aligns amplitudes in the reframed domain; Σ commits the aligned structure.
+          This pattern is useful for paper-specific analysis, but it is non-canonical and should not be
+          read as redefining the generic base macro language.
+        </p>
+        <div class="box">
+          <div class="box-title">EXT context</div>
+          <p><strong>Chain patterns:</strong> <code>attractor_alignment</code></p>
+          <p><strong>Active EXT policies:</strong> <code>basis_reframe_guard</code></p>
+        </div>
+
+        <div class="box">
+          <div class="box-title">Boundary note</div>
+          <p>
+            All five examples are <strong>EXT-layer examples</strong>. They presuppose optional paper-specific
+            refinement logic and therefore must not be treated as generic PMS-QC base examples. In
+            particular, reusable ladder constructs, centered Grover regulation, fixed-point attractor
+            templates, and projection-domain refinements remain EXT-only.
+          </p>
+        </div>
+
+        <div class="box">
+          <div class="box-title">Non-guarantee note</div>
+          <p>
+            EXT usage does not imply physical correctness, stability, convergence, safety, or deployment
+            adequacy. These examples are intended for paper-aligned structural analysis, annotation,
+            comparison, and bounded refinement work only.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

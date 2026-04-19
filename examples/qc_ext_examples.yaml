@@ -1,0 +1,150 @@
+ext_examples:
+  qpe_ladder_refined:
+    description: >
+      EXT-only QPE example with explicit reusable ladder refinement. This
+      example makes the power-of-two controlled-unitary ladder visible as a
+      paper-specific macro and therefore must not be read as a generic
+      PMS-QC base rendering.
+    macro_program:
+      - "QFRAME(eigenproblem)"
+      - "QPREP(superposition)"
+      - "QPE_ORACLE_LADDER(U, t)"
+      - "QFT_ALIGN(inverse)"
+      - "Σ"
+      - "QMEASURE(basis=computational, register=control)"
+    pms_expansion:
+      chain: "Λ ∘ Δ ∘ Σ ∘ Α ∘ Φ ∘ Θ^t( Ω ∘ □ ) ∘ Α ∘ ∇ ∘ Δ"
+      interpretation: >
+        Structural rendering only. □: eigenproblem frame; Δ/∇/Α: preparation
+        of the control superposition; Θ^t(Ω ∘ □): explicit EXT-level
+        reusable ladder refinement; Φ/Α/Σ: reframing, alignment and explicit
+        structural commit for measurement, semantically read as Σ(Α(Φ(S)));
+        Δ/Λ: phase-encoded alternatives resolved into a discrete estimate.
+        This example is EXT-only because the named ladder macro is paper-
+        specific and not part of PMS-QC base semantics.
+    ext_context:
+      ext_macros:
+        - "QPE_ORACLE_LADDER"
+      chain_patterns:
+        - "qpe_exact"
+      active_ext_policies:
+        - "qpe_depth_guard"
+        - "basis_reframe_guard"
+
+  grover_centered_refined:
+    description: >
+      EXT-only Grover example with paper-specific centering refinement. This
+      example adds Ψ-bound regulation after attractor integration and must not
+      be conflated with the standard base-layer Grover rendering.
+    macro_program:
+      - "QFRAME(problem)"
+      - "QPREP(superposition)"
+      - "QITERATE(k, { QORACLE_CALL(F); GROVER_CENTERING; })"
+      - "QMEASURE(basis=computational, register=search)"
+    pms_expansion:
+      chain: "Λ ∘ Δ ∘ Θ^k( Ψ ∘ Σ ∘ Α ∘ Ω ∘ Δ ∘ □ ) ∘ Α ∘ ∇ ∘ Δ ∘ □"
+      interpretation: >
+        Structural rendering only. □: problem frame; Δ/∇/Α: prepared search
+        field; Ω: oracle asymmetry; Α/Σ/Ψ: paper-specific regulated
+        amplification cycle introduced through GROVER_CENTERING; Θ^k:
+        repeated bounded centering cycle; Δ/Λ: outcome distinction and
+        unrealised branches. This is not standard Grover and therefore
+        remains EXT-only.
+    ext_context:
+      ext_macros:
+        - "GROVER_CENTERING"
+      chain_patterns:
+        - "grover_fixed_point"
+      active_ext_policies:
+        - "grover_no_overshoot"
+
+  attractor_fixed_point_linear:
+    description: >
+      EXT-only attractor-schedule example using a linear fixed-point-oriented
+      refinement template. This example is intended for paper-aligned
+      structural analysis of bounded attractor schedules and does not imply
+      actual convergence or physical adequacy.
+    macro_program:
+      - "QFRAME(problem)"
+      - "QPREP(superposition)"
+      - "QORACLE_CALL(F)"
+      - "ATTRACTOR_FIXED_POINT(linear)"
+      - "QMEASURE(basis=computational, register=search)"
+    pms_expansion:
+      operators:
+        - "Α"
+        - "Θ"
+        - "Σ"
+        - "Ψ"
+      interpretation: >
+        Structural rendering only. ATTRACTOR_FIXED_POINT introduces a
+        paper-specific attractor schedule template with attractor formation
+        (Α), iterative contraction or repetition structure (Θ), checkpointed
+        integration (Σ), and bounded invariance (Ψ). The EXT schema defines
+        this construct as a refinement template rather than as a generic base
+        macro with fixed canonical chain semantics. It therefore remains
+        EXT-only and non-guarantee by design.
+    ext_context:
+      ext_macros:
+        - "ATTRACTOR_FIXED_POINT"
+      active_ext_policies:
+        - "attractor_cycle_integrity"
+
+  measurement_projection_refined:
+    description: >
+      EXT-only measurement-domain example using the paper-specific projection
+      modelling refinement. This example makes the measurement domain itself
+      structurally explicit and must not be confused with the generic
+      PMS-QC base semantics of QMEASURE.
+    macro_program:
+      - "QFRAME(eigenproblem)"
+      - "QPREP(superposition)"
+      - "QPE_ORACLE_LADDER(U, t)"
+      - "QFT_ALIGN(inverse)"
+      - "Σ"
+      - "MEASUREMENT_PROJECTION_MODEL()"
+    pms_expansion:
+      operators:
+        - "Δ"
+        - "Λ"
+        - "□"
+      interpretation: >
+        Structural rendering only. MEASUREMENT_PROJECTION_MODEL refines the
+        generic measurement rendering by making outcome distinction (Δ),
+        unrealised branches (Λ), and the relevant measurement domain (□)
+        jointly explicit. The EXT schema defines this construct as a
+        measurement-domain modelling refinement rather than as a replacement
+        for QMEASURE. It therefore remains EXT-only and non-canonical.
+    ext_context:
+      ext_macros:
+        - "QPE_ORACLE_LADDER"
+        - "MEASUREMENT_PROJECTION_MODEL"
+      active_ext_policies:
+        - "qpe_depth_guard"
+        - "basis_reframe_guard"
+
+  attractor_alignment_refined:
+    description: >
+      EXT-only paper-specific reframing-plus-alignment example for spectral or
+      Fourier-oriented estimation settings. This example foregrounds the
+      attractor_alignment chain pattern and should not be conflated with the
+      generic base semantics of QFT_ALIGN.
+    macro_program:
+      - "QFRAME(eigenproblem)"
+      - "QPREP(superposition)"
+      - "QFT_ALIGN(inverse)"
+      - "Σ"
+    pms_expansion:
+      chain: "Σ ∘ Α ∘ Φ ∘ Δ"
+      interpretation: >
+        Structural rendering only. Δ marks the relevant phase-distinguished
+        alternative structure; Φ reframes from spectral or phase encoding
+        toward readout space; Α aligns amplitudes in the reframed domain; Σ
+        commits the aligned structure. This pattern is useful for paper-
+        specific analysis, but it is non-canonical and should not be read as
+        redefining the generic base macro language.
+    ext_context:
+      chain_patterns:
+        - "attractor_alignment"
+      active_ext_policies:
+        - "basis_reframe_guard"

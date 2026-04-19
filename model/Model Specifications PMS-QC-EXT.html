@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style>
+        :root {
+          --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          --font-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+          --color-text: #111;
+          --color-muted: #555;
+          --color-accent: #333;
+          --color-border: #ddd;
+          --color-bg: #fafafa;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        html, body {
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: var(--font-body);
+          color: var(--color-text);
+          background: white;
+          line-height: 1.5;
+          font-size: 1em;
+        }
+
+        blockquote {
+          margin: 0 0 16px;
+          padding: 0 1em;
+          color: #57606a;
+          border-left: 0.25em solid #d0d7de;
+        }
+
+        .page {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 32px 24px 64px;
+          background: white;
+        }
+
+        header {
+          border-bottom: 1px solid var(--color-border);
+          margin-bottom: 24px;
+          padding-bottom: 16px;
+        }
+
+        header h1 {
+          font-size: 1.9rem;
+          margin: 0 0 8px;
+          letter-spacing: 0.02em;
+        }
+
+        header .subtitle {
+          font-size: 0.95rem;
+          color: var(--color-muted);
+          margin-bottom: 8px;
+        }
+
+        header .meta {
+          font-size: 0.8rem;
+          color: var(--color-muted);
+        }
+
+        h2 {
+          margin-top: 20px;
+          margin-bottom: 4px;
+          font-size: 1.15rem;
+          border-bottom: 1px solid var(--color-border);
+          padding-bottom: 4px;
+        }
+
+        h3 {
+          margin-top: 18px;
+          margin-bottom: 4px;
+          font-size: 1rem;
+          color: var(--color-accent);
+        }
+
+        h1 strong, h2 strong, h3 strong, h4 strong, h5 strong {
+          font-weight: 650;
+        }
+
+        hr {
+          display: none;
+        }
+
+        img {
+          max-width: 100%;
+        }
+
+        p {
+          margin: 4px 0 8px;
+        }
+
+        ul {
+          margin: 4px 0 10px 1.2rem;
+          padding: 0;
+          line-height: 1.1em;
+        }
+
+        li {
+          margin-bottom: 3px;
+        }
+
+        pre {
+          background: #eee;
+          padding: 10px;
+        }
+
+        .code-inline {
+          font-family: var(--font-mono);
+          font-size: 0.9em;
+          background: #f5f5f5;
+          padding: 1px 4px;
+          border-radius: 3px;
+        }
+
+        .box {
+          border: 1px solid var(--color-border);
+          border-radius: 4px;
+          padding: 8px 10px;
+          background: #fcfcfc;
+          margin: 8px 0 12px;
+          line-height: 1.05em;
+        }
+
+        .box-title {
+          font-weight: 600;
+          font-size: 0.9rem;
+          margin-bottom: 4px;
+        }
+
+        .small {
+          font-size: 0.85rem;
+          color: var(--color-muted);
+        }
+
+        .two-column {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+        }
+
+        .two-column > div {
+          flex: 1 1 260px;
+          min-width: 0;
+        }
+
+        .table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 8px 0 12px;
+          font-size: 0.77rem;
+          line-height: 1.2em;
+        }
+
+        .table th,
+        .table td {
+          border: 1px solid var(--color-border);
+          padding: 4px 6px;
+          vertical-align: top;
+        }
+
+        .table th {
+          background: #f5f5f5;
+          font-weight: 600;
+        }
+
+        .tag {
+          display: inline-block;
+          border-radius: 999px;
+          border: 1px solid var(--color-border);
+          padding: 1px 8px;
+          font-size: 0.75rem;
+          margin-right: 4px;
+          margin-bottom: 3px;
+        }
+
+        .placeholder {
+          font-style: italic;
+          color: var(--color-muted);
+        }
+
+        .pagebreak{
+          page-break-before:always
+        }
+
+        @media print {
+          body {
+            background: white;
+            width: 100%;
+          }
+          .page {
+            box-shadow: none;
+            padding: 24px 18px;
+            width: 100%;
+          }
+          a[href]:after {
+            content: "";
+          }
+        }
+      </style>
+    <title>PMS-QC-EXT - Model Specification</title>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']],
+          processEscapes: true
+        },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </head>
+  <body>
+    <div class="page">
+      <h1>PMS-QC_EXT – Model Specification</h1>
+      <div class="subtitle">
+        Optional paper-specific refinement layer for PMS-QC: bounded EXT macros, chain templates, policy refinements, and advisory AI-extension logic without redefining PMS or PMS-QC base semantics
+      </div>
+      <div class="meta">
+        Version: PMS-QC_EXT_1.1 &middot;
+        Spec basis: <span class="code-inline">pms-qc-ext.yaml</span><br />
+        Author: T. Zöller &middot; Formalisation assistance: ChatGPT (GPT-5.4 Thinking)<br />
+        Language: EN &middot; Status: Model spec (aligned with <span class="code-inline">extension_meta.status = "draft"</span>)<br />
+        Last updated: 2026-04-19<br />
+        Depends on: <span class="code-inline">PMS.yaml</span> (<span class="code-inline">schema_version = "PMS_1.3"</span>) and <span class="code-inline">pms-qc.yaml</span> (<span class="code-inline">schema_version = "PMS-QC_1.1"</span>)
+      </div>
+      <section id="purpose-scope">
+        <h2>1. Purpose and scope of this specification</h2>
+
+        <p>
+          This document specifies the <em>PMS-QC_EXT</em> layer in a concise, technical form.
+          It is based on the YAML file <span class="code-inline">pms-qc-ext.yaml</span>
+          (with <span class="code-inline">schema_version = "PMS-QC_EXT_1.1"</span>) and renders its structure,
+          constraints, semantics, and boundary conditions explicit for human readers and computational systems.
+          It defines PMS-QC_EXT as an <strong>optional, paper-specific refinement layer</strong> for PMS-QC and collects bounded structural refinements derived from the current “PMS Theory as a Structural Layer for Quantum Computing” paper, including QPE ladder refinements, fixed-point or overshoot-regulated Grover refinements, specialised attractor schedule templates, measurement-domain modelling refinements, and optional structural policy refinements for bounded AI–QC settings.
+        </p>
+
+        <p>
+          PMS-QC_EXT is an <strong>optional, paper-specific refinement layer</strong> for PMS-QC.
+          It collects bounded structural refinements derived from the current
+          <em>PMS Theory as a Structural Layer for Quantum Computing</em> paper,
+          including paper-specific QPE ladder refinements, fixed-point / overshoot-regulated Grover refinements,
+          specialized attractor schedule templates, measurement-domain modelling refinements,
+          and optional structural policy refinements for bounded AI–QC settings.
+        </p>
+
+        <h3>Header-Level Specification Notes</h3>
+
+        <div class="box">
+          <div class="box-title">Optionality and non-override conditions</div>
+          <ul>
+            <li>PMS-QC_EXT is optional.</li>
+            <li>It must not redefine Δ–Ψ operators.</li>
+            <li>It must not alter PMS canonical operator order or dependency spine.</li>
+            <li>It must not override PMS-QC base semantics.</li>
+            <li>It may introduce paper-specific macro refinements, chain templates, and optional structural constraints that remain subordinate to <span class="code-inline">PMS.yaml</span> and <span class="code-inline">pms-qc.yaml</span>.</li>
+          </ul>
+        </div>
+
+        <div class="pagebreak"></div>
+
+        <h3>Purpose</h3>
+        <p>
+          This addendum defines PMS-QC_EXT as an optional, paper-specific refinement layer for PMS-QC.
+          It collects bounded structural refinements derived from the current paper, including:
+        </p>
+        <ul>
+          <li>paper-specific QPE ladder refinements,</li>
+          <li>fixed-point / overshoot-regulated Grover refinements,</li>
+          <li>specialized attractor schedule templates,</li>
+          <li>measurement-domain modelling refinements,</li>
+          <li>optional structural policy refinements for bounded AI–QC settings.</li>
+        </ul>
+
+        <h3>Optionality and base-protection conditions</h3>
+        <p>PMS-QC_EXT is optional.</p>
+        <ul>
+          <li>It must not redefine Δ–Ψ operators.</li>
+          <li>It must not alter PMS canonical operator order or dependency spine.</li>
+          <li>It must not override PMS-QC base semantics.</li>
+          <li>It may introduce paper-specific macro refinements, chain templates, and optional structural constraints that remain subordinate to <span class="code-inline">PMS.yaml</span> and <span class="code-inline">pms-qc.yaml</span>.</li>
+        </ul>
+
+        <h3>Note</h3>
+        <ul>
+          <li>PMS-QC_EXT may refine or extend macro usage, but only as paper-specific overlay constructs.</li>
+          <li>PMS-QC base macros remain authoritative for the generic QC layer unless an EXT construct is explicitly marked as a refinement.</li>
+          <li>No construct in this file should be read as introducing new PMS meta-axioms or a new operator layer.</li>
+        </ul>
+
+        <h3>Intended Use</h3>
+        <ul>
+          <li>Attach alongside <span class="code-inline">PMS.yaml</span> and <span class="code-inline">PMS-QC.yaml</span> for paper-specific QC analysis, annotation and bounded refinement work.</li>
+          <li>Support optional reasoning about QPE ladders, fixed-point Grover variants, attractor schedules and bounded governance-oriented experimentation.</li>
+          <li>Provide paper-derived refinement templates for documentation, orchestration and compilation-adjacent analysis.</li>
+        </ul>
+
+        <h3>Not Intended For</h3>
+        <ul>
+          <li>redefining PMS or PMS-QC base semantics,</li>
+          <li>establishing a generic QC standard,</li>
+          <li>validated safety architecture,</li>
+          <li>deployment-ready agent control,</li>
+          <li>physical correctness guarantees,</li>
+          <li>architecture-independent implementation claims,</li>
+          <li>anthropomorphic interpretation of quantum processes.</li>
+        </ul>
+
+        <h3>Load Order</h3>
+        <ol>
+          <li><span class="code-inline">PMS.yaml</span> (base operator grammar / repository reference)</li>
+          <li><span class="code-inline">pms-qc.yaml</span> (generic QC structural overlay)</li>
+          <li><span class="code-inline">pms-qc-ext.yaml</span> (this addendum; optional paper-specific refinement)</li>
+        </ol>
+
+        <h3>Application reference</h3>
+        <p>
+          Any use of PMS-QC_EXT that claims PMS-based application remains subordinate to the PMS_1.3 entry condition and self-binding clause.
+          This extension does not suspend, replace or override PMS application guardrails.
+        </p>
+        <p><strong>Refers to:</strong></p>
+        <ul>
+          <li><span class="code-inline">pms_entry_condition</span></li>
+          <li><span class="code-inline">schema_meta.normative_position.self_binding_clause</span></li>
+          <li><span class="code-inline">repository_governance</span></li>
+        </ul>
+        <ul>
+          <li>Supplements PMS-QC with paper-specific macro refinements, chain templates and optional structural constraints.</li>
+          <li>Never overrides base definitions.</li>
+          <li>Never promotes paper-specific constructs into the generic base layer.</li>
+        </ul>
+
+        <h3>Repositories</h3>
+        <ul>
+          <li>PMS (base framework): <code>https://github.com/tz-dev/Praxeological-Meta-Structure-Theory</code></li>
+          <li>PMS-QC (this layer): <code>https://github.com/tz-dev/PMS-QC</code></li>
+        </ul>
+
+        <div class="box">
+          <div class="box-title">Core idea</div>
+          <p class="small">
+            PMS-QC_EXT is an <strong>optional addendum</strong> that extends the expressive range available for paper-aligned analysis
+            without altering PMS or PMS-QC base semantics. It is bounded, non-canonical, non-physical,
+            and explicitly subordinate to the base specification stack.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="structure">
+        <h2>2. High-level structure of the YAML model</h2>
+
+        <h3>2.1 Top-level keys</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Description</th>
+              <th>Role in the model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="code-inline">schema_version</span></td>
+              <td>Version identifier (<span class="code-inline">"PMS-QC_EXT_1.1"</span>).</td>
+              <td>Compatibility and citation</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">extends</span></td>
+              <td>Declares the base model, base dependency, and compatibility relation to PMS-QC.</td>
+              <td>Inheritance and compatibility anchor</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">pms_application_reference</span></td>
+              <td>Records PMS-level application guard reference points that still govern EXT usage.</td>
+              <td>PMS application-boundary discipline</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">extension_meta</span></td>
+              <td>Model identity, status, optionality, dependency chain, boundedness, description, and authorship.</td>
+              <td>Meta-definition and extension identity</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">normative_position</span></td>
+              <td>Non-identity, non-monopoly, non-anthropomorphic, non-guarantee, governance-conditional, and base-vs-extension discipline.</td>
+              <td>Interpretive boundary layer</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">computational_position</span></td>
+              <td>Representational, calibration, accountability, and deployment-boundedness clauses.</td>
+              <td>Computational boundary layer</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">semantic_anchor</span></td>
+              <td>Optional organizational workflow model for DAG-style toolchain reasoning.</td>
+              <td>Non-canonical semantic aid</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">extension_governance</span></td>
+              <td>Repository-level discipline specific to optional paper-specific refinements.</td>
+              <td>EXT repository governance</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">base_vs_extension_boundary</span></td>
+              <td>Explicit record of what is refined, reserved, and paper-specific in the EXT layer.</td>
+              <td>Boundary preservation</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">application_boundary</span></td>
+              <td>Explicit non-anthropomorphic and non-deployment boundary constraints for EXT use.</td>
+              <td>Application discipline</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">extended_qc_mappings</span></td>
+              <td>Paper-specific refined renderings of selected Δ–Ψ operators in QC contexts.</td>
+              <td>Optional mapping refinement layer</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">macro_extensions</span></td>
+              <td>Paper-specific macro refinements layered on top of the generic PMS-QC base macros.</td>
+              <td>EXT macro layer</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">chain_patterns</span></td>
+              <td>Paper-specific Δ–Ψ chain templates derived directly from the PMS-QC paper.</td>
+              <td>Analysis and annotation templates</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">extended_policies</span></td>
+              <td>Paper-specific structural policy refinements that compose with but do not replace base policies.</td>
+              <td>EXT policy layer</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">ai_extension</span></td>
+              <td>Optional AI-facing reasoning affordances when PMS-QC_EXT is loaded.</td>
+              <td>Advisory AI extension interface</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">meta_notes</span></td>
+              <td>Extensibility, neutrality, and versioning notes for future extension management.</td>
+              <td>Long-term schema maintenance guidance</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box">
+          <div class="box-title">Conceptual separation</div>
+          <p class="small">
+            PMS remains canonical. PMS-QC remains the generic QC base overlay.
+            PMS-QC_EXT adds only optional, paper-specific refinements and must remain subordinate,
+            non-overriding, and explicitly marked as non-canonical.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="inheritance-identity-boundedness">
+        <h2>3. Inheritance, identity, optionality, and boundedness</h2>
+
+        <h3>3.1 Schema version and extension relation</h3>
+        <div class="box">
+          <p><strong>Schema version:</strong> <span class="code-inline">PMS-QC_EXT_1.1</span></p>
+          <p><strong>Base model:</strong> <span class="code-inline">PMS-QC_1.1</span></p>
+          <p><strong>Base dependency:</strong> <span class="code-inline">PMS_1.3</span></p>
+          <p><strong>Compatibility:</strong> Declared for PMS-QC_1.1 as an optional paper-specific refinement layer. This extension does not override PMS or PMS-QC base semantics.</p>
+        </div>
+
+        <h3>3.2 PMS application reference</h3>
+        <p>
+          PMS-QC_EXT explicitly records that any use of the extension claiming PMS-based application
+          remains subordinate to the PMS_1.3 entry condition and self-binding clause.
+          The extension does not suspend, replace or override PMS application guardrails.
+        </p>
+        <p>Referenced anchors:</p>
+        <ul>
+          <li><span class="code-inline">pms_entry_condition</span></li>
+          <li><span class="code-inline">schema_meta.normative_position.self_binding_clause</span></li>
+          <li><span class="code-inline">repository_governance</span></li>
+        </ul>
+
+        <h3>3.3 Extension identity</h3>
+        <div class="box">
+          <p><strong>Model name:</strong> Praxeological Meta-Structure – Quantum Computing Extension Layer</p>
+          <p><strong>Model short:</strong> PMS-QC_EXT</p>
+          <p><strong>Status:</strong> draft</p>
+          <p><strong>Repository role:</strong> paper_specific_qc_refinement_layer</p>
+          <p><strong>Layer role:</strong> optional_extension</p>
+          <p><strong>Optional extension:</strong> true</p>
+          <p><strong>Depends on:</strong> PMS_1.3, PMS-QC_1.1</p>
+        </div>
+
+        <h3>3.4 Epistemic status and boundedness</h3>
+        <p>
+          <strong>Epistemic status:</strong> Optional paper-derived refinement layer for bounded structural analysis,
+          annotation and policy experimentation within the PMS-QC framework.
+        </p>
+        <p>
+          <strong>Boundedness note:</strong>
+        </p>
+        <blockquote>
+          <p>
+            PMS-QC_EXT is not a generic QC standard and not a canonical part of PMS.
+            It collects paper-specific refinements that remain subordinate to PMS and the PMS-QC base overlay.
+            Use of EXT does not imply comparative superiority, exhaustive capture, deployment adequacy or validated safety.
+          </p>
+        </blockquote>
+
+        <h3>3.5 Description</h3>
+        <p>
+          PMS-QC_EXT adds paper-specific macro refinements, Δ–Ψ chain templates,
+          attractor schedule patterns, ladder refinements, measurement-domain
+          modelling refinements and optional structural policy refinements derived
+          from the present PMS-QC paper. It extends the expressive range available
+          for paper-aligned analysis without altering the semantics of the generic
+          PMS-QC base overlay. Nothing in this file should be read as introducing
+          new PMS meta-axioms, a new operator layer, or a uniquely privileged
+          architecture for AI–QC governance.
+        </p>
+
+        <h3>3.6 Authors</h3>
+        <ul>
+          <li><strong>T. Zöller</strong> — originator</li>
+          <li><strong>ChatGPT (GPT-5.4 Thinking)</strong> — extension_formalization</li>
+        </ul>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="normative-computational-position">
+        <h2>4. Normative and computational position</h2>
+
+        <h3>4.1 Normative position</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Clause</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Non-identity clause</strong></td>
+              <td>EXT mappings and refinements are structural renderings only. They do not imply ontological identity between PMS operators and the specific algorithmic or governance constructs discussed in the paper.</td>
+            </tr>
+            <tr>
+              <td><strong>Non-monopoly clause</strong></td>
+              <td>PMS-QC_EXT does not claim monopoly over high-level structural analysis, nor does it imply that rival or complementary formalisms could not capture certain distinctions more effectively.</td>
+            </tr>
+            <tr>
+              <td><strong>Anthropomorphism clause</strong></td>
+              <td>Terms such as awareness, attractor, governance or self-binding remain structural and non-anthropomorphic. EXT constructs do not attribute consciousness, intention, agency or moral status to quantum systems.</td>
+            </tr>
+            <tr>
+              <td><strong>Non-guarantee clause</strong></td>
+              <td>Structural refinement does not imply physical correctness, convergence, stability, safety or deployment readiness.</td>
+            </tr>
+            <tr>
+              <td><strong>Governance conditionality clause</strong></td>
+              <td>Governance-oriented content in this extension is optional and conditional. It should be read as one bounded architectural path within the paper, not as the natural telos of PMS-QC or as a validated control architecture.</td>
+            </tr>
+            <tr>
+              <td><strong>Base-vs-extension clause</strong></td>
+              <td>Generic PMS-QC macros and policies remain in the base overlay. Paper-specific ladder structures, fixed-point Grover refinements, stronger attractor schedules and additional policy heuristics remain EXT-only.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>4.2 Computational position</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Clause</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Representation clause</strong></td>
+              <td>This file is a formal representational addendum for optional paper-specific refinements. It is not executable code, not a proof of implementability, and not a guarantee of interoperability.</td>
+            </tr>
+            <tr>
+              <td><strong>Calibration clause</strong></td>
+              <td>Structural well-formedness in PMS-QC_EXT does not by itself establish physical adequacy, numerical correctness, stability, safety, or optimal compilation.</td>
+            </tr>
+            <tr>
+              <td><strong>Accountability clause</strong></td>
+              <td>Any operational use of EXT remains dependent on external architectures, implementations, validation procedures and domain-specific accountability mechanisms.</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment clause</strong></td>
+              <td>EXT compliance or EXT policy satisfaction must not be treated as evidence of deployment readiness, safe orchestration or validated agent control.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box">
+          <div class="box-title">Core boundary formula</div>
+          <p class="small">
+            <strong>Refinement ≠ redefinition.</strong><br />
+            <strong>Structural refinement ≠ physical guarantee.</strong><br />
+            <strong>EXT compliance ≠ validated deployment architecture.</strong>
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="semantic-anchor-governance">
+        <h2>5. Semantic anchor, extension governance, and base/EXT boundary</h2>
+
+        <h3>5.1 Semantic anchor</h3>
+        <p>
+          The workflow model recorded here is an optional organizational abstraction for toolchains and analysis.
+          It is explicitly non-canonical and does not redefine PMS or PMS-QC composition logic.
+        </p>
+        <div class="box">
+          <p>
+            PMS-QC_EXT includes an optional semantic anchor for workflow modelling.
+            A QC workflow may be modeled as a typed directed acyclic graph (DAG), where nodes represent macros,
+            gates, measurements or policy checks, edges represent causal, temporal or data dependencies,
+            and scopes are determined by active □-frames. This is a toolchain-oriented aid, not a replacement
+            for canonical PMS composition rules.
+          </p>
+        </div>
+
+        <h3>5.2 Extension governance</h3>
+        <p>
+          The role of this file is defined as an <strong>optional paper-specific refinement layer</strong>
+          within the PMS-QC repository ecosystem.
+        </p>
+
+        <p>Extensions may:</p>
+        <ul>
+          <li>define paper-specific refinements of generic PMS-QC macros,</li>
+          <li>introduce paper-specific chain templates for analysis and annotation,</li>
+          <li>add optional structural policy refinements and bounded governance heuristics,</li>
+          <li>add organizational or toolchain-oriented helper metadata when explicitly marked as non-canonical.</li>
+        </ul>
+
+        <p>Extensions should not, without explicit revision:</p>
+        <ul>
+          <li>silently redefine PMS or PMS-QC base semantics,</li>
+          <li>silently promote EXT refinements into the generic base layer,</li>
+          <li>present paper-specific constructs as generic PMS-QC standards,</li>
+          <li>treat governance-oriented refinements as validated deployment architecture,</li>
+          <li>treat helper metadata as if it modified canonical PMS operator logic.</li>
+        </ul>
+
+        <h3>5.3 Base-vs-extension boundary</h3>
+        <p>
+          This block records the intended separation between the generic PMS-QC base overlay and the paper-specific EXT layer.
+        </p>
+
+        <div class="two-column">
+          <div>
+            <div class="box-title">Refines base macros</div>
+            <ul>
+              <li><span class="code-inline">QORACLE_CALL</span></li>
+              <li><span class="code-inline">QDIFFUSION</span></li>
+              <li><span class="code-inline">QMEASURE</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="box-title">Reserved EXT macros</div>
+            <ul>
+              <li><span class="code-inline">QPE_ORACLE_LADDER</span></li>
+              <li><span class="code-inline">GROVER_CENTERING</span></li>
+              <li><span class="code-inline">ATTRACTOR_FIXED_POINT</span></li>
+              <li><span class="code-inline">MEASUREMENT_PROJECTION_MODEL</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="two-column">
+          <div>
+            <div class="box-title">Paper-specific chain patterns</div>
+            <ul>
+              <li><span class="code-inline">qpe_exact</span></li>
+              <li><span class="code-inline">grover_fixed_point</span></li>
+              <li><span class="code-inline">attractor_alignment</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="box-title">Paper-specific policy refinements</div>
+            <ul>
+              <li><span class="code-inline">qpe_depth_guard</span></li>
+              <li><span class="code-inline">grover_no_overshoot</span></li>
+              <li><span class="code-inline">basis_reframe_guard</span></li>
+              <li><span class="code-inline">attractor_cycle_integrity</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>5.4 Application boundary</h3>
+        <p>
+          EXT use remains bounded by the same non-anthropomorphic and non-deployment discipline that governs PMS and PMS-QC.
+        </p>
+        <ul>
+          <li>No clinical, personal or moral interpretation of QC actors or workflows.</li>
+          <li>No anthropomorphisation of quantum patterns.</li>
+          <li>No inference from structural refinement to safety or capability.</li>
+          <li>No deployment claim from EXT compliance alone.</li>
+        </ul>
+
+        <div class="box">
+          <div class="box-title">Boundary rule</div>
+          <p class="small">
+            EXT may refine, but it may not override. It may extend, but it may not silently canonize.
+            It may improve paper-aligned expressiveness, but it may not be misread as a generic QC standard.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="extended-mappings">
+        <h2>6. Extended QC mappings (non-normative, paper-specific)</h2>
+
+        <p>
+          These are paper-specific refined renderings of selected Δ–Ψ operators in QC contexts.
+          They do not override the generic PMS-QC base mappings and should be read as optional,
+          non-canonical refinements used for the present paper's algorithmic and governance-oriented analysis.
+        </p>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Operator</th>
+              <th>Refined roles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Δ</strong></td>
+              <td>
+                <ul>
+                  <li>Phase-distinguished alternatives in eigenvalue encodings.</li>
+                  <li>Domain-partitioned initialisation in multi-register workflows.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Α</strong></td>
+              <td>
+                <ul>
+                  <li>Paper-specific fixed-point-oriented attractor schedules for controlled amplitude adjustment.</li>
+                  <li>Centre-aligned attractor regions used in spectral or phase-estimation-style settings.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Θ</strong></td>
+              <td>
+                <ul>
+                  <li>Paper-specific rendering of the controlled-unitary ladder <span class="code-inline">U^(2^j)</span> as a structured Θ–Ω pattern in QPE-related contexts.</li>
+                  <li>Optional iterative attractor-contraction schedules in fixed-point-style refinements.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Φ</strong></td>
+              <td>
+                <ul>
+                  <li>Paper-specific two-stage reframing from spectral / phase encoding toward computational readout.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Ψ</strong></td>
+              <td>
+                <ul>
+                  <li>Possible structural loci for invariance-bound commitments such as iteration ceilings or bounded coherence conditions.</li>
+                  <li>Paper-specific attractor-cycle validity constraints that aim to prevent runaway structural amplification without guaranteeing physical convergence.</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box">
+          <div class="box-title">Interpretive discipline</div>
+          <p class="small">
+            These refined roles are optional and paper-specific. They are not replacements for the generic PMS-QC base mappings
+            and do not alter the semantics of the underlying PMS operators.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="macro-extensions">
+        <h2>7. Paper-specific macro refinements</h2>
+
+        <p>
+          These macros are paper-specific refinements of the generic PMS-QC base layer.
+          They are optional and intended for analysis, annotation, documentation,
+          orchestration and compilation-adjacent reasoning within the scope of the present paper.
+          They do not claim completeness, physical sufficiency, optimal compilation or validated control behaviour.
+        </p>
+
+        <h3>7.1 Macro inventory</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Macro</th>
+              <th>Refines base macro</th>
+              <th>Parameters</th>
+              <th>PMS expansion</th>
+              <th>Chain pattern</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="code-inline">QPE_ORACLE_LADDER</span></td>
+              <td><span class="code-inline">QORACLE_CALL</span></td>
+              <td><span class="code-inline">unitary_id</span>, <span class="code-inline">t</span></td>
+              <td><span class="code-inline">["Θ", "Ω", "□"]</span></td>
+              <td><span class="code-inline">Θ^t( Ω ∘ □ )</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">GROVER_CENTERING</span></td>
+              <td><span class="code-inline">QDIFFUSION</span></td>
+              <td>none</td>
+              <td><span class="code-inline">["Α", "Σ", "Ψ"]</span></td>
+              <td><span class="code-inline">Ψ ∘ Σ ∘ Α</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">ATTRACTOR_FIXED_POINT</span></td>
+              <td>null</td>
+              <td><span class="code-inline">schedule</span></td>
+              <td><span class="code-inline">["Α", "Θ", "Σ", "Ψ"]</span></td>
+              <td><span class="placeholder">not explicitly fixed as single chain_pattern field</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">MEASUREMENT_PROJECTION_MODEL</span></td>
+              <td><span class="code-inline">QMEASURE</span></td>
+              <td>none</td>
+              <td><span class="code-inline">["Δ", "Λ", "□"]</span></td>
+              <td><span class="placeholder">not explicitly fixed as single chain_pattern field</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>7.2 Macro-by-macro notes</h3>
+
+        <h4><span class="code-inline">QPE_ORACLE_LADDER</span></h4>
+        <p><strong>Refines base macro:</strong> <span class="code-inline">QORACLE_CALL</span></p>
+        <p><strong>Paper dependency:</strong> PMS-QC paper, QPE reconstruction / ladder refinement</p>
+        <p><strong>Description:</strong> Paper-specific reusable refinement of the controlled power-of-two ladder <span class="code-inline">U^(2^j)</span> for <span class="code-inline">j in [0, t-1]</span> in QPE-related settings.</p>
+        <p><strong>Chain pattern:</strong> <span class="code-inline">Θ^t( Ω ∘ □ )</span></p>
+        <p class="small">
+          This macro captures the paper-specific ladder refinement discussed in the QPE chapter.
+          It does not alter the semantics of <span class="code-inline">QORACLE_CALL</span> in the generic base layer.
+          The ladder itself remains EXT-only and does not imply optimality, necessity, correctness or physical adequacy.
+        </p>
+
+        <h4><span class="code-inline">GROVER_CENTERING</span></h4>
+        <p><strong>Refines base macro:</strong> <span class="code-inline">QDIFFUSION</span></p>
+        <p><strong>Paper dependency:</strong> PMS-QC paper, Grover refinement / fixed-point discussion</p>
+        <p><strong>Description:</strong> Paper-specific refinement for fixed-point or overshoot-regulated Grover-style centering.</p>
+        <p><strong>Chain pattern:</strong> <span class="code-inline">Ψ ∘ Σ ∘ Α</span></p>
+        <p class="small">
+          This refinement adds a Ψ-layer after attractor integration in order to model bounded,
+          paper-specific regulation of Grover-style amplification. It is not part of standard Grover,
+          is not required by the base representation, and does not guarantee convergence or overshoot prevention.
+        </p>
+
+        <h4><span class="code-inline">ATTRACTOR_FIXED_POINT</span></h4>
+        <p><strong>Refines base macro:</strong> null</p>
+        <p><strong>Paper dependency:</strong> PMS-QC paper, attractor schedule refinement discussion</p>
+        <p><strong>Description:</strong> Paper-specific attractor schedule template for bounded fixed-point-oriented convergence modelling.</p>
+        <p class="small">
+          Supports optional schedule descriptions such as linear, exponential or custom sequences.
+          This is a structural refinement template only and does not guarantee actual convergence,
+          correctness, stability or physical adequacy.
+        </p>
+
+        <h4><span class="code-inline">MEASUREMENT_PROJECTION_MODEL</span></h4>
+        <p><strong>Refines base macro:</strong> <span class="code-inline">QMEASURE</span></p>
+        <p><strong>Paper dependency:</strong> PMS-QC paper, measurement branching discussion</p>
+        <p><strong>Description:</strong> Paper-specific structural modelling refinement for branching in measurement domains.</p>
+        <p class="small">
+          Λ encodes unrealised branches, Δ actual outcome distinctions, and □ the relevant measurement domain.
+          This is a structural modelling aid, not a complete physical theory of measurement,
+          and does not replace the base semantics of <span class="code-inline">QMEASURE</span>.
+        </p>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="chain-patterns">
+        <h2>8. Paper-specific Δ–Ψ chain templates</h2>
+
+        <p>
+          These patterns derive directly from the PMS-QC paper and provide paper-specific chain templates
+          for analysis, annotation and comparison. They are non-canonical and do not override the semantics
+          of the generic PMS-QC base overlay.
+        </p>
+
+        <h3>8.1 Pattern inventory</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Pattern</th>
+              <th>Description</th>
+              <th>Chain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="code-inline">qpe_exact</span></td>
+              <td>Paper-specific full QPE chain template with explicit ladder refinement.</td>
+              <td><span class="code-inline">["Δ", "∇", "Α", "Θ^t(Ω ∘ □)", "Φ", "Α", "Σ", "Δ", "Λ"]</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">grover_fixed_point</span></td>
+              <td>Paper-specific Grover template with EXT-bound fixed-point-style regulation.</td>
+              <td><span class="code-inline">["□", "Δ", "∇", "Α", "Θ^k(Ψ ∘ Σ ∘ Α ∘ Ω ∘ Δ ∘ □)", "Δ", "Λ"]</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">attractor_alignment</span></td>
+              <td>Paper-specific reframing-plus-alignment pattern for spectral or Fourier-oriented estimation settings.</td>
+              <td><span class="code-inline">["Δ", "Φ", "Α", "Σ"]</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.2 Pattern notes</h3>
+
+        <h4><span class="code-inline">qpe_exact</span></h4>
+        <p>
+          Matches QPE preparation, controlled ladder refinement, Fourier-domain reframing,
+          alignment and final measurement. The QFT-alignment stage is semantically ordered as
+          <span class="code-inline">Σ(Α(Φ(S)))</span>. The ladder component remains paper-specific and EXT-only.
+        </p>
+
+        <h4><span class="code-inline">grover_fixed_point</span></h4>
+        <p>
+          Standard Grover remains a base-layer construction without Ψ.
+          This template adds EXT-bound Ψ regulation within the iterated block
+          to model fixed-point or overshoot-regulated variants.
+        </p>
+
+        <h4><span class="code-inline">attractor_alignment</span></h4>
+        <p>
+          Useful where reframing and alignment are structurally foregrounded.
+          This pattern is non-canonical and should not be conflated with the generic base macro semantics of
+          <span class="code-inline">QFT_ALIGN</span>.
+        </p>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="extended-policies">
+        <h2>9. Extended policy refinements</h2>
+
+        <p>
+          These are paper-specific structural guardrails and optional governance-, audit- and stability-oriented refinements
+          derived from the PMS-QC paper. They compose with, but never replace, PMS-QC base policies.
+          They are non-guarantee refinements, not validated safety defaults.
+        </p>
+
+        <blockquote>
+          <p><strong>Structural refinement ≠ physical guarantee ≠ safety guarantee.</strong></p>
+        </blockquote>
+
+        <h3>9.1 Policy inventory</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Policy</th>
+              <th>Kind</th>
+              <th>Paper-specific</th>
+              <th>Non-guarantee</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="code-inline">qpe_depth_guard</span></td>
+              <td>governance</td>
+              <td>true</td>
+              <td>true</td>
+              <td>Bounded structural guard on QPE-style ladder depth. <span class="code-inline">t_max</span> expresses a paper-specific governance or audit bound, not a correctness or optimality guarantee.</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">grover_no_overshoot</span></td>
+              <td>stability</td>
+              <td>true</td>
+              <td>true</td>
+              <td>Paper-specific overshoot-avoidance guard for Grover-style cycles with EXT-bound regulation.</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">basis_reframe_guard</span></td>
+              <td>audit</td>
+              <td>true</td>
+              <td>true</td>
+              <td>Paper-specific guard protecting Σ-boundaries against unrestricted reframing.</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">attractor_cycle_integrity</span></td>
+              <td>stability</td>
+              <td>true</td>
+              <td>true</td>
+              <td>Paper-specific attractor schedule guard for bounded structural admissibility.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>9.2 Policy-by-policy notes</h3>
+
+        <h4><span class="code-inline">qpe_depth_guard</span></h4>
+        <p><strong>Parameter:</strong> <span class="code-inline">t_max</span> (integer)</p>
+        <p><strong>Rule:</strong> <span class="code-inline">Θ^t(Ω ∘ □)</span> requires <span class="code-inline">t &lt;= t_max</span> unless an explicit Ψ-stabilisation section follows.</p>
+        <p class="small">
+          This is a paper-specific governance or audit bound, not a correctness or optimality guarantee.
+        </p>
+
+        <h4><span class="code-inline">grover_no_overshoot</span></h4>
+        <p><strong>Rule:</strong> If Σ is applied after Α in Grover-style cycles, Ψ should follow within the same iteration scope unless alternative paper-specific invariance conditions are explicitly declared.</p>
+
+        <h4><span class="code-inline">basis_reframe_guard</span></h4>
+        <p><strong>Rule:</strong> After Σ, Φ may reframe only if accompanied by explicit Ψ invariants.</p>
+
+        <h4><span class="code-inline">attractor_cycle_integrity</span></h4>
+        <p><strong>Rule:</strong> Α steps repeated under Θ should incorporate Σ checkpoints or Ψ invariants in order to avoid structurally unbounded divergence.</p>
+
+        <div class="box">
+          <div class="box-title">Policy interpretation rule</div>
+          <p class="small">
+            EXT policies are optional, paper-specific structural guardrails.
+            They do not replace the base policy layer and do not validate safety, convergence,
+            physical stability, or deployment readiness.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="ai-extension">
+        <h2>10. AI interface extension</h2>
+
+        <p>
+          This section defines optional reasoning affordances when PMS-QC_EXT is loaded.
+          The capabilities below are advisory only and intended for bounded experimental settings.
+          They do not imply deployment adequacy, validated safety, or full runtime autonomy.
+        </p>
+
+        <h3>10.1 Capabilities added</h3>
+        <ul>
+          <li>May identify abstract ladder structures (<span class="code-inline">Θ^t</span>) and evaluate associated invariance rules.</li>
+          <li>May suggest attractor schedules aligned with EXT-bound Ψ policies.</li>
+          <li>May analyse reframing cascades (<span class="code-inline">Φ → Φ → Φ</span>) for structural consistency.</li>
+          <li>May transform raw circuits into annotated Δ–Ψ chains using EXT macros and templates.</li>
+        </ul>
+
+        <h3>10.2 Guardrails</h3>
+        <ul>
+          <li>AI must treat PMS-QC_EXT as advisory and optional; Δ–Ψ fundamentals remain unchanged.</li>
+          <li>AI must preserve the distinction between PMS base, PMS-QC base, and EXT refinements.</li>
+          <li>AI must not interpret Ψ-invariants as physical stability guarantees.</li>
+          <li>AI must not infer physical correctness, safety or deployment readiness from EXT compliance.</li>
+          <li>AI must not treat governance annotations as validated safety architecture.</li>
+          <li>AI must not anthropomorphise quantum patterns.</li>
+        </ul>
+
+        <div class="box">
+          <div class="box-title">AI boundary formula</div>
+          <p class="small">
+            PMS-QC_EXT may increase paper-aligned reasoning power, but it remains advisory, optional,
+            and explicitly non-validating with respect to physical behaviour, safety, or deployment readiness.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="meta-notes">
+        <h2>11. Meta notes: extensibility, neutrality, and versioning</h2>
+
+        <h3>11.1 Extensibility</h3>
+        <ul>
+          <li>Further QC-domain modules may be added, e.g. <span class="code-inline">VQE_EXT</span>, <span class="code-inline">QML_EXT</span>, <span class="code-inline">TROTTER_EXT</span>.</li>
+          <li>All extensions must remain optional, Δ–Ψ-compatible and subordinate to PMS and PMS-QC.</li>
+          <li>Paper-specific refinements must not be silently promoted into the generic base overlay.</li>
+          <li>No extension may introduce new PMS meta-axioms.</li>
+        </ul>
+
+        <h3>11.2 Neutrality</h3>
+        <ul>
+          <li>Extensions refine interpretation but do not constrain foundational PMS.</li>
+          <li>Extensions do not redefine PMS-QC base semantics.</li>
+          <li>Extensions do not imply universality, comparative superiority or final closure.</li>
+        </ul>
+
+        <h3>11.3 Versioning</h3>
+        <ul>
+          <li>Extensions evolve independently, but must declare compatible PMS and PMS-QC base versions.</li>
+          <li>Semantic changes to a refinement should be versioned explicitly.</li>
+          <li>Existing refinement semantics must not be silently overridden.</li>
+        </ul>
+
+        <h3>11.4 Technical reference</h3>
+        <p>
+          The authoritative specification is <span class="code-inline">pms-qc-ext.yaml</span>, intended to be loaded after
+          <span class="code-inline">PMS.yaml</span> and <span class="code-inline">pms-qc.yaml</span>.
+          PMS remains canonical; PMS-QC remains the generic QC base overlay.
+        </p>
+
+        <p class="small">
+          <strong>Technical reference:</strong><br />
+          <em>pms-qc-ext.yaml – Praxeological Meta-Structure – Quantum Computing Extension Layer (PMS-QC_EXT_1.1)</em>
+        </p>
+
+        <p class="small">
+          <strong>Base references:</strong><br />
+          <em>PMS.yaml – Praxeological Meta-Structure (PMS_1.3)</em><br />
+          <em>pms-qc.yaml – Praxeological Meta-Structure – Quantum Computing Layer (PMS-QC_1.1)</em>
+        </p>
+
+        <p>
+          <strong>Repository references:</strong><br />
+          PMS (base framework): <a href="https://github.com/tz-dev/Praxeological-Meta-Structure-Theory">https://github.com/tz-dev/Praxeological-Meta-Structure-Theory</a><br />
+          PMS-QC (overlay): <a href="https://github.com/tz-dev/PMS-QC">https://github.com/tz-dev/PMS-QC</a>
+        </p>
+
+        <div class="box">
+          <div class="box-title">Final summary</div>
+          <p class="small">
+            PMS-QC_EXT is an optional, paper-specific, non-canonical refinement layer for PMS-QC.
+            It adds refined mappings, macro refinements, chain templates, policy refinements, and advisory AI-extension capabilities,
+            while explicitly refusing redefinition of PMS, override of PMS-QC base semantics,
+            physical guarantees, or deployment claims.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

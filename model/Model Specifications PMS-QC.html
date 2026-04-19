@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style>
+        :root {
+          --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          --font-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+          --color-text: #111;
+          --color-muted: #555;
+          --color-accent: #333;
+          --color-border: #ddd;
+          --color-bg: #fafafa;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        html, body {
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: var(--font-body);
+          color: var(--color-text);
+          background: white;
+          line-height: 1.5;
+          font-size: 1em;
+        }
+
+        blockquote {
+          margin: 0 0 16px;
+          padding: 0 1em;
+          color: #57606a;
+          border-left: 0.25em solid #d0d7de;
+        }
+
+        .page {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 32px 24px 64px;
+          background: white;
+        }
+
+        header {
+          border-bottom: 1px solid var(--color-border);
+          margin-bottom: 24px;
+          padding-bottom: 16px;
+        }
+
+        header h1 {
+          font-size: 1.9rem;
+          margin: 0 0 8px;
+          letter-spacing: 0.02em;
+        }
+
+        header .subtitle {
+          font-size: 0.95rem;
+          color: var(--color-muted);
+          margin-bottom: 8px;
+        }
+
+        header .meta {
+          font-size: 0.8rem;
+          color: var(--color-muted);
+        }
+
+        h2 {
+          margin-top: 20px;
+          margin-bottom: 4px;
+          font-size: 1.15rem;
+          border-bottom: 1px solid var(--color-border);
+          padding-bottom: 4px;
+        }
+
+        h3 {
+          margin-top: 18px;
+          margin-bottom: 4px;
+          font-size: 1rem;
+          color: var(--color-accent);
+        }
+
+        h1 strong, h2 strong, h3 strong, h4 strong, h5 strong {
+          font-weight: 650;
+        }
+
+        hr {
+          display: none;
+        }
+
+        img {
+          max-width: 100%;
+        }
+
+        p {
+          margin: 4px 0 8px;
+        }
+
+        ul {
+          margin: 4px 0 10px 1.2rem;
+          padding: 0;
+          line-height: 1.1em;
+        }
+
+        li {
+          margin-bottom: 3px;
+        }
+
+        pre {
+          background: #eee;
+          padding: 10px;
+        }
+
+        .code-inline {
+          font-family: var(--font-mono);
+          font-size: 0.9em;
+          background: #f5f5f5;
+          padding: 1px 4px;
+          border-radius: 3px;
+        }
+
+        .box {
+          border: 1px solid var(--color-border);
+          border-radius: 4px;
+          padding: 8px 10px;
+          background: #fcfcfc;
+          margin: 8px 0 12px;
+          line-height: 1.05em;
+        }
+
+        .box-title {
+          font-weight: 600;
+          font-size: 0.9rem;
+          margin-bottom: 4px;
+        }
+
+        .small {
+          font-size: 0.85rem;
+          color: var(--color-muted);
+        }
+
+        .two-column {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+        }
+
+        .two-column > div {
+          flex: 1 1 260px;
+          min-width: 0;
+        }
+
+        .table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 8px 0 12px;
+          font-size: 0.77rem;
+          line-height: 1.2em;
+        }
+
+        .table th,
+        .table td {
+          border: 1px solid var(--color-border);
+          padding: 4px 6px;
+          vertical-align: top;
+        }
+
+        .table th {
+          background: #f5f5f5;
+          font-weight: 600;
+        }
+
+        .tag {
+          display: inline-block;
+          border-radius: 999px;
+          border: 1px solid var(--color-border);
+          padding: 1px 8px;
+          font-size: 0.75rem;
+          margin-right: 4px;
+          margin-bottom: 3px;
+        }
+
+        .placeholder {
+          font-style: italic;
+          color: var(--color-muted);
+        }
+
+        .pagebreak{
+          page-break-before:always
+        }
+
+        @media print {
+          body {
+            background: white;
+            width: 100%;
+          }
+          .page {
+            box-shadow: none;
+            padding: 24px 18px;
+            width: 100%;
+          }
+          a[href]:after {
+            content: "";
+          }
+        }
+      </style>
+    <title>PMS-QC - Model Specification</title>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']],
+          processEscapes: true
+        },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </head>
+  <body>
+    <div class="page">
+      <h1>PMS-QC – Model Specification</h1>
+      <div class="subtitle">
+        A PMS-conform quantum-computational structural overlay: bounded QC mapping, generic macro language, and structural policy-layer reasoning without physical or deployment claims
+      </div>
+      <div class="meta">
+        Version: PMS-QC_1.1 &middot;
+        Spec basis: <span class="code-inline">pms-qc.yaml</span><br />
+        Author: T. Zöller &middot; Formalisation assistance: ChatGPT (GPT-5.4 Thinking)<br />
+        Language: EN &middot; Status: Model spec (aligned with <span class="code-inline">schema_meta.status = "draft"</span>)<br />
+        Depends on: <span class="code-inline">PMS.yaml</span> (<span class="code-inline">schema_version = "PMS_1.3"</span>)
+      </div>
+
+      <section id="purpose-scope">
+        <h2>1. Purpose and scope of this specification</h2>
+
+        <p>
+          This document specifies the <em>PMS-QC</em> layer in a concise, technical form.
+          It is based on the YAML file <span class="code-inline">pms-qc.yaml</span>
+          (with <span class="code-inline">schema_version = "PMS-QC_1.1"</span>) and renders its structure,
+          constraints, semantics, and boundary conditions explicit for human readers and computational systems.
+        </p>
+
+        <p>PMS-QC is a generic quantum-computational structural overlay within the PMS framework. It renders quantum circuits, algorithms and selected hybrid AI–QC workflows as bounded compositions of the eleven PMS operators (Δ–Ψ), without redefining those operators or displacing established QC formalisms. PMS-QC provides a structural mapping from Δ–Ψ to quantum frames, superposition, oracle asymmetry, attractor-like alignment, iterative structure, measurement and stabilisation. It offers a candidate structural layer for expressing, annotating, constraining and auditing quantum workflows at a meta-level. This does not imply exhaustive capture, equal explanatory depth across domains, or immunity to rival formalisation.</p>
+
+        <h2>Header-Level Specification Notes</h2>
+
+        <h3>Summary</h3>
+        <p>This document defines the PMS-QC layer (Praxeological Meta-Structure – Quantum Computing) as a generic quantum-computational structural overlay within the PMS framework (Δ–Ψ).</p>
+        <p>PMS-QC interprets quantum circuits, quantum algorithms and selected hybrid AI–QC workflows as bounded structural renderings under the same eleven operators used in PMS. It does not redefine those operators and does not alter their canonical repository order or dependency spine.</p>
+        <p>PMS-QC is not a new physical theory. Instead, it provides:</p>
+        <ul>
+          <li>a bounded structural mapping from Δ–Ψ to QC concepts (frames, superposition, oracle asymmetry, iteration, attractors, measurement, stabilisation),</li>
+          <li>a generic macro-language (<code>QFRAME</code>, <code>QPREP</code>, <code>QORACLE_CALL</code>, <code>QITERATE</code>, <code>QDIFFUSION</code>, <code>QFT_ALIGN</code>, <code>QMEASURE</code>, <code>QSTABILIZE</code>) for documentation, annotation, audit and compilation-adjacent reasoning,</li>
+          <li>overlay-level structural policies that may support auditing, bounded policy-layer reasoning and experimental AI–QC coordination without constituting a validated governance or deployment architecture.</li>
+        </ul>
+
+        <h3>Relationship to PMS</h3>
+        <ul>
+          <li>This file extends the PMS repository reference specification (<code>PMS_1.3</code>).</li>
+          <li>The Δ–Ψ operators are not redefined here.</li>
+          <li>This file does not silently modify the canonical operator set, default operator order, or default dependency path of PMS.</li>
+          <li>PMS-QC introduces overlay-level mappings, macros and structural policies for QC use only.</li>
+          <li>Any organizational or toolchain-oriented helper metadata included here must not be read as altering PMS operator logic.</li>
+        </ul>
+
+        <h3>Intended Use</h3>
+        <p>Structural description, mapping, annotation, and bounded policy-layer reasoning for quantum circuits and hybrid AI–QC workflows within the PMS-QC framework.</p>
+        <ul>
+          <li>Structural documentation of QC workflows</li>
+          <li>Structural QC analysis and comparison</li>
+          <li>Meta-compiler annotation and audit layers for QC pipelines</li>
+          <li>Bounded policy-layer reasoning for hybrid AI–QC settings</li>
+          <li>Research and theoretical exploration of praxeological constraints in quantum architectures</li>
+        </ul>
+
+        <h3>Not Intended For</h3>
+        <ul>
+          <li>replacing quantum mechanics or any established QC formalism,</li>
+          <li>physical noise modelling or hardware certification,</li>
+          <li>performance guarantees,</li>
+          <li>validated safety architecture,</li>
+          <li>deployment-ready agent control,</li>
+          <li>architecture-independent implementation claims,</li>
+          <li>clinical, psychological or anthropomorphic interpretations of QC or PMS-QC structures.</li>
+        </ul>
+
+        <h3>Usage Notes</h3>
+        <ul>
+          <li>This file is a schema / meta-layer, not executable code.</li>
+          <li>Implementations may parse this specification, use PMS-QC macros as structural annotations or compilation-adjacent anchors, and inspect Δ–Ψ chains at runtime or as part of audit trails.</li>
+          <li>All interpretations are structural, not anthropomorphic: quantum systems do not “intend,” “act” or “choose” in any human sense.</li>
+          <li>Structural correctness in this file does not imply physical correctness, safety, adequacy, or deployment readiness.</li>
+        </ul>
+
+        <h3>Load Order</h3>
+        <ol>
+          <li><code>PMS.yaml</code> (base operator grammar / repository reference)</li>
+          <li><code>pms-qc.yaml</code> (generic QC structural overlay)</li>
+          <li><code>pms-qc-ext.yaml</code> (optional paper-specific refinement layer)</li>
+        </ol>
+
+        <h3>License / Redistribution</h3>
+        <p>Unless otherwise agreed, this specification may be used in research, documentation and prototyping. Derivative works must:</p>
+        <ul>
+          <li>retain attribution to PMS / PMS-QC and T. Zöller,</li>
+          <li>preserve the distinction between PMS base, PMS-QC base overlay and optional extension layers,</li>
+          <li>avoid misuse for clinical diagnosis, personality typing, moral evaluation or human ranking.</li>
+        </ul>
+
+        <h3>Repositories</h3>
+        <ul>
+          <li>PMS (base framework): <code>https://github.com/tz-dev/Praxeological-Meta-Structure-Theory</code></li>
+          <li>PMS-QC (this layer): <code>https://github.com/tz-dev/PMS-QC</code></li>
+        </ul>
+
+        <p>
+          The specification covers, in particular:
+        </p>
+        <ul>
+          <li>
+            the <strong>schema_meta</strong> block (identity, dependency on PMS_1.3, authorship, boundedness, and intended use);
+          </li>
+          <li>
+            the <strong>normative position</strong> of PMS-QC (non-physical, non-monopoly, non-identity, non-anthropomorphic, governance-conditional);
+          </li>
+          <li>
+            the <strong>computational position</strong> (representation, calibration, accountability, deployment boundedness, and rivalry openness);
+          </li>
+          <li>
+            the <strong>terminology</strong> block that fixes the paper/YAML boundary vocabulary;
+          </li>
+          <li>
+            the <strong>PMS reference</strong> block ensuring that canonical Δ&ndash;Ψ semantics remain in <span class="code-inline">PMS.yaml</span>;
+          </li>
+          <li>
+            the <strong>repository governance</strong> and <strong>base_vs_extension_boundary</strong> blocks;
+          </li>
+          <li>
+            the <strong>QC mapping</strong> from each PMS operator to possible QC structural roles;
+          </li>
+          <li>
+            the <strong>generic base macro language</strong> (<span class="code-inline">QFRAME</span>, <span class="code-inline">QPREP</span>, <span class="code-inline">QORACLE_CALL</span>, <span class="code-inline">QITERATE</span>, <span class="code-inline">QDIFFUSION</span>, <span class="code-inline">QFT_ALIGN</span>, <span class="code-inline">QMEASURE</span>, <span class="code-inline">QSTABILIZE</span>);
+          </li>
+          <li>
+            the <strong>EBNF grammar</strong> and <strong>iteration encoding</strong> blocks;
+          </li>
+          <li>
+            the <strong>structural policy layer</strong> (frame, asymmetry, integration, and self-binding policies);
+          </li>
+          <li>
+            the <strong>minimal QC examples</strong> (<span class="code-inline">grover_minimal</span> and <span class="code-inline">qpe_minimal</span>);
+          </li>
+          <li>
+            the <strong>AI interface</strong>, including query capabilities, allowed actions, guardrails, and audit logs;
+          </li>
+          <li>
+            the <strong>meta notes</strong> on compatibility and future extensibility.
+          </li>
+        </ul>
+
+        <div class="box">
+          <div class="box-title">Core idea</div>
+          <p class="small">
+            PMS-QC treats quantum computation as <strong>structurally renderable</strong> through the PMS operator grammar
+            without claiming that quantum phenomena are ontologically identical with PMS operators, and without displacing
+            established quantum formalisms. Its strength lies in bounded structural description, macro-level annotation,
+            policy-layer reasoning, and auditability.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="structure">
+        <h2>2. High-level structure of the YAML model</h2>
+
+        <h3>2.1 Top-level keys</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Description</th>
+              <th>Role in the model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="code-inline">schema_version</span></td>
+              <td>Version identifier (<span class="code-inline">"PMS-QC_1.1"</span>).</td>
+              <td>Compatibility and citation</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">schema_meta</span></td>
+              <td>Model identity, status, dependency, authorship, boundedness, intended use, normative position, computational position, and terminology.</td>
+              <td>Meta-definition and scope discipline</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">pms_reference</span></td>
+              <td>Reference back to canonical PMS operator semantics and meta-axiom inventory.</td>
+              <td>Non-redefinition guarantee</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">repository_governance</span></td>
+              <td>Repository-level overlay discipline and prohibitions.</td>
+              <td>Boundary preservation</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">base_vs_extension_boundary</span></td>
+              <td>Explicit separation between generic PMS-QC base content and optional paper-specific refinement layers.</td>
+              <td>Base/EXT hygiene</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">qc_mapping</span></td>
+              <td>One-to-many mapping from PMS operators to QC structural roles.</td>
+              <td>Overlay semantics</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">qc_macro_language</span></td>
+              <td>Generic PMS-QC base macros, EBNF grammar, and iteration metadata.</td>
+              <td>Macro layer / structural DSL</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">qc_structural_policies</span></td>
+              <td>Structural guardrails operating on Δ&ndash;Ψ chains rather than low-level gates.</td>
+              <td>Policy and admissibility layer</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">qc_examples</span></td>
+              <td>Minimal base-layer skeleton examples for Grover and QPE.</td>
+              <td>Illustrative structural renderings</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">ai_interface_qc</span></td>
+              <td>Agent-facing reasoning interface, allowed actions, guardrails, and audit notes.</td>
+              <td>Bounded AI/QC orchestration interface</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">meta_notes</span></td>
+              <td>Compatibility and extensibility notes.</td>
+              <td>Implementation guidance</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box">
+          <div class="box-title">Conceptual separation</div>
+          <p class="small">
+            PMS defines the canonical operator grammar (Δ&ndash;Ψ). PMS-QC defines a <strong>generic QC structural overlay</strong>
+            that maps those operators into bounded quantum-computational use. Paper-specific ladder refinements,
+            fixed-point variants, and stronger algorithm-specific policy heuristics remain outside the base overlay.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="identity-boundedness">
+        <h2>3. Identity, inheritance, and boundedness</h2>
+
+        <h3>3.1 Model identity</h3>
+        <div class="box">
+          <p><strong>Model name:</strong> Praxeological Meta-Structure &ndash; Quantum Computing Layer</p>
+          <p><strong>Model short:</strong> PMS-QC</p>
+          <p><strong>Status:</strong> draft</p>
+          <p><strong>Repository role:</strong> generic_qc_structural_layer</p>
+          <p><strong>Layer role:</strong> base_overlay</p>
+          <p><strong>Depends on:</strong> PMS_1.3</p>
+          <p><strong>Last updated:</strong> 2026-04-19</p>
+        </div>
+
+        <h3>3.2 Inheritance from PMS</h3>
+        <p>
+          PMS-QC inherits from:
+        </p>
+        <ul>
+          <li><strong>Model name:</strong> Praxeological Meta-Structure</li>
+          <li><strong>Model short:</strong> PMS</li>
+          <li><strong>Schema version:</strong> PMS_1.3</li>
+        </ul>
+
+        <p>
+          The inheritance claim is strict in one direction:
+          PMS-QC depends on PMS and assumes its repository reference status,
+          but does not redefine the PMS operator set, default operator order,
+          dependency spine, or repository governance.
+        </p>
+
+        <h3>3.3 Boundedness and epistemic status</h3>
+        <p>
+          <strong>Epistemic status:</strong> Bounded structural overlay for quantum-computational description,
+          annotation, and policy-layer reasoning within the PMS framework.
+        </p>
+        <p>
+          <strong>Boundedness note:</strong>
+        </p>
+        <blockquote>
+          <p>
+            PMS-QC is a candidate QC structural layer within the present framework.
+            It does not claim monopoly over high-level structural analysis, final closure against rival grammars,
+            or exhaustive capture of QC phenomena.
+          </p>
+        </blockquote>
+
+        <div class="box">
+          <div class="box-title">Interpretive limit</div>
+          <p class="small">
+            PMS-QC is strong in structural legibility and operator-level organization,
+            but it is not presented as a final, uniquely adequate, or rivalry-proof account of quantum computation.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="normative-computational-position">
+        <h2>4. Normative and computational position</h2>
+
+        <h3>4.1 Normative position</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Clause</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Physics clause</strong></td>
+              <td>PMS-QC is not a physical theory and does not modify or compete with quantum mechanics, the circuit model, Hamiltonian simulation, tensor networks, ZX-calculus, or categorical quantum mechanics.</td>
+            </tr>
+            <tr>
+              <td><strong>Non-monopoly clause</strong></td>
+              <td>PMS-QC complements QC formalisms but does not replace them and does not claim monopoly over high-level structural analysis.</td>
+            </tr>
+            <tr>
+              <td><strong>Non-identity clause</strong></td>
+              <td>Mappings from Δ&ndash;Ψ to QC roles are structural renderings, not ontological identity claims.</td>
+            </tr>
+            <tr>
+              <td><strong>Substrate-independence clause</strong></td>
+              <td>Within the present framework, the same operators may render praxeological, computational, organisational, and quantum-computational structures at a structural level, without implying equal explanatory depth or exhaustive capture.</td>
+            </tr>
+            <tr>
+              <td><strong>Anthropomorphism clause</strong></td>
+              <td>PMS-QC does not attribute consciousness, intention, agency, or moral responsibility to quantum systems.</td>
+            </tr>
+            <tr>
+              <td><strong>Governance conditionality clause</strong></td>
+              <td>Governance- or policy-layer use is conditional and overlay-specific, not a necessary endpoint of PMS and not a validated safety or enforcement architecture.</td>
+            </tr>
+            <tr>
+              <td><strong>Base-vs-extension clause</strong></td>
+              <td>Generic QC overlay constructs belong to PMS-QC base; paper-specific refinements belong to optional extension layers.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>4.2 Computational position</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Clause</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Representation clause</strong></td>
+              <td>The YAML file is a representational schema for structural description, annotation, and bounded reasoning; it is not executable code or a proof of implementability.</td>
+            </tr>
+            <tr>
+              <td><strong>Calibration clause</strong></td>
+              <td>Structural well-formedness in PMS-QC does not establish physical adequacy, numerical correctness, optimal compilation, stability, or safety.</td>
+            </tr>
+            <tr>
+              <td><strong>Accountability clause</strong></td>
+              <td>Operational use depends on external architectures, implementations, validation procedures, and domain-specific accountability mechanisms.</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment clause</strong></td>
+              <td>PMS-QC use in auditing, orchestration, or AI&ndash;QC coordination does not by itself amount to deployment readiness or a validated control system.</td>
+            </tr>
+            <tr>
+              <td><strong>Rivalry clause</strong></td>
+              <td>PMS-QC may coexist with rival or complementary formalisms that foreground different distinctions more effectively for particular tasks.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box">
+          <div class="box-title">Core boundary formula</div>
+          <p class="small">
+            <strong>Structural rendering ≠ physical theory.</strong><br />
+            <strong>Structural admissibility ≠ correctness guarantee.</strong><br />
+            <strong>Policy expressiveness ≠ deployment adequacy.</strong>
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="terminology">
+        <h2>5. Terminology block</h2>
+
+        <p>
+          The terminology block fixes the internal vocabulary used throughout PMS-QC.
+          These terms are not new PMS operators; they are overlay-level definitions for QC use.
+        </p>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>Definition in PMS-QC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>qc_frame</strong></td>
+              <td>A structured domain of quantum operations such as a Hilbert space, register decomposition, active subspace, or error-correction code space, rendered as a □-instance within the overlay.</td>
+            </tr>
+            <tr>
+              <td><strong>qc_workflow</strong></td>
+              <td>A sequence or DAG of quantum (and possibly classical) operations expressible as a PMS operator chain with Δ&ndash;Ψ annotations.</td>
+            </tr>
+            <tr>
+              <td><strong>macro_operator</strong></td>
+              <td>A QC-level named structural construct that expands to a Δ&ndash;Ψ operator sequence and serves as documentation, annotation, audit handle, or compilation-adjacent anchor.</td>
+            </tr>
+            <tr>
+              <td><strong>generic_base_macro</strong></td>
+              <td>A macro belonging to the generic PMS-QC base overlay and intended for algorithm-agnostic structural use.</td>
+            </tr>
+            <tr>
+              <td><strong>paper_specific_refinement</strong></td>
+              <td>A specialized construct, chain pattern, or policy refinement introducible only in an optional extension layer without changing base semantics.</td>
+            </tr>
+            <tr>
+              <td><strong>optional_extension</strong></td>
+              <td>A non-canonical add-on layer that refines or augments a bounded use case while remaining subordinate to PMS and PMS-QC base.</td>
+            </tr>
+            <tr>
+              <td><strong>structural_constraint</strong></td>
+              <td>An admissibility condition or guardrail formulated at the level of Δ&ndash;Ψ organization rather than physical implementation.</td>
+            </tr>
+            <tr>
+              <td><strong>non_guarantee</strong></td>
+              <td>An explicit indication that structural admissibility does not imply physical correctness, safety, convergence, or deployment adequacy.</td>
+            </tr>
+            <tr>
+              <td><strong>structural_comparability</strong></td>
+              <td>A relation of operator-level comparability across domains that does not imply ontological identity or equal explanatory depth.</td>
+            </tr>
+            <tr>
+              <td><strong>structural_not_physical</strong></td>
+              <td>The relevant statement concerns structural rendering, organization, or annotation, not the underlying physical mechanism.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="pms-reference-governance">
+        <h2>6. PMS reference, repository governance, and base/EXT boundary</h2>
+
+        <h3>6.1 PMS reference</h3>
+        <p>
+          PMS-QC assumes that the PMS repository reference specification is available and authoritative.
+          All mappings below reference the PMS meta-axioms by id:
+        </p>
+        <div class="box">
+          <p><span class="code-inline">["Δ", "∇", "□", "Λ", "Α", "Ω", "Θ", "Φ", "Χ", "Σ", "Ψ"]</span></p>
+        </div>
+        <p>
+          This means:
+        </p>
+        <ul>
+          <li>Δ&ndash;Ψ meanings remain canonical in <span class="code-inline">PMS.yaml</span></li>
+          <li>PMS-QC does not alter the canonical dependency spine</li>
+          <li>PMS-QC does not alter default operator ordering</li>
+          <li>PMS-QC does not alter repository-level PMS governance</li>
+        </ul>
+
+        <h3>6.2 Repository governance</h3>
+        <p>
+          PMS-QC defines the role of this file as a <strong>generic QC structural overlay</strong> within the PMS repository ecosystem.
+        </p>
+        <p>Such overlays may:</p>
+        <ul>
+          <li>define domain-specific mappings from Δ&ndash;Ψ to QC roles</li>
+          <li>introduce generic QC base macros for structural description</li>
+          <li>define bounded overlay-level structural policies</li>
+          <li>add non-canonical organizational or toolchain-oriented helper metadata</li>
+        </ul>
+
+        <p>Such overlays should not, without explicit revision:</p>
+        <ul>
+          <li>silently redefine Δ&ndash;Ψ mappings as canonical PMS semantics</li>
+          <li>silently alter the canonical PMS operator set, ordering, or dependency path</li>
+          <li>silently promote paper-specific refinements into PMS-QC base</li>
+          <li>silently alter the semantics of existing base macros</li>
+          <li>treat governance-oriented QC applications as required endpoints of PMS or PMS-QC</li>
+          <li>treat helper metadata as if it modified PMS operator logic</li>
+        </ul>
+
+        <h3>6.3 Base vs. extension boundary</h3>
+        <p>
+          PMS-QC explicitly records the intended separation between the generic base overlay and optional paper-specific refinement layers.
+        </p>
+
+        <div class="two-column">
+          <div>
+            <div class="box-title">Base macros</div>
+            <ul>
+              <li><span class="code-inline">QFRAME</span></li>
+              <li><span class="code-inline">QPREP</span></li>
+              <li><span class="code-inline">QORACLE_CALL</span></li>
+              <li><span class="code-inline">QITERATE</span></li>
+              <li><span class="code-inline">QDIFFUSION</span></li>
+              <li><span class="code-inline">QFT_ALIGN</span></li>
+              <li><span class="code-inline">QMEASURE</span></li>
+              <li><span class="code-inline">QSTABILIZE</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="box-title">Base policies</div>
+            <ul>
+              <li><span class="code-inline">no_unframed_omega</span></li>
+              <li><span class="code-inline">measurement_requires_meas_frame</span></li>
+              <li><span class="code-inline">unstable_asymmetry_guard</span></li>
+              <li><span class="code-inline">no_reframing_past_sigma</span></li>
+              <li><span class="code-inline">max_iteration_depth</span></li>
+              <li><span class="code-inline">stabiliser_frequency</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p>Reserved for optional extension layers:</p>
+        <ul>
+          <li>explicit QPE ladder macroization such as <span class="code-inline">U^(2^j)</span> as a reusable named refinement</li>
+          <li>fixed-point or overshoot-regulated Grover refinements</li>
+          <li>algorithm-specific attractor schedules or convergence guards</li>
+          <li>paper-specific governance heuristics beyond the generic base policy layer</li>
+        </ul>
+
+        <p>Examples that remain intentionally skeletal:</p>
+        <ul>
+          <li><span class="code-inline">grover_minimal</span></li>
+          <li><span class="code-inline">qpe_minimal</span></li>
+        </ul>
+
+        <div class="box">
+          <div class="box-title">Boundary rule</div>
+          <p class="small">
+            If a construct is not clearly algorithm-agnostic and generically reusable for QC structural description,
+            it should remain outside the base overlay and, where appropriate, belong to an optional extension layer.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="qc-mapping">
+        <h2>7. QC mapping: PMS operators rendered as QC roles</h2>
+
+        <p>
+          PMS-QC renders each PMS operator as a <strong>possible structural role</strong> in QC contexts.
+          The mapping is explicitly one-to-many and non-identitarian.
+        </p>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>PMS operator</th>
+              <th>QC structural role</th>
+              <th>Examples</th>
+              <th>Typical realizations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Δ</strong><br />Difference</td>
+              <td>Distributed difference structures in Hilbert space: superposition, basis alternatives, marked subspaces.</td>
+              <td>Uniform superposition; oracle-marked states; eigenphase-encoded alternatives.</td>
+              <td>Hadamard layers; phase flips; selective phase shifts.</td>
+            </tr>
+            <tr>
+              <td><strong>∇</strong><br />Impulse</td>
+              <td>Minimal directed activation or progression away from a previous configuration.</td>
+              <td>First non-identity gate layer; single-qubit rotations initiating amplitude flow.</td>
+              <td>Rx, Ry, Rz; initial entangling step in <span class="code-inline">QPREP(entangle)</span>.</td>
+            </tr>
+            <tr>
+              <td><strong>□</strong><br />Frame</td>
+              <td>Structural boundaries such as chosen Hilbert space, register decomposition, active subspace, or code space.</td>
+              <td>Problem frame in Grover; eigenproblem frame in QPE; error-space frame in stabiliser codes.</td>
+              <td>Register layout; qubit allocation; subspace definitions.</td>
+            </tr>
+            <tr>
+              <td><strong>Λ</strong><br />Non-Event</td>
+              <td>Unrealised computational branches or suppressed possibilities, especially at measurement.</td>
+              <td>Unrealised Grover outcomes; non-selected phase configurations in QPE.</td>
+              <td>Measurement collapse; post-selection.</td>
+            </tr>
+            <tr>
+              <td><strong>Α</strong><br />Attractor</td>
+              <td>Directed convergence tendencies in the amplitude landscape.</td>
+              <td>Grover diffusion operator; inverse QFT alignment in QPE; error-mitigation pull toward code space.</td>
+              <td>Amplitude amplification subcircuits; Fourier-domain alignment.</td>
+            </tr>
+            <tr>
+              <td><strong>Ω</strong><br />Asymmetry</td>
+              <td>Directional or role-based structural differences: controlled operations, oracle calls, measurement asymmetries.</td>
+              <td>Controlled unitary action; oracle phase flip; measurement mapping to classical outcomes.</td>
+              <td>Controlled gates; problem oracles.</td>
+            </tr>
+            <tr>
+              <td><strong>Θ</strong><br />Temporality / Iteration</td>
+              <td>Ordered repetition of quantum blocks, loop-unrolled sequences, or time-ordered control structures.</td>
+              <td>Grover repetition; ordered QPE control sequences.</td>
+              <td>For-loops; unrolled repetitions; time-ordered control application.</td>
+            </tr>
+            <tr>
+              <td><strong>Φ</strong><br />Recontextualization</td>
+              <td>Structural reframing between computational domains via basis change or representational shift.</td>
+              <td>Inverse QFT in QPE; logical/physical frame switching.</td>
+              <td>QFT / QFT^-1; change-of-basis transformations.</td>
+            </tr>
+            <tr>
+              <td><strong>Χ</strong><br />Distance</td>
+              <td>Separation or insulation between subsystems, layers, or execution domains.</td>
+              <td>Isolation of experimental circuits; code-space separation.</td>
+              <td>Disjoint register sets; segregated test/production pipelines.</td>
+            </tr>
+            <tr>
+              <td><strong>Σ</strong><br />Integration</td>
+              <td>Structural commitment points where previous transformations are treated as fixed and integrated.</td>
+              <td>End of a Grover iteration; post-QFT state before measurement.</td>
+              <td>Circuit-level commit boundaries; workflow checkpoints.</td>
+            </tr>
+            <tr>
+              <td><strong>Ψ</strong><br />Self-Binding</td>
+              <td>Stabilising invariants and admissibility constraints on future operations.</td>
+              <td>Stabiliser code enforcement; iteration-depth guards; bounded policy constraints.</td>
+              <td>Stabiliser measurement and correction; code-space preservation; bounded policy constraints.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box">
+          <div class="box-title">Mapping discipline</div>
+          <p class="small">
+            These mappings indicate how QC structures can be described through the PMS-QC overlay at a structural level.
+            They do <strong>not</strong> imply ontological identity between quantum phenomena and PMS operators.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="macro-language">
+        <h2>8. Generic PMS-QC base macro language</h2>
+
+        <p>
+          PMS-QC introduces a generic macro language that describes typical QC motifs as Δ&ndash;Ψ compositions.
+          These macros are <strong>structural and documentation-oriented objects</strong>.
+        </p>
+
+        <p>
+          They serve as:
+        </p>
+        <ul>
+          <li>annotation anchors</li>
+          <li>audit handles</li>
+          <li>compilation-adjacent structural abstractions</li>
+          <li>macro-level comparison units</li>
+        </ul>
+
+        <p>
+          They do <strong>not</strong> by themselves guarantee completeness for QC macro-abstraction,
+          optimal compilation, physical adequacy, correctness, stability, or safety.
+        </p>
+
+        <h3>8.1 Base macro inventory</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Macro</th>
+              <th>Parameters</th>
+              <th>Allowed values</th>
+              <th>Expansion</th>
+              <th>Canonical form</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="code-inline">QFRAME</span></td>
+              <td><span class="code-inline">kind</span></td>
+              <td><span class="code-inline">init</span>, <span class="code-inline">problem</span>, <span class="code-inline">eigenproblem</span>, <span class="code-inline">error_space</span></td>
+              <td><span class="code-inline">["□"]</span></td>
+              <td><span class="code-inline">□</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">QPREP</span></td>
+              <td><span class="code-inline">mode</span></td>
+              <td><span class="code-inline">superposition</span>, <span class="code-inline">register_init</span>, <span class="code-inline">entangle</span></td>
+              <td><span class="code-inline">["Δ", "∇", "Α"]</span></td>
+              <td><span class="code-inline">Α ∘ ∇ ∘ Δ</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">QORACLE_CALL</span></td>
+              <td><span class="code-inline">oracle_id</span></td>
+              <td>Identifier</td>
+              <td><span class="code-inline">["□", "Δ", "Ω"]</span></td>
+              <td><span class="code-inline">Ω ∘ Δ ∘ □</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">QDIFFUSION</span></td>
+              <td>none</td>
+              <td>n/a</td>
+              <td><span class="code-inline">["Α", "Σ"]</span></td>
+              <td><span class="code-inline">Σ ∘ Α</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">QFT_ALIGN</span></td>
+              <td><span class="code-inline">direction</span></td>
+              <td><span class="code-inline">forward</span>, <span class="code-inline">inverse</span></td>
+              <td><span class="code-inline">["Φ", "Α"]</span></td>
+              <td><span class="code-inline">Α ∘ Φ</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">QITERATE</span></td>
+              <td><span class="code-inline">k</span>, <span class="code-inline">block</span></td>
+              <td>integer, block</td>
+              <td><span class="code-inline">["Θ"]</span></td>
+              <td><span class="code-inline">Θ^k(block)</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">QMEASURE</span></td>
+              <td><span class="code-inline">basis</span>, <span class="code-inline">register</span></td>
+              <td><span class="code-inline">computational</span>, <span class="code-inline">fourier</span>, or identifier; register identifier</td>
+              <td><span class="code-inline">["Δ", "Λ"]</span></td>
+              <td><span class="code-inline">Λ ∘ Δ</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">QSTABILIZE</span></td>
+              <td><span class="code-inline">code_id</span></td>
+              <td>Identifier</td>
+              <td><span class="code-inline">["Ψ"]</span></td>
+              <td><span class="code-inline">Ψ</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.2 Macro notes</h3>
+
+        <h4><span class="code-inline">QFRAME(kind)</span></h4>
+        <p>
+          Creates or activates a quantum frame (□). It establishes structural scope only and may be nested through repeated framing.
+        </p>
+        <p class="small">
+          Non-guarantee: does not guarantee physical adequacy, resource availability, or hardware compatibility.
+        </p>
+
+        <h4><span class="code-inline">QPREP(mode)</span></h4>
+        <p>
+          Prepares registers through superposition, entanglement, or initialization.
+          <span class="code-inline">QPREP(superposition)</span> can render Δ via distributed amplitudes, ∇ via activation gates,
+          and Α via preparation routines that establish stable patterns such as uniform superposition.
+          It captures structural preparation only; paper-specific preparation refinements remain outside the base layer.
+        </p>
+        <p class="small">
+          Non-guarantee: does not guarantee correctness of preparation or physical adequacy.
+        </p>
+
+        <h4><span class="code-inline">QORACLE_CALL(oracle_id)</span></h4>
+        <p>
+          Applies an oracle or controlled unitary encoding asymmetry within an active frame.
+          It structurally covers both Grover-style marking and controlled-unitary action in QPE-like contexts.
+          The active □-frame must match the oracle domain.
+        </p>
+        <p class="small">
+          Non-guarantee: does not imply any reusable ladder refinement; explicit power-of-two ladders remain outside base semantics.
+        </p>
+
+        <h4><span class="code-inline">QDIFFUSION</span></h4>
+        <p>
+          Applies amplitude amplification or related attractor dynamics together with an integration step.
+          It captures attractor-driven amplification plus structural commit.
+        </p>
+        <p class="small">
+          Non-guarantee: does not guarantee convergence, correctness, stability, or physical adequacy. Fixed-point and overshoot-regulated variants remain EXT-only.
+        </p>
+
+        <h4><span class="code-inline">QFT_ALIGN(direction)</span></h4>
+        <p>
+          Performs Fourier-domain basis alignment as reframing plus attractor alignment.
+          It is distinct from Grover-style diffusion.
+        </p>
+        <p>
+          An explicit <span class="code-inline">Σ</span> may follow when the transformed structure is committed for downstream processing or measurement,
+          but Σ is <strong>not</strong> internal to the macro.
+        </p>
+        <p class="small">
+          Non-guarantee: does not guarantee correctness, stability, or physical adequacy; specialized QPE-oriented refinements remain outside base.
+        </p>
+
+        <h4><span class="code-inline">QITERATE(k, block)</span></h4>
+        <p>
+          Iterates a compositional block <span class="code-inline">k</span> times.
+          The block may be inline or named; the macro does not inspect its internal structure and only enforces Θ-structured repetition.
+        </p>
+        <p class="small">
+          Non-guarantee: does not guarantee convergence, termination, correctness, stability, or physical adequacy.
+        </p>
+
+        <h4><span class="code-inline">QMEASURE(basis, register)</span></h4>
+        <p>
+          Measures a register in a given basis. Δ captures resolved outcome distinctions, and Λ encodes unrealised branches as non-events.
+          It requires a measurement-stable frame (<span class="code-inline">□_meas</span>).
+        </p>
+        <p class="small">
+          Non-guarantee: captures structural outcome resolution only; does not provide a complete physical theory of measurement.
+        </p>
+
+        <h4><span class="code-inline">QSTABILIZE(code_id)</span></h4>
+        <p>
+          Applies error-correction or stabiliser code routines, introducing or maintaining structural invariants.
+        </p>
+        <p class="small">
+          Non-guarantee: does not by itself guarantee stability, correctness, or physical adequacy; algorithm-specific convergence rules remain outside base.
+        </p>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="grammar">
+        <h2>9. EBNF grammar and iteration encoding</h2>
+
+        <h3>9.1 EBNF grammar</h3>
+        <p>
+          The grammar is deliberately minimal and structural.
+          It expresses macro-level composition rather than low-level gate syntax.
+        </p>
+
+        <pre><code class="hljs plaintext">Program        ::= FrameDecl PrepDecl Block
+
+  FrameDecl      ::= "QFRAME" "(" FrameKind ")"
+  FrameKind      ::= "init" | "problem" | "eigenproblem" | "error_space"
+
+  PrepDecl       ::= "QPREP" "(" PrepKind ")"
+  PrepKind       ::= "superposition" | "register_init" | "entangle"
+
+  Block          ::= Statement | Statement Block
+  Statement      ::= OracleCall
+                   | Diffusion
+                   | Iteration
+                   | Measurement
+                   | Stabilize
+                   | Integrate
+
+  OracleCall     ::= "QORACLE_CALL" "(" Identifier ")"
+  Diffusion      ::= "QDIFFUSION"
+  Iteration      ::= "QITERATE" "(" Integer "," Block ")"
+  Measurement    ::= "QMEASURE" "(" Basis "," Register ")"
+  Stabilize      ::= "QSTABILIZE" "(" CodeIdentifier ")"
+  Integrate      ::= "Σ"
+
+  Basis          ::= "computational" | "fourier" | Identifier
+  Register       ::= Identifier
+  CodeIdentifier ::= Identifier</code></pre>
+
+        <p>
+          The explicit <span class="code-inline">Integrate ::= "Σ"</span> rule is important because workflows may need to mark a structural commit
+          after macros that do not contain Σ internally, especially after <span class="code-inline">QFT_ALIGN(...)</span>.
+        </p>
+
+        <h3>9.2 Iteration encoding</h3>
+        <p>
+          PMS-QC also records optional parse-friendly metadata for Θ-style repetition.
+          This metadata is non-canonical and organizational only.
+        </p>
+
+        <div class="box">
+          <p><strong>Operator:</strong> <span class="code-inline">Θ</span></p>
+          <p><strong>Count symbol:</strong> <span class="code-inline">k</span></p>
+          <p><strong>Applies to:</strong> <span class="code-inline">["Σ", "Α", "Ω", "Δ", "□"]</span></p>
+        </div>
+
+        <p class="small">
+          The <span class="code-inline">applies_to</span> list is a toolchain-oriented compositional hint.
+          It should not be read as a canonical PMS claim that all listed operators are independently iterated in standard usage.
+        </p>
+
+        <div class="box">
+          <div class="box-title">Synchronization note</div>
+          <p class="small">
+            Macro names, allowed kinds/modes/directions, expansion order, and optional vs. explicit Σ/Ψ placements
+            should remain editorially synchronized between the paper, <span class="code-inline">pms-qc.yaml</span>,
+            and any optional extension layers.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="policies">
+        <h2>10. Structural policy layer</h2>
+
+        <p>
+          PMS-QC defines structural guardrails that act on Δ&ndash;Ψ chains rather than low-level gates.
+          These policies support auditing, annotation, and bounded policy-layer reasoning,
+          and may be used for runtime governance in bounded architectures.
+        </p>
+
+        <blockquote>
+          <p><strong>Structural constraint ≠ physical guarantee ≠ safety guarantee.</strong></p>
+        </blockquote>
+
+        <h3>10.1 Policy families</h3>
+        <ul>
+          <li><strong>Frame constraints</strong></li>
+          <li><strong>Asymmetry constraints</strong></li>
+          <li><strong>Integration constraints</strong></li>
+          <li><strong>Self-binding / iteration policies</strong></li>
+        </ul>
+
+        <h3>10.2 Policy inventory</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Policy id</th>
+              <th>Kind</th>
+              <th>Description</th>
+              <th>Rule summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="code-inline">no_unframed_omega</span></td>
+              <td>frame</td>
+              <td>Disallow Ω operations without an active □-frame.</td>
+              <td>Any <span class="code-inline">QORACLE_CALL</span> or controlled operation must be dominated by explicit <span class="code-inline">QFRAME(..)</span> in scope.</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">measurement_requires_meas_frame</span></td>
+              <td>frame</td>
+              <td>Require a measurement-stable frame before <span class="code-inline">QMEASURE</span>.</td>
+              <td>If no measurement-adequate <span class="code-inline">□_meas</span> is active, a Φ-step must introduce or select such a frame before measurement. Reframing after Σ is forbidden unless mediated by Ψ.</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">unstable_asymmetry_guard</span></td>
+              <td>stability</td>
+              <td>Ω-heavy compositions may be structurally unstable unless further guarded.</td>
+              <td>Ω that significantly redistributes risk or resource load should be followed by Α or Ψ. Bare Ω-chains are flagged as structurally unstable unless further guarded or explicitly whitelisted.</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">no_reframing_past_sigma</span></td>
+              <td>integration</td>
+              <td>Protect Σ-boundaries from unrestricted Φ-based reinterpretation.</td>
+              <td>After Σ(E), Φ may not alter the semantics of E except under Ψ-bound policies.</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">max_iteration_depth</span></td>
+              <td>iteration</td>
+              <td>Limit Θ-depth via bounded Ψ constraints.</td>
+              <td>For any <span class="code-inline">QITERATE(k, block)</span>, require <span class="code-inline">k &lt;= k_max</span> unless additional invariants are enforced through <span class="code-inline">QSTABILIZE(..)</span>.</td>
+            </tr>
+            <tr>
+              <td><span class="code-inline">stabiliser_frequency</span></td>
+              <td>stability</td>
+              <td>Require minimum stabilisation density for long Θ-chains.</td>
+              <td>For Θ-chains exceeding <span class="code-inline">theta_length_threshold</span>, require at least one <span class="code-inline">QSTABILIZE(..)</span> occurrence within the chain.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pagebreak"></div>
+
+        <h3>10.3 Policy notes</h3>
+        <p>
+          The parameterised base policies are:
+        </p>
+        <ul>
+          <li><span class="code-inline">max_iteration_depth</span> with parameter <span class="code-inline">k_max</span> (integer)</li>
+          <li><span class="code-inline">stabiliser_frequency</span> with parameter <span class="code-inline">theta_length_threshold</span> (integer)</li>
+        </ul>
+        <p>
+          All listed policies are marked <strong>non-guarantee</strong>.
+          This means they specify structural admissibility and discipline within the overlay,
+          but do not prove physical correctness, safety, convergence, hardware adequacy, or deployment readiness.
+        </p>
+
+        <div class="box">
+          <div class="box-title">Important interpretation rule</div>
+          <p class="small">
+            The policy layer is structurally useful and machine-checkable,
+            but it is not a self-sufficient normative safety architecture and not a validated governance system.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="examples">
+        <h2>11. Minimal example suite</h2>
+
+        <p>
+          PMS-QC includes two base-layer skeleton examples. They are intentionally minimal and should not be read as exhaustive reconstructions.
+        </p>
+
+        <h3>11.1 <span class="code-inline">grover_minimal</span></h3>
+        <p>
+          Description: minimal structural rendering of Grover's search algorithm.
+          This is a base-layer skeleton only and does not imply convergence guarantees.
+        </p>
+
+        <pre><code class="hljs text">QFRAME(problem)
+  QPREP(superposition)
+  QITERATE(k, { QORACLE_CALL(F); QDIFFUSION; })
+  QMEASURE(basis=computational, register=search)</code></pre>
+
+        <p><strong>PMS expansion:</strong></p>
+        <div class="box">
+          <p><span class="code-inline">Λ ∘ Δ ∘ Θ^k( Σ ∘ Α ∘ Ω ∘ Δ ∘ □ )</span></p>
+        </div>
+
+        <p><strong>Interpretation:</strong></p>
+        <ul>
+          <li><strong>□</strong>: problem frame</li>
+          <li><strong>Δ</strong>: distributed alternatives</li>
+          <li><strong>Ω</strong>: oracle asymmetry</li>
+          <li><strong>Α</strong>: amplitude attractor</li>
+          <li><strong>Σ</strong>: integrated iteration effect</li>
+          <li><strong>Θ^k</strong>: repeated oracle&ndash;diffusion structure</li>
+          <li><strong>Δ / Λ</strong>: outcome distinction and unrealised branches</li>
+        </ul>
+
+        <p class="small">
+          No Ψ-layer is included in this base skeleton.
+        </p>
+
+        <h3>11.2 <span class="code-inline">qpe_minimal</span></h3>
+        <p>
+          Description: minimal structural rendering of Quantum Phase Estimation.
+          The explicit power-of-two ladder remains EXT-only; the base example uses <span class="code-inline">QORACLE_CALL(U^{2^j})</span>
+          only as a minimal structural placeholder.
+        </p>
+
+        <pre><code class="hljs text">QFRAME(eigenproblem)
+  QPREP(superposition)
+  QITERATE(t, { QORACLE_CALL(U^{2^j}); })
+  QFT_ALIGN(inverse)
+  Σ
+  QMEASURE(basis=computational, register=control)</code></pre>
+
+        <p><strong>PMS expansion:</strong></p>
+        <div class="box">
+          <p><span class="code-inline">Λ ∘ Δ ∘ Σ ∘ Α ∘ Φ ∘ Θ^t( Ω ∘ □ ) ∘ Α ∘ ∇ ∘ Δ</span></p>
+        </div>
+
+        <div class="pagebreak"></div>
+
+        <p><strong>Interpretation:</strong></p>
+        <ul>
+          <li><strong>□</strong>: eigenproblem frame</li>
+          <li><strong>Δ / ∇ / Α</strong>: preparation of control superposition</li>
+          <li><strong>Θ^t(Ω ∘ □)</strong>: ordered controlled-unitary action in minimal base form</li>
+          <li><strong>Φ / Α / Σ</strong>: reframing, alignment, and explicit structural commit for measurement</li>
+          <li><strong>Δ / Λ</strong>: phase-encoded alternatives resolved into a discrete estimate</li>
+        </ul>
+
+        <p class="small">
+          The aligned readout stage is semantically read as <span class="code-inline">Σ(Α(Φ(S)))</span>.
+          This does not create a reusable base ladder macro.
+        </p>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="ai-interface">
+        <h2>12. AI interface and audit layer</h2>
+
+        <h3>12.1 Overview</h3>
+        <p>
+          PMS-QC allows AI or agentic controllers, including LLM-based systems,
+          to reason about QC workflows in PMS-QC terms and to use PMS-QC as a structuring interface in bounded settings.
+        </p>
+
+        <p>
+          This does <strong>not</strong> imply deployment adequacy, validated safety, or full runtime autonomy.
+        </p>
+
+        <h3>12.2 Structural query capabilities</h3>
+        <ul>
+          <li>List frames (□) currently active in a QC workflow.</li>
+          <li>Identify all Ω-operations and their guarding Α/Ψ contexts.</li>
+          <li>Inspect Θ-depth and associated Ψ-constraints.</li>
+          <li>Summarise Σ-boundaries and Φ-based reframings.</li>
+        </ul>
+
+        <h3>12.3 Allowed actions</h3>
+        <ul>
+          <li>Propose new macro-level programs under policy constraints.</li>
+          <li>Suggest workflow refinements by inserting <span class="code-inline">QSTABILIZE(..)</span> or adjusting Θ-depth.</li>
+          <li>Annotate existing circuits with PMS-QC metadata for auditing.</li>
+          <li>Structure alternative QC designs for comparison at the Δ&ndash;Ψ level.</li>
+        </ul>
+
+        <h3>12.4 Guardrails</h3>
+        <ul>
+          <li>The agent must not bypass Ψ-encoded constraints.</li>
+          <li>New workflows must pass frame, asymmetry, and integration policies.</li>
+          <li>Anthropomorphic interpretations of quantum processes are disallowed.</li>
+          <li>Policy satisfaction must not be treated as validated safety.</li>
+          <li>No physical guarantees or deployment claims follow from PMS-QC compliance alone.</li>
+          <li>The base/EXT distinction must not be bypassed or silently collapsed.</li>
+        </ul>
+
+        <h3>12.5 Logging and audit</h3>
+        <p>
+          Implementations that choose to operationalize this layer may log the following items for audit and comparison purposes:
+        </p>
+        <ul>
+          <li>Δ&ndash;Ψ operator sequence per executed workflow</li>
+          <li>triggered policy checks and their outcomes</li>
+          <li>points where Σ or Ψ changed future admissible operations</li>
+        </ul>
+
+        <p>Suggested audit uses:</p>
+        <ul>
+          <li>post-hoc analysis of structural stability and asymmetry</li>
+          <li>comparison of alternative Δ&ndash;Ψ designs for the same QC task</li>
+        </ul>
+
+        <div class="box">
+          <div class="box-title">AI boundary formula</div>
+          <p class="small">
+            PMS-QC may improve structural legibility and bounded orchestration reasoning,
+            but AI-facing use of the schema does not by itself validate a control architecture.
+          </p>
+        </div>
+      </section>
+
+      <div class="pagebreak"></div>
+
+      <section id="compatibility-extensibility">
+        <h2>13. Compatibility, extensibility, and implementation notes</h2>
+
+        <h3>13.1 Compatibility</h3>
+        <ul>
+          <li>PMS-QC can annotate or wrap programs in QASM, Qiskit, Cirq, Braket, and similar frameworks.</li>
+          <li>Δ&ndash;Ψ annotations may be stored as sidecar metadata or embedded comments.</li>
+          <li>Compatibility with backend frameworks does not imply semantic equivalence or direct implementation adequacy.</li>
+          <li>Computational portability should not be confused with physical correctness or deployment readiness.</li>
+        </ul>
+
+        <h3>13.2 Extensibility</h3>
+        <ul>
+          <li>Future versions may add specialised macro-operators for error mitigation, variational circuits, or hybrid classical&ndash;quantum loops.</li>
+          <li>Additional QC-specific policies may be defined as long as they remain Δ&ndash;Ψ-based, preserve the base/extension boundary, and do not claim physical guarantees.</li>
+          <li>Paper-specific refinements should not be silently promoted into the generic base overlay.</li>
+        </ul>
+
+        <h3>13.3 Load order</h3>
+        <div class="box small">
+          <span class="code-inline">PMS.yaml</span> &rarr; <span class="code-inline">pms-qc.yaml</span> &rarr; <span class="code-inline">pms-qc-ext.yaml</span>
+        </div>
+
+        <h3>13.4 Intended use and non-use summary</h3>
+        <div class="two-column">
+          <div>
+            <div class="box-title">Allowed profiles</div>
+            <ul>
+              <li>quantum_algorithm_documentation</li>
+              <li>structural_qc_analysis</li>
+              <li>qc_workflow_auditing</li>
+              <li>meta_compiler_annotation</li>
+              <li>bounded_ai_qc_policy_reasoning</li>
+              <li>research_and_theoretical_exploration</li>
+            </ul>
+          </div>
+          <div>
+            <div class="box-title">Not intended for</div>
+            <ul>
+              <li>physical_noise_modelling</li>
+              <li>low_level_gate_optimization_only</li>
+              <li>hardware_level_safety_certification</li>
+              <li>replacement_of_qc_formalisms</li>
+              <li>performance_guarantee_provision</li>
+              <li>deployment_ready_agent_control</li>
+              <li>validated_safety_architecture</li>
+              <li>architecture_independent_implementation_claims</li>
+              <li>anthropomorphic_interpretation_of_quantum_processes</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>13.5 Technical reference</h3>
+        <p>
+          The authoritative specification is <span class="code-inline">pms-qc.yaml</span>, intended to be loaded after
+          <span class="code-inline">PMS.yaml</span>. PMS operator meanings and dependencies remain canonical in PMS.
+        </p>
+
+        <p class="small">
+          <strong>Technical reference:</strong><br />
+          <em>pms-qc.yaml – Praxeological Meta-Structure – Quantum Computing Layer (PMS-QC_1.1)</em>
+        </p>
+
+        <p class="small">
+          <strong>Base dependency:</strong><br />
+          <em>PMS.yaml – Praxeological Meta-Structure (PMS_1.3)</em>
+        </p>
+
+        <p>
+          <strong>Repository references:</strong><br />
+          PMS (base framework): <a href="https://github.com/tz-dev/Praxeological-Meta-Structure-Theory">https://github.com/tz-dev/Praxeological-Meta-Structure-Theory</a><br />
+          PMS-QC (overlay): <a href="https://github.com/tz-dev/PMS-QC">https://github.com/tz-dev/PMS-QC</a>
+        </p>
+
+        <div class="pagebreak"></div>
+
+        <div class="box">
+          <div class="box-title">Final summary</div>
+          <p class="small">
+            PMS-QC is a generic, bounded, non-physical, non-anthropomorphic QC structural overlay.
+            It provides operator mappings, reusable base macros, structural policies, minimal examples,
+            and an AI-facing audit interface, while explicitly refusing claims of exhaustive capture,
+            physical correctness, or deployment readiness.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
