@@ -266,28 +266,29 @@ The resources below provide different **points of access** into that ecosystem: 
 
 PMS–AXIOM is part of a broader **praxeological ecosystem** spanning formal operator theory, applied anthropology, governance analysis, and executable specifications.
 
-| Category                | Resource                                                                                                                           | Description                                                                                      |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| Model website           | [PMS Theory Site](https://pms-theory.netlify.app)                                                                                  | Canonical PMS theory reference                                                                   |
-| Book websites           | [Maturity in Practice (EN)](https://maturity-in-practice.netlify.app)                                                              | *Maturity in Practice* — English edition (praxeological anthropology)                            |
-|                         | [Reife im Vollzug (DE)](https://reife-im-vollzug.netlify.app)                                                                      | *Reife im Vollzug* — Deutsche Ausgabe                                                            |
-|                         | [PMS Stack](https://pms-stack.netlify.app)                                                                                         | PMS-STACK reference architecture                                                                 |
-| Amazon                  | [Maturity in Practice (EN)](https://www.amazon.com/dp/B0G4XBKNNR)                                                                  | *Maturity in Practice: A Praxeological Anthropology* — English edition                           |
-|                         | [Reife im Vollzug (DE)](https://www.amazon.de/dp/B0G4SPBDQD)                                                                       | *Reife im Vollzug: Eine praxeologische Anthropologie* — Deutsche Ausgabe                         |
-|                         | [PMS-STACK](https://www.amazon.com/dp/B0G6G7V38P)                                                                                  | *PMS-STACK — A Praxeological Operating System Architecture*                                      |
-| GitHub implementation   | **[PMS-RUST](https://github.com/tz-dev/PMS-RUST)**                                                                                 | Executable PMS-STACK Evidence Spine: Rust kernel, REPL, validation, JSONL, vFS, demos, AI bridge |
-| GitHub theory / specs   | [PMS Theory / Repo](https://github.com/tz-dev/Praxeological-Meta-Structure-Theory)                                                 | Canonical PMS grammar, theory, YAML/JSON definitions, and model specification                    |
-| GitHub books / analyses | [Maturity-in-Practice](https://github.com/tz-dev/Maturity-in-Practice)                                                             | Book sources & applied praxeological anthropology                                                |
-|                         | [PMS-QC](https://github.com/tz-dev/PMS-QC)                                                                                         | PMS-QC — Praxeological Meta-Structure for Quantum Computing                                      |
-|                         | [PMS-LOGIC](https://github.com/tz-dev/PMS-LOGIC)                                                                                   | PMS-LOGIC — Structural Responsibility, Logical Limits, and Post-Moral Effects                    |
-|                         | [PMS-ANTICIPATION](https://github.com/tz-dev/PMS-ANTICIPATION)                                                                     | PMS-ANTICIPATION — Structural Conditions, Risks, and Viability of Anticipatory Praxis            |
-|                         | [PMS-CRITIQUE](https://github.com/tz-dev/PMS-CRITIQUE)                                                                             | PMS-CRITIQUE — From Irritation to Correction: A Praxeological Grammar of Critique                |
-|                         | [PMS-EDEN](https://github.com/tz-dev/PMS-EDEN)                                                                                     | PMS-EDEN — Structural Drift from Praxis to Comparison and Reciprocity Loss                       |
-|                         | [PMS-SEX](https://github.com/tz-dev/PMS-SEX)                                                                                       | PMS-SEX — From Impulse to Self-Binding: A Praxeological Grammar of Sexuality                     |
-|                         | [PMS-CONFLICT](https://github.com/tz-dev/PMS-CONFLICT)                                                                             | PMS-CONFLICT — Conflict as Stabilized Incompatibility: Cost, Binding, and Tragic Non-Integration |
-|                         | [PMS-AXIOM](https://github.com/tz-dev/PMS-AXIOM)                                                                                   | PMS-AXIOM — Cartography of Classical Closure-Demands Across the PMS Stack                        |
-| Custom GPTs             | [PMS Model Assistant](https://chatgpt.com/g/g-69358a2a4980819183da6a97893389cf-pms-model-assistant)                                | Interactive PMS.yaml exploration & validation                                                    |
-|                         | [Maturity in Action](https://chat.openai.com/g/g-693460d3def48191ad08647301645a2e-maturity-in-action-a-praxeological-anthropology) | Applied praxeological anthropology assistant                                                     |
+| Category | Resource | Description |
+|---|---|---|
+| Model website | [PMS Theory Site](https://pms-theory.netlify.app) | Canonical PMS theory reference |
+| Book websites | [Maturity in Practice (EN)](https://maturity-in-practice.netlify.app) | *Maturity in Practice* — English edition (praxeological anthropology) |
+|  | [Reife im Vollzug (DE)](https://reife-im-vollzug.netlify.app) | *Reife im Vollzug* — Deutsche Ausgabe |
+|  | [PMS Stack](https://pms-stack.netlify.app) | PMS-STACK reference architecture |
+| Amazon | [Maturity in Practice (EN)](https://www.amazon.com/dp/B0G4XBKNNR) | *Maturity in Practice: A Praxeological Anthropology* — English edition |
+|  | [Reife im Vollzug (DE)](https://www.amazon.de/dp/B0G4SPBDQD) | *Reife im Vollzug: Eine praxeologische Anthropologie* — Deutsche Ausgabe |
+|  | [PMS-STACK](https://www.amazon.com/dp/B0G6G7V38P) | *PMS-STACK — A Praxeological Operating System Architecture* |
+| GitHub implementation | **[PMS-RUST](https://github.com/tz-dev/PMS-RUST)** | Executable PMS-STACK Evidence Spine: Rust kernel, REPL, validation, JSONL, vFS, demos, AI bridge |
+| GitHub theory / specs | [PMS Theory / Repo](https://github.com/tz-dev/Praxeological-Meta-Structure-Theory) | Canonical PMS grammar, theory, YAML/JSON definitions, and model specification |
+| GitHub self-critique | **[PMS — UNDER LOAD](https://github.com/tz-dev/PMS---UNDER-LOAD)** | Structural self-critique of PMS under calibration, coverage, stack drift, publicness, and self-application |
+| GitHub books / analyses | [Maturity-in-Practice](https://github.com/tz-dev/Maturity-in-Practice) | Book sources & applied praxeological anthropology |
+|  | [PMS-QC](https://github.com/tz-dev/PMS-QC) | PMS-QC — Praxeological Meta-Structure for Quantum Computing |
+|  | [PMS-LOGIC](https://github.com/tz-dev/PMS-LOGIC) | PMS-LOGIC — Structural Responsibility, Logical Limits, and Post-Moral Effects |
+|  | [PMS-ANTICIPATION](https://github.com/tz-dev/PMS-ANTICIPATION) | PMS-ANTICIPATION — Structural Conditions, Risks, and Viability of Anticipatory Praxis |
+|  | [PMS-CRITIQUE](https://github.com/tz-dev/PMS-CRITIQUE) | PMS-CRITIQUE — From Irritation to Correction: A Praxeological Grammar of Critique |
+|  | [PMS-EDEN](https://github.com/tz-dev/PMS-EDEN) | PMS-EDEN — Structural Drift from Praxis to Comparison and Reciprocity Loss |
+|  | [PMS-SEX](https://github.com/tz-dev/PMS-SEX) | PMS-SEX — From Impulse to Self-Binding: A Praxeological Grammar of Sexuality |
+|  | [PMS-CONFLICT](https://github.com/tz-dev/PMS-CONFLICT) | PMS-CONFLICT — Conflict as Stabilized Incompatibility: Cost, Binding, and Tragic Non-Integration |
+|  | [PMS-AXIOM](https://github.com/tz-dev/PMS-AXIOM) | PMS-AXIOM — Cartography of Classical Closure-Demands Across the PMS Stack |
+| Custom GPTs | [PMS Model Assistant](https://chatgpt.com/g/g-69358a2a4980819183da6a97893389cf-pms-model-assistant) | Interactive PMS.yaml exploration & validation |
+|  | [Maturity in Action](https://chat.openai.com/g/g-693460d3def48191ad08647301645a2e-maturity-in-action-a-praxeological-anthropology) | Applied praxeological anthropology assistant |
 
 ---
 
